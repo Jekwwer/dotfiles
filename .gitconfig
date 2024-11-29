@@ -1,3 +1,80 @@
+# .gitconfig: Configurates Git settings and aliases.
+
+[alias]
+  amend = commit --amend
+  br = branch
+  ci = commit
+  co = checkout
+  d = diff
+  ds = diff --staged
+  del-branch = "!f() { git push origin --delete \"$1\"; }; f"
+  fixup = commit --amend --no-edit
+  lg = log --oneline --graph --decorate
+  lga = log --all --oneline --graph --decorate
+  pushf = push --force-with-lease
+  ri = rebase -i
+  save = stash save
+  st = status
+  undo = reset HEAD~1
+
+[color]
+  ui = true
+
+[commit]
+  gpgSign = true
+  template = ~/.gitmessage
+
+[core]
+  autocrlf = input
+  editor = code --wait
+  excludesfile = ~/.gitignore_global
+  pager = less -RFX
+
+[credential]
+  helper = cache
+
+[diff]
+  tool = code
+
+[difftool "code"]
+  cmd = code --wait --diff $LOCAL $REMOTE
+
+[github]
+  user = jekwwer
+
+[init]
+  defaultBranch = main
+
+[log]
+  abbrevCommit = true
+  decorate = short
+  graph = true
+
+[format]
+  pretty = format:%C(auto)%h %C(bold blue)%an %C(auto)%d %s %C(dim white)(%ar)
+
+[merge]
+  conflictstyle = diff3
+  tool = code
+
+[mergetool "code"]
+  cmd = code --wait $MERGED
+
+[pull]
+  rebase = true
+
+[push]
+  default = simple
+
+[rebase]
+  autoStash = true
+
+[rerere]
+  enabled = true
+
+[tag]
+  sort = version:refname
+
 [user]
-    name = Evgenii Shiliaev
-    email = evgenii.shiliaev@jekwwer.com
+  email = evgenii.shiliaev@jekwwer.com
+  name = Evgenii Shiliaev
