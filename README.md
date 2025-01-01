@@ -1,7 +1,7 @@
 # dotfiles
 
 This repository contains configuration files (`dotfiles`) for personalizing your development environment.
-These dotfiles include advanced configurations for Bash (`.bashrc`), Git (`.gitconfig`, `.gitignore_global`)
+These dotfiles include advanced configurations for Bash (`.bashrc`), Git (`.gitconfig`, `.gitignore_global`, `gitmessage`)
 ensuring a more productive, efficient, and user-friendly command-line experience.
 
 ## .bashrc
@@ -304,3 +304,80 @@ accumulating best practices and includes patterns for:
 - **Publish and deployment files**: Files created during Azure or web deployment.
 
 For a detailed list of ignored files and directories, refer to the `.gitignore_global` file in this repository.
+
+## .gitmessage
+
+The `.gitmessage` file defines a standardized commit message template to ensure consistency, clarity, and quality in commit messages. This template is designed to align with best practices and provide essential details about changes.
+
+### Template Structure:
+```plaintext
+<type>(<scope>): <description>
+
+<detailed description>
+
+[FILES ADDED/MODIFIED]
+
+
+[PURPOSE]
+
+
+[IMPACT]
+
+
+[FIXES/RESOLVES/REFERENCE]
+```
+
+### Template Fields:
+- **`<type>`**: Specifies the type of change being committed. Common types include:
+  - `feat`: A new feature.
+  - `fix`: A bug fix.
+  - `docs`: Documentation changes.
+  - `style`: Code style updates (formatting, no code changes).
+  - `refactor`: Code restructuring without changing functionality.
+  - `test`: Adding or updating tests.
+  - `chore`: Maintenance tasks (e.g., build scripts, dependency updates).
+- **`<scope>`**: Specifies the area of the codebase affected (optional).
+- **`<description>`**: A concise summary of the change.
+- **`<detailed description>`**: Provides a more detailed explanation of the change (optional).
+- **`[FILES ADDED/MODIFIED]`**: Lists the files affected by the commit (optional).
+- **`[PURPOSE]`**: Explains the purpose or motivation for the change (optional).
+- **`[IMPACT]`**: Describes the impact of the change on the project or users (optional).
+- **`[FIXES/RESOLVES/REFERENCE]`**: References related issues, pull requests, or tasks (optional).
+
+### Example Commit Message:
+```plaintext
+feat(authentication): add OAuth2 login support
+
+Implemented OAuth2 login functionality for the application.
+This includes integration with Google and GitHub as identity providers.
+
+[FILES ADDED/MODIFIED]
+- src/auth/oauth2.py
+- src/auth/tests/test_oauth2.py
+
+[PURPOSE]
+Enable users to log in using external identity providers.
+
+[IMPACT]
+Improves user authentication experience and security.
+
+[FIXES/RESOLVES/REFERENCE]
+- Resolves #123
+- References PR #456
+```
+
+### Usage:
+1. Save the `.gitmessage` file in your home directory:
+   ```bash
+   cp .gitmessage ~/.gitmessage
+   ```
+2. Configure Git to use this commit message template:
+   ```bash
+   git config --global commit.template ~/.gitmessage
+   ```
+
+### Benefits:
+- Encourages clear and meaningful commit messages.
+- Simplifies collaboration by providing context for changes.
+- Helps in tracking and understanding changes during reviews or debugging.
+- Aligns with conventional commit message standards.
