@@ -1,7 +1,7 @@
 # dotfiles
 
 This repository contains configuration files (`dotfiles`) for personalizing your development environment.
-These dotfiles include advanced configurations for Bash (`.bashrc`), Git (`.gitconfig`, `.gitignore_global`, `gitmessage`)
+These dotfiles include advanced configurations for Bash (`.bashrc`), Git (`gitattributes`, `.gitconfig`, `.gitignore_global`, `gitmessage`)
 ensuring a more productive, efficient, and user-friendly command-line experience.
 
 ## .bashrc

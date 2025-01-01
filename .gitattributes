@@ -1,0 +1,74 @@
+# .gitattributes: Configurates Git to handle files with specific attributes/settings.
+
+# === Text File Settings ===
+# Normalize line endings for all text files
+* text=auto
+
+# Ensure consistent line endings for specific file types
+*.sh       text eol=lf
+*.py       text eol=lf
+*.js       text eol=lf
+*.css      text eol=lf
+*.html     text eol=lf
+*.java     text eol=lf
+*.c        text eol=lf
+*.cpp      text eol=lf
+*.md       text eol=lf
+*.yml      text eol=lf
+*.yaml     text eol=lf
+*.json     text eol=lf
+*.xml      text eol=lf
+
+# === Binary File Settings ===
+# Treat certain file types as binary to avoid diffs
+*.png       binary
+*.jpg       binary
+*.jpeg      binary
+*.gif       binary
+*.svg       binary
+*.pdf       binary
+*.ico       binary
+*.ttf       binary
+*.otf       binary
+*.woff      binary
+*.woff2     binary
+
+# === Merge Conflict Settings ===
+# Enable diff3 conflict markers for better conflict resolution
+* merge=diff3
+
+# === File-Specific Diff Algorithms ===
+# Use a more readable diff for common configuration files
+*.json      diff=json
+*.xml       diff=xml
+
+# === Large Files ===
+# Optimize performance for large files
+*.log       -diff
+*.zip       -diff
+*.tar.gz    -diff
+*.iso       -diff
+
+# === Linguist Settings ===
+# Ignore certain files from GitHub language stats
+*.min.js    linguist-generated
+*.map       linguist-generated
+
+# === Export Settings ===
+# Exclude files from archive exports (e.g., `git archive`)
+*.bak       export-ignore
+*.tmp       export-ignore
+*.swp       export-ignore
+*.DS_Store  export-ignore
+.idea/      export-ignore
+*.vscode/   export-ignore
+node_modules/ export-ignore
+
+# === Documentation Settings ===
+# Always treat Markdown files as text
+*.md        text
+*.rst       text
+
+# === Locking Settings ===
+# Lock files for shared collaboration (useful in LFS setups)
+*.lock      lockable
