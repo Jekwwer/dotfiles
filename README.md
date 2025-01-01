@@ -103,6 +103,26 @@ Below is the complete breakdown of the commands, settings, and features availabl
 | Colorful Output    | Adds colors to `ls` and other commands.         | `CLICOLOR=1`, `LSCOLORS=GxFxCxDxBxegedabagaced` |
 | Bash Completion    | Enables enhanced tab completion.                | `source /etc/bash_completion` if available.     |
 
+## .gitattributes
+
+The `.gitattributes` file configures how Git handles specific files and attributes. It ensures consistency, optimizes performance, and simplifies collaboration.
+
+### Key Features:
+- **Line Endings**: Normalizes text files with `* text=auto` and ensures LF endings for specific types (e.g., `.sh`, `.py`, `.json`).
+- **Binary Files**: Marks files like images (`*.png`, `*.jpg`), fonts (`*.woff`, `*.ttf`), and archives (`*.zip`, `*.tar.gz`) as binary.
+- **Merge Conflicts**: Enables `diff3` markers for better conflict resolution.
+- **Custom Diffs**: Uses readable diffs for JSON and XML files.
+- **Exclusions**: Ignores large files (`*.log`, `*.iso`) and temporary files (`*.tmp`, `.DS_Store`) from diffs and exports.
+- **Language Stats**: Excludes generated files like `.min.js` from GitHub language statistics.
+- **Locking**: Marks files like `*.lock` as lockable for collaboration.
+
+### Usage:
+1. Add the `.gitattributes` file to your repository.
+2. Commit it:
+   ```bash
+   git add .gitattributes
+   git commit -m "Add .gitattributes for repository configuration"
+
 ## .gitconfig
 
 The `.gitconfig` file in this repository is a comprehensive configuration for Git. It simplifies workflows, enforces best practices, and enhances the user experience with:
