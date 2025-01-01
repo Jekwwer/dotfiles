@@ -1,7 +1,8 @@
 # dotfiles
 
 This repository contains configuration files (`dotfiles`) for personalizing your development environment.
-These dotfiles include advanced configurations for Bash (`.bashrc`), ensuring a more productive, efficient, and user-friendly command-line experience.
+These dotfiles include advanced configurations for Bash (`.bashrc`), Git (`.gitconfig`)
+ensuring a more productive, efficient, and user-friendly command-line experience.
 
 ## .bashrc
 
@@ -22,6 +23,16 @@ To use this `.bashrc`:
    ```
 
 ### Complete Commands and Features List
+
+This `.bashrc` configuration includes the following key components:
+- **Aliases** for quick and easy command shortcuts.
+- **Functions** to automate common or repetitive tasks.
+- **Environment Variables** to set up a personalized working environment.
+- **History Settings** to manage and streamline command history effectively.
+- **Prompt Customization** for a visually informative shell prompt.
+- **Shell Enhancements** for features like auto-correction, recursive globbing, and colored output.
+
+Below is the complete breakdown of the commands, settings, and features available in this `.bashrc` configuration.
 
 #### **Aliases**
 | Alias    | Description                                       | Exact Command                            |
@@ -91,3 +102,172 @@ To use this `.bashrc`:
 | Recursive Globbing | Allows searching through directories with `**`. | `shopt -s globstar`                             |
 | Colorful Output    | Adds colors to `ls` and other commands.         | `CLICOLOR=1`, `LSCOLORS=GxFxCxDxBxegedabagaced` |
 | Bash Completion    | Enables enhanced tab completion.                | `source /etc/bash_completion` if available.     |
+
+## .gitconfig
+
+The `.gitconfig` file in this repository is a comprehensive configuration for Git. It simplifies workflows, enforces best practices, and enhances the user experience with:
+- **Aliases** for frequently used Git commands.
+- **Color Settings** for better visibility of Git output.
+- **Commit and Merge Settings** for consistency and streamlined conflict resolution.
+- **Core and Credential Settings** to personalize and secure Git usage.
+- **Log and Format Settings** for clear and concise commit history representation.
+
+To apply this `.gitconfig`:
+1. Copy it to your home directory:
+   ```bash
+   cp .gitconfig ~/.gitconfig
+
+### Complete Features List
+
+This `.gitconfig` includes settings and configurations for:
+- **Aliases**: Shortcuts for commonly used Git commands.
+- **Color Settings**: Enables colored output for better command readability.
+- **Commit Settings**: Adds features like commit templates and GPG signing.
+- **Core Settings**: Configures editors, line endings, and global ignore files.
+- **Credential Management**: Simplifies handling of credentials.
+- **Diff and Merge Tools**: Uses `code` for visual comparison and conflict resolution.
+- **Log and Format**: Enhances log readability with customized output and graphs.
+- **Push and Pull Behavior**: Enforces safe and consistent workflows.
+- **Rebase and Tag Settings**: Streamlines rebase operations and tag sorting.
+- **User Settings**: Specifies the default author information for commits.
+
+#### **Aliases**
+| Alias        | Description                                                   | Command/Details                              |
+| ------------ | ------------------------------------------------------------- | -------------------------------------------- |
+| `amend`      | Amend the last commit.                                        | `git commit --amend`                         |
+| `br`         | Show branches.                                                | `git branch`                                 |
+| `ci`         | Commit changes.                                               | `git commit`                                 |
+| `co`         | Switch branches or restore working tree files.                | `git checkout`                               |
+| `d`          | Show differences between commits or working tree.             | `git diff`                                   |
+| `ds`         | Show differences in staged files.                             | `git diff --staged`                          |
+| `del-branch` | Delete a remote branch.                                       | `git push origin --delete <branch>`          |
+| `fixup`      | Amend the last commit without changing the message.           | `git commit --amend --no-edit`               |
+| `lg`         | Show a concise log with graph and decorations.                | `git log --oneline --graph --decorate`       |
+| `lga`        | Show all commits in a concise log with graph and decorations. | `git log --all --oneline --graph --decorate` |
+| `pushf`      | Force push safely with lease.                                 | `git push --force-with-lease`                |
+| `ri`         | Interactive rebase.                                           | `git rebase -i`                              |
+| `save`       | Save changes to stash.                                        | `git stash save`                             |
+| `st`         | Show the working tree status.                                 | `git status`                                 |
+| `undo`       | Undo the last commit but keep the changes.                    | `git reset HEAD~1`                           |
+
+---
+
+#### **Color Settings**
+| Feature | Description                             | Value  |
+| ------- | --------------------------------------- | ------ |
+| `ui`    | Enable colored output for Git commands. | `true` |
+
+---
+
+#### **Commit Settings**
+| Feature    | Description                               | Value           |
+| ---------- | ----------------------------------------- | --------------- |
+| `gpgSign`  | Enable GPG signing for commits.           | `true`          |
+| `template` | Specify the commit message template file. | `~/.gitmessage` |
+
+---
+
+#### **Core Settings**
+| Feature        | Description                                              | Value                 |
+| -------------- | -------------------------------------------------------- | --------------------- |
+| `autocrlf`     | Normalize line endings for cross-platform compatibility. | `input`               |
+| `editor`       | Set the default editor for Git commands.                 | `code --wait`         |
+| `excludesfile` | Specify the global `.gitignore` file.                    | `~/.gitignore_global` |
+| `pager`        | Set the pager for command output.                        | `less -RFX`           |
+
+---
+
+#### **Credential Settings**
+| Feature  | Description                  | Value   |
+| -------- | ---------------------------- | ------- |
+| `helper` | Cache credentials for reuse. | `cache` |
+
+---
+
+#### **Diff Settings**
+| Feature | Description                                      | Value                               |
+| ------- | ------------------------------------------------ | ----------------------------------- |
+| `tool`  | Set the default diff tool.                       | `code`                              |
+| `cmd`   | Specify the command for `code` as the diff tool. | `code --wait --diff $LOCAL $REMOTE` |
+
+---
+
+#### **GitHub Settings**
+| Feature | Description      | Value     |
+| ------- | ---------------- | --------- |
+| `user`  | GitHub username. | `jekwwer` |
+
+---
+
+#### **Initialization Settings**
+| Feature         | Description                                       | Value  |
+| --------------- | ------------------------------------------------- | ------ |
+| `defaultBranch` | Set the default branch name for new repositories. | `main` |
+
+---
+
+#### **Log Settings**
+| Feature        | Description                               | Value   |
+| -------------- | ----------------------------------------- | ------- |
+| `abbrevCommit` | Show abbreviated commit hashes in logs.   | `true`  |
+| `decorate`     | Show references in logs.                  | `short` |
+| `graph`        | Display logs with a graph representation. | `true`  |
+
+---
+
+#### **Format Settings**
+| Feature  | Description                          | Value                                                                 |
+| -------- | ------------------------------------ | --------------------------------------------------------------------- |
+| `pretty` | Customize the format of log entries. | `format:%C(auto)%h %C(bold blue)%an %C(auto)%d %s %C(dim white)(%ar)` |
+
+---
+
+#### **Merge Settings**
+| Feature         | Description                                       | Value                 |
+| --------------- | ------------------------------------------------- | --------------------- |
+| `conflictstyle` | Show conflicts in diff3 format.                   | `diff3`               |
+| `tool`          | Set the default merge tool.                       | `code`                |
+| `cmd`           | Specify the command for `code` as the merge tool. | `code --wait $MERGED` |
+
+---
+
+#### **Pull Settings**
+| Feature  | Description                             | Value  |
+| -------- | --------------------------------------- | ------ |
+| `rebase` | Rebase instead of merging when pulling. | `true` |
+
+---
+
+#### **Push Settings**
+| Feature   | Description                    | Value    |
+| --------- | ------------------------------ | -------- |
+| `default` | Set the default push behavior. | `simple` |
+
+---
+
+#### **Rebase Settings**
+| Feature     | Description                                  | Value  |
+| ----------- | -------------------------------------------- | ------ |
+| `autoStash` | Automatically stash changes before rebasing. | `true` |
+
+---
+
+#### **Rerere Settings**
+| Feature   | Description                                             | Value  |
+| --------- | ------------------------------------------------------- | ------ |
+| `enabled` | Enable "reuse recorded resolution" for merge conflicts. | `true` |
+
+---
+
+#### **Tag Settings**
+| Feature | Description           | Value             |
+| ------- | --------------------- | ----------------- |
+| `sort`  | Sort tags by version. | `version:refname` |
+
+---
+
+#### **User Settings**
+| Feature | Description                    | Value                          |
+| ------- | ------------------------------ | ------------------------------ |
+| `email` | Set the email for Git commits. | `evgenii.shiliaev@jekwwer.com` |
+| `name`  | Set the name for Git commits.  | `Evgenii Shiliaev`             |
