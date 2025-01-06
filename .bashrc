@@ -2,9 +2,7 @@
 
 # === Safety Settings ===
 # Make shell safer and scripts more robust
-set -o errexit    # Exit immediately if a command exits with a non-zero status
 set -o pipefail   # Return the exit status of the last command in the pipeline
-set -o nounset    # Treat unset variables as an error
 set -o noclobber  # Avoid overwriting files accidentally
 
 # === Environment Variables ===
