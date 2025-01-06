@@ -10,7 +10,7 @@ The `.bashrc` file included in this repository is an advanced shell configuratio
 - **Streamline productivity** with aliases and functions for common tasks.
 - **Enhance safety** by reducing accidental errors with safer defaults.
 - **Customize the shell environment** with prompts, colors, and history management.
-- **Add convenience** through auto-correction, recursive globbing, and Git branch display.
+- **Add convenience** through auto-correction, recursive globbing, Git branch display, and dynamic terminal updates.
 
 To use this `.bashrc`:
 1. Copy it to your home directory:
@@ -25,6 +25,7 @@ To use this `.bashrc`:
 ### Complete Commands and Features List
 
 This `.bashrc` configuration includes the following key components:
+- **Core Configuration** for interactive shell checks, terminal title customization, and programmatic completion.
 - **Aliases** for quick and easy command shortcuts.
 - **Functions** to automate common or repetitive tasks.
 - **Environment Variables** to set up a personalized working environment.
@@ -33,6 +34,17 @@ This `.bashrc` configuration includes the following key components:
 - **Shell Enhancements** for features like auto-correction, recursive globbing, and colored output.
 
 Below is the complete breakdown of the commands, settings, and features available in this `.bashrc` configuration.
+
+#### **Core Configuration**
+| Feature                      | Description                                        | Command/Setting                                                |
+| ---------------------------- | -------------------------------------------------- | -------------------------------------------------------------- |
+| Interactive Shell Check      | Ensures `.bashrc` runs only in interactive shells. | `case $- in *i*) ;; *) return;; esac`                          |
+| Terminal Size Updates        | Updates `LINES` and `COLUMNS` dynamically.         | `shopt -s checkwinsize`                                        |
+| Terminal Title Customization | Sets terminal title to `user@host:dir`.            | `case "$TERM" in xterm*                                        | rxvt*) ... esac` |
+| Lesspipe Integration         | Enhances `less` for non-text files.                | `[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"` |
+| Programmatic Completion      | Enables enhanced command-line completions.         | Loads from `/usr/share/bash-completion` if available.          |
+
+---
 
 #### **Aliases**
 | Alias    | Description                                       | Exact Command                            |
