@@ -1,5 +1,46 @@
 # .bashrc: Sets configuration for interactive bash shell
 
+# === Core Configuration ===
+# This section includes essential default settings from the system `.bashrc`.
+
+# Interactive Shell Check
+case $- in
+    *i*) ;;
+      *) return;;
+esac
+
+# Dynamic Terminal Size Updates
+shopt -s checkwinsize
+
+# Lesspipe Integration
+[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+
+# Chroot Identification
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
+
+# Xterm Window Title Customization
+case "$TERM" in
+xterm*|rxvt*)
+    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
+    ;;
+*)
+    ;;
+esac
+
+# Programmatic Completion
+if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+        . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+        . /etc/bash_completion
+    fi
+fi
+
+# === User Configuration ===
+# This section includes custom settings and configurations from the user.
+
 # === Safety Settings ===
 # Make shell safer and scripts more robust
 set -o pipefail   # Return the exit status of the last command in the pipeline
