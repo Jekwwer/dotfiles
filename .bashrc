@@ -84,6 +84,13 @@ alias ....="cd ../../.."
 
 # Git aliases
 alias gst="git status"
+alias gca="git amend"
+alias gci="git commit"
+alias gf="git fetch"
+alias gfi="git fixup"
+alias gpl="git pull"
+alias gps="git push"
+alias gpf="git push --force"
 alias gco="git checkout"
 alias gl="git log --oneline --graph --decorate"
 

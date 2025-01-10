@@ -11,6 +11,7 @@
   fixup = commit --amend --no-edit
   lg = log --oneline --graph --decorate
   lga = log --all --oneline --graph --decorate
+  lgm = log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit
   pushf = push --force-with-lease
   ri = rebase -i
   save = stash save

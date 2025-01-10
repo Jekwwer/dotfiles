@@ -47,22 +47,29 @@ Below is the complete breakdown of the commands, settings, and features availabl
 ---
 
 #### **Aliases**
-| Alias    | Description                                       | Exact Command                            |
-| -------- | ------------------------------------------------- | ---------------------------------------- |
-| `ll`     | List files in long format including hidden files. | `ls -la`                                 |
-| `la`     | List all files, including hidden ones.            | `ls -A`                                  |
-| `l`      | List files in compact format.                     | `ls -CF`                                 |
-| `rm`     | Safer `rm` with confirmation before deletion.     | `rm -i`                                  |
-| `mv`     | Safer `mv` with confirmation before overwriting.  | `mv -i`                                  |
-| `cp`     | Safer `cp` with confirmation before overwriting.  | `cp -i`                                  |
-| `..`     | Navigate to the parent directory.                 | `cd ..`                                  |
-| `...`    | Navigate two levels up.                           | `cd ../..`                               |
-| `....`   | Navigate three levels up.                         | `cd ../../..`                            |
-| `gst`    | Display Git status.                               | `git status`                             |
-| `gco`    | Checkout a branch in Git.                         | `git checkout`                           |
-| `gl`     | Show a concise, graphical Git log.                | `git log --oneline --graph --decorate`   |
-| `update` | Update and upgrade system packages.               | `sudo apt update && sudo apt upgrade -y` |
-| `clr`    | Clear the terminal screen.                        | `clear`                                  |
+| Alias    | Description                                         | Exact Command                            |
+| -------- | --------------------------------------------------- | ---------------------------------------- |
+| `ll`     | List files in long format including hidden files.   | `ls -la`                                 |
+| `la`     | List all files, including hidden ones.              | `ls -A`                                  |
+| `l`      | List files in compact format.                       | `ls -CF`                                 |
+| `rm`     | Safer `rm` with confirmation before deletion.       | `rm -i`                                  |
+| `mv`     | Safer `mv` with confirmation before overwriting.    | `mv -i`                                  |
+| `cp`     | Safer `cp` with confirmation before overwriting.    | `cp -i`                                  |
+| `..`     | Navigate to the parent directory.                   | `cd ..`                                  |
+| `...`    | Navigate two levels up.                             | `cd ../..`                               |
+| `....`   | Navigate three levels up.                           | `cd ../../..`                            |
+| `gst`    | Display Git status.                                 | `git status`                             |
+| `gco`    | Checkout a branch in Git.                           | `git checkout`                           |
+| `gl`     | Show a concise, graphical Git log.                  | `git log --oneline --graph --decorate`   |
+| `gca`    | Amend the last Git commit.                          | `git amend`                              |
+| `gci`    | Commit changes in Git.                              | `git commit`                             |
+| `gf`     | Fetch changes from the remote repository.           | `git fetch`                              |
+| `gfi`    | Amend the last commit without changing the message. | `git fixup`                              |
+| `gpl`    | Pull changes from the remote repository.            | `git pull`                               |
+| `gps`    | Push changes to the remote repository.              | `git push`                               |
+| `gpf`    | Force push changes to the remote repository.        | `git push --force`                       |
+| `update` | Update and upgrade system packages.                 | `sudo apt update && sudo apt upgrade -y` |
+| `clr`    | Clear the terminal screen.                          | `clear`                                  |
 
 ---
 
@@ -164,23 +171,25 @@ This `.gitconfig` includes settings and configurations for:
 - **User Settings**: Specifies the default author information for commits.
 
 #### **Aliases**
-| Alias        | Description                                                   | Command/Details                              |
-| ------------ | ------------------------------------------------------------- | -------------------------------------------- |
-| `amend`      | Amend the last commit.                                        | `git commit --amend`                         |
-| `br`         | Show branches.                                                | `git branch`                                 |
-| `ci`         | Commit changes.                                               | `git commit`                                 |
-| `co`         | Switch branches or restore working tree files.                | `git checkout`                               |
-| `d`          | Show differences between commits or working tree.             | `git diff`                                   |
-| `ds`         | Show differences in staged files.                             | `git diff --staged`                          |
-| `del-branch` | Delete a remote branch.                                       | `git push origin --delete <branch>`          |
-| `fixup`      | Amend the last commit without changing the message.           | `git commit --amend --no-edit`               |
-| `lg`         | Show a concise log with graph and decorations.                | `git log --oneline --graph --decorate`       |
-| `lga`        | Show all commits in a concise log with graph and decorations. | `git log --all --oneline --graph --decorate` |
-| `pushf`      | Force push safely with lease.                                 | `git push --force-with-lease`                |
-| `ri`         | Interactive rebase.                                           | `git rebase -i`                              |
-| `save`       | Save changes to stash.                                        | `git stash save`                             |
-| `st`         | Show the working tree status.                                 | `git status`                                 |
-| `undo`       | Undo the last commit but keep the changes.                    | `git reset HEAD~1`                           |
+| Alias        | Description                                                   | Command/Details                                                                                                       |
+| ------------ | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `amend`      | Amend the last commit.                                        | `git commit --amend`                                                                                                  |
+| `br`         | Show branches.                                                | `git branch`                                                                                                          |
+| `ci`         | Commit changes.                                               | `git commit`                                                                                                          |
+| `co`         | Switch branches or restore working tree files.                | `git checkout`                                                                                                        |
+| `d`          | Show differences between commits or working tree.             | `git diff`                                                                                                            |
+| `ds`         | Show differences in staged files.                             | `git diff --staged`                                                                                                   |
+| `del-branch` | Delete a remote branch.                                       | `git push origin --delete <branch>`                                                                                   |
+| `fixup`      | Amend the last commit without changing the message.           | `git commit --amend --no-edit`                                                                                        |
+| `lg`         | Show a concise log with graph and decorations.                | `git log --oneline --graph --decorate`                                                                                |
+| `lga`        | Show all commits in a concise log with graph and decorations. | `git log --all --oneline --graph --decorate`                                                                          |
+| `lgm`        | Show detailed log with graph, decorations, and commit body.   | `git log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit` |
+| `pushf`      | Force push safely with lease.                                 | `git push --force-with-lease`                                                                                         |
+| `ri`         | Interactive rebase.                                           | `git rebase -i`                                                                                                       |
+| `save`       | Save changes to stash.                                        | `git stash save`                                                                                                      |
+| `st`         | Show the working tree status.                                 | `git status`                                                                                                          |
+| `undo`       | Undo the last commit but keep the changes.                    | `git reset HEAD~1`                                                                                                    |
+
 
 ---
 
