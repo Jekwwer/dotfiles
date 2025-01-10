@@ -4,6 +4,10 @@ This repository contains configuration files (`dotfiles`) for personalizing your
 These dotfiles include advanced configurations for Bash (`.bashrc`), Git (`gitattributes`, `.gitconfig`, `.gitignore_global`, `gitmessage`)
 ensuring a more productive, efficient, and user-friendly command-line experience.
 
+## License
+
+This repository does not have a license. These dotfiles are shared for personal reference only. You may not use, modify, or distribute them without explicit permission.
+
 ## .bashrc
 
 The `.bashrc` file included in this repository is an advanced shell configuration script designed to:
