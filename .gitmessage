@@ -1,15 +1,95 @@
+# <type>(<scope>): <description>
+#
+# Guidelines for the header:
+# - <type>: Commit type, e.g., feat, fix, docs, chore, refactor, deps, test, security, etc.
+# - <scope>: Optional. The specific module, feature, or area affected.
+# - <description>: A short, imperative summary of the change.
+#
+# Example: feat(auth): add OAuth login support
+
 <type>(<scope>): <description>
+
+# Detailed description:
+# - Explain the change in more depth if necessary.
+# - Provide additional context or motivations.
 
 <detailed description>
 
-[FILES ADDED/MODIFIED]
+# Affected files:
+# - Use one or more of these sections to list affected files.
+# - List filenames and briefly describe their role in the change.
+#
+# [FILES ADDED]         -> Newly created files.
+# [FILES MODIFIED]      -> Files that were updated.
+# [FILES REMOVED]       -> Files that were deleted.
 
+[FILES ADDED]
+ - <list of files>
+
+[FILES MODIFIED]
+ - <list of files>
+
+[FILES REMOVED]
+ - <list of files>
+
+# Dependencies:
+# - Document any changes to project dependencies.
+# - Use these sections for newly added, updated, or removed dependencies.
+#
+# [DEPENDENCIES ADDED]  -> New dependencies.
+# [DEPENDENCIES UPDATED]-> Updated dependencies.
+# [DEPENDENCIES REMOVED]-> Removed dependencies.
+
+[DEPENDENCIES ADDED]
+ - <list of dependencies>
+
+[DEPENDENCIES UPDATED]
+ - <list of dependencies>
+
+[DEPENDENCIES REMOVED]
+ - <list of dependencies>
+
+# Features/Changes:
+# - Summarize the new features, updates, or changes in this commit.
+
+[FEATURES/CHANGES]
+ - <list of features or changes>
+
+# Techniques:
+# - Optionally document the approaches, tools, or methods used.
+
+[TECHNIQUES]
+ - <details of techniques used>
+
+# Breaking Changes:
+# - Use this section for any breaking changes.
+# - Provide details about what broke and how users can adapt.
+
+[BREAKING CHANGE]
+ - <description of breaking change>
+
+# Purpose:
+# - Explain why this change was needed.
 
 [PURPOSE]
+ - <reason for the change>
 
+# Impact:
+# - Describe the effect of the change on the project or users.
 
 [IMPACT]
+ - <description of the impact>
 
+# Issue References:
+# - Use one of these keywords to reference issues resolved by this commit:
+#   FIXES, CLOSES, or RESOLVES.
+# - Add the issue number(s).
 
-[FIXES/RESOLVES/REFERENCE]
+[FIXES/CLOSES/RESOLVES]
+ - #<issue number>
 
+# References:
+# - Link to related documentation, code reviews, or designs.
+
+[REFERENCES]
+ - <links to resources>
