@@ -4,6 +4,16 @@
   amend = commit --amend
   br = branch
   ci = commit
+  smart-commit = "!f() { \
+      COMMIT_MSG=$(commit-gen); \
+      if [ $? -eq 0 ]; then \
+          echo \"$COMMIT_MSG\" > .git/COMMIT_EDITMSG && \
+          git commit --edit; \
+      else \
+          echo 'Error generating commit message.' >&2; \
+          exit 1; \
+      fi \
+  }; f"
   co = checkout
   d = diff
   ds = diff --staged
