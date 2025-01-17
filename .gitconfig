@@ -5,14 +5,17 @@
   br = branch
   ci = commit
   smart-commit = "!f() { \
+      set +o noclobber; \
       COMMIT_MSG=$(commit-gen); \
       if [ $? -eq 0 ]; then \
-          echo \"$COMMIT_MSG\" > .git/COMMIT_EDITMSG && \
-          git commit --edit; \
+          echo \"$COMMIT_MSG\" > /tmp/commit_msg && \
+          git commit --file=/tmp/commit_msg --edit && \
+          rm -f /tmp/commit_msg; \
       else \
           echo 'Error generating commit message.' >&2; \
           exit 1; \
-      fi \
+      fi; \
+      set -o noclobber; \
   }; f"
   sci = smart-commit
   co = checkout
