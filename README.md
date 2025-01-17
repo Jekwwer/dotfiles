@@ -8,6 +8,7 @@ This repository provides:
 
 - **Bash Configuration** (`.bashrc`): Custom prompts, aliases, functions, and shell enhancements.
 - **Git Configuration** (`.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Standardized settings, improved workflows, and commit message templates.
+- **Curl Configuration** (`.curlrc`): Enhanced `curl` settings for security, performance, and usability.
 - **Scripts**:
   - **`scripts/commit-gen.py`**: A Python script for generating consistent, Conventional Commits-style messages interactively.
   - **`install.sh`**: A setup script for linking dotfiles, configuring dependencies, and preparing the environment.
@@ -155,6 +156,37 @@ This `.bashrc` configuration includes the following key components:
 | Recursive Globbing | Allows searching through directories with `**`. | `shopt -s globstar`                             |
 | Colorful Output    | Adds colors to `ls` and other commands.         | `CLICOLOR=1`, `LSCOLORS=GxFxCxDxBxegedabagaced` |
 | Bash Completion    | Enables enhanced tab completion.                | `source /etc/bash_completion` if available.     |
+
+## .curlrc
+
+The `.curlrc` file provides a global configuration for the `curl` command-line tool, enhancing usability, security, and reliability for HTTP requests.
+
+### Usage
+
+1. Copy the `.curlrc` file to your home directory:
+   ```bash
+   cp ~/.dotfiles/.curlrc ~/.curlrc
+   ```
+2. The `.curlrc` file is automatically applied by `curl` when present in the home directory.
+
+### Features List
+
+- **Automatic Retries**: Retries failed requests up to 3 times on transient errors (`--retry 3`).
+- **Timeouts**:
+  - Connection timeout set to 15 seconds (`--connect-timeout 15`).
+  - Maximum request time set to 120 seconds (`--max-time 120`).
+- **Silent Mode with Error Reporting**: Suppresses unnecessary progress output but displays errors (`--silent`, `--show-error`).
+- **Secure Connections**:
+  - Enforces SSL/TLS usage (`--ssl`).
+  - Ensures strong cryptographic protocols with secure ciphers (`--ciphers DEFAULT:@SECLEVEL=2`).
+  - Verifies SSL certificates to prevent man-in-the-middle attacks.
+- **Automatic Redirect Handling**: Follows HTTP redirects automatically (`--location`).
+- **Default Output Handling**:
+  - Prevents overwriting existing files by default (`--output /tmp/curl-output.txt`).
+  - Avoids buffering for real-time responses (`--no-buffer`).
+- **User-Agent Customization**: Sets a meaningful user-agent string based on the `curl` version (`--user-agent`).
+- **Fail on HTTP Errors**: Stops processing on 4xx/5xx errors for better error handling in scripts (`--fail`).
+- **IPv4 Fallback**: Ensures compatibility by preferring IPv4 if IPv6 is unavailable (`--ipv4`).
 
 ## .gitattributes
 
