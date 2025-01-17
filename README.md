@@ -598,9 +598,9 @@ To use the `install.sh` script:
 1. **Links Dotfiles**: The script symlinks key configuration files from the repository to the home directory. These files include:
 
    - `.bashrc`
-   - `.gitconfig`
-   - `.editorconfig`
+   - `.curlrc`
    - `.gitattributes`
+   - `.gitconfig`
    - `.gitignore_global`
    - `.gitmessage`
 
