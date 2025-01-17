@@ -1,10 +1,16 @@
 # dotfiles
 
-This repository contains configuration files (`dotfiles`) for personalizing and automating my development environment.
-These dotfiles include advanced configurations for:
+This repository contains configuration files (`dotfiles`) and scripts for personalizing and automating my development environment. It includes advanced configurations and tools for streamlining workflows and improving productivity.
 
-- **Bash** (`.bashrc`): Streamline shell usage with custom prompts, aliases, and functions.
-- **Git** (`.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Optimize version control workflows with standardized settings and commit message templates.
+## Overview
+
+This repository provides:
+
+- **Bash Configuration** (`.bashrc`): Custom prompts, aliases, functions, and shell enhancements.
+- **Git Configuration** (`.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Standardized settings, improved workflows, and commit message templates.
+- **Scripts**:
+  - **`scripts/commit-gen.py`**: A Python script for generating consistent, Conventional Commits-style messages interactively.
+  - **`install.sh`**: A setup script for linking dotfiles, configuring dependencies, and preparing the environment.
 
 ## License
 
@@ -59,7 +65,7 @@ The `.bashrc` file configures how shell behaves and customizes command-line envi
 This `.bashrc` configuration includes the following key components:
 
 - **Core Configuration** for interactive shell checks, terminal title customization, and programmatic completion.
-  - Includes the `core.excludesfile` setting to reference the global ignore file. Refer to the [`.gitignore_global`](#gitignore_global) section for setup instructions.
+  - Includes the `core.excludesfile` setting to reference the global ignore file. Refer to the [`.gitignore_global`][.gitignore_global] section for setup instructions.
 - **Aliases** for quick and easy command shortcuts.
 - **Functions** to automate common or repetitive tasks.
 - **Environment Variables** to set up a personalized working environment.
@@ -79,29 +85,30 @@ This `.bashrc` configuration includes the following key components:
 
 #### **Aliases**
 
-| Alias    | Description                                         | Exact Command                            |
-| -------- | --------------------------------------------------- | ---------------------------------------- |
-| `ll`     | List files in long format including hidden files.   | `ls -la`                                 |
-| `la`     | List all files, including hidden ones.              | `ls -A`                                  |
-| `l`      | List files in compact format.                       | `ls -CF`                                 |
-| `rm`     | Safer `rm` with confirmation before deletion.       | `rm -i`                                  |
-| `mv`     | Safer `mv` with confirmation before overwriting.    | `mv -i`                                  |
-| `cp`     | Safer `cp` with confirmation before overwriting.    | `cp -i`                                  |
-| `..`     | Navigate to the parent directory.                   | `cd ..`                                  |
-| `...`    | Navigate two levels up.                             | `cd ../..`                               |
-| `....`   | Navigate three levels up.                           | `cd ../../..`                            |
-| `gst`    | Display Git status.                                 | `git status`                             |
-| `gco`    | Checkout a branch in Git.                           | `git checkout`                           |
-| `gl`     | Show a concise, graphical Git log.                  | `git log --oneline --graph --decorate`   |
-| `gca`    | Amend the last Git commit.                          | `git amend`                              |
-| `gci`    | Commit changes in Git.                              | `git commit`                             |
-| `gf`     | Fetch changes from the remote repository.           | `git fetch`                              |
-| `gfi`    | Amend the last commit without changing the message. | `git fixup`                              |
-| `gpl`    | Pull changes from the remote repository.            | `git pull`                               |
-| `gps`    | Push changes to the remote repository.              | `git push`                               |
-| `gpf`    | Force push changes to the remote repository.        | `git push --force`                       |
-| `update` | Update and upgrade system packages.                 | `sudo apt update && sudo apt upgrade -y` |
-| `clr`    | Clear the terminal screen.                          | `clear`                                  |
+| Alias    | Description                                          | Exact Command                            |
+| -------- | ---------------------------------------------------- | ---------------------------------------- |
+| `ll`     | List files in long format including hidden files.    | `ls -la`                                 |
+| `la`     | List all files, including hidden ones.               | `ls -A`                                  |
+| `l`      | List files in compact format.                        | `ls -CF`                                 |
+| `rm`     | Safer `rm` with confirmation before deletion.        | `rm -i`                                  |
+| `mv`     | Safer `mv` with confirmation before overwriting.     | `mv -i`                                  |
+| `cp`     | Safer `cp` with confirmation before overwriting.     | `cp -i`                                  |
+| `..`     | Navigate to the parent directory.                    | `cd ..`                                  |
+| `...`    | Navigate two levels up.                              | `cd ../..`                               |
+| `....`   | Navigate three levels up.                            | `cd ../../..`                            |
+| `gst`    | Display Git status.                                  | `git status`                             |
+| `gco`    | Checkout a branch in Git.                            | `git checkout`                           |
+| `gl`     | Show a concise, graphical Git log.                   | `git log --oneline --graph --decorate`   |
+| `gca`    | Amend the last Git commit.                           | `git amend`                              |
+| `gci`    | Commit changes in Git.                               | `git commit`                             |
+| `gsci`   | Commit changes in Git using `scripts/commit-gen.py`. | `git smart-commit`                       |
+| `gf`     | Fetch changes from the remote repository.            | `git fetch`                              |
+| `gfi`    | Amend the last commit without changing the message.  | `git fixup`                              |
+| `gpl`    | Pull changes from the remote repository.             | `git pull`                               |
+| `gps`    | Push changes to the remote repository.               | `git push`                               |
+| `gpf`    | Force push changes to the remote repository.         | `git push --force`                       |
+| `update` | Update and upgrade system packages.                  | `sudo apt update && sudo apt upgrade -y` |
+| `clr`    | Clear the terminal screen.                           | `clear`                                  |
 
 #### **Functions**
 
@@ -213,24 +220,26 @@ This `.gitconfig` includes settings and configurations for:
 
 #### **Aliases**
 
-| Alias        | Description                                                   | Command/Details                                                                                                       |
-| ------------ | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
-| `amend`      | Amend the last commit.                                        | `git commit --amend`                                                                                                  |
-| `br`         | Show branches.                                                | `git branch`                                                                                                          |
-| `ci`         | Commit changes.                                               | `git commit`                                                                                                          |
-| `co`         | Switch branches or restore working tree files.                | `git checkout`                                                                                                        |
-| `d`          | Show differences between commits or working tree.             | `git diff`                                                                                                            |
-| `ds`         | Show differences in staged files.                             | `git diff --staged`                                                                                                   |
-| `del-branch` | Delete a remote branch.                                       | `git push origin --delete <branch>`                                                                                   |
-| `fixup`      | Amend the last commit without changing the message.           | `git commit --amend --no-edit`                                                                                        |
-| `lg`         | Show a concise log with graph and decorations.                | `git log --oneline --graph --decorate`                                                                                |
-| `lga`        | Show all commits in a concise log with graph and decorations. | `git log --all --oneline --graph --decorate`                                                                          |
-| `lgm`        | Show detailed log with graph, decorations, and commit body.   | `git log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit` |
-| `pushf`      | Force push safely with lease.                                 | `git push --force-with-lease`                                                                                         |
-| `ri`         | Interactive rebase.                                           | `git rebase -i`                                                                                                       |
-| `save`       | Save changes to stash.                                        | `git stash save`                                                                                                      |
-| `st`         | Show the working tree status.                                 | `git status`                                                                                                          |
-| `undo`       | Undo the last commit but keep the changes.                    | `git reset HEAD~1`                                                                                                    |
+| Alias          | Description                                                        | Command/Details                                                                                                   |
+| -------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
+| `amend`        | Amend the last commit.                                             | `commit --amend`                                                                                                  |
+| `br`           | Show branches.                                                     | `branch`                                                                                                          |
+| `ci`           | Commit changes.                                                    | `commit`                                                                                                          |
+| `smart-commit` | Commit changes using a generated commit message from `commit-gen`. | See `.gitconfig`.                                                                                                 |
+| `sci`          | Shortened version of `smart-commit`.                               | `smart-commit`                                                                                                    |
+| `co`           | Switch branches or restore working tree files.                     | `checkout`                                                                                                        |
+| `d`            | Show differences between commits or working tree.                  | `diff`                                                                                                            |
+| `ds`           | Show differences in staged files.                                  | `diff --staged`                                                                                                   |
+| `del-branch`   | Delete a remote branch.                                            | `push origin --delete <branch>`                                                                                   |
+| `fixup`        | Amend the last commit without changing the message.                | `commit --amend --no-edit`                                                                                        |
+| `lg`           | Show a concise log with graph and decorations.                     | `log --oneline --graph --decorate`                                                                                |
+| `lga`          | Show all commits in a concise log with graph and decorations.      | `log --all --oneline --graph --decorate`                                                                          |
+| `lgm`          | Show detailed log with graph, decorations, and commit body.        | `log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit` |
+| `pushf`        | Force push safely with lease.                                      | `push --force-with-lease`                                                                                         |
+| `ri`           | Interactive rebase.                                                | `rebase -i`                                                                                                       |
+| `save`         | Save changes to stash.                                             | `stash save`                                                                                                      |
+| `st`           | Show the working tree status.                                      | `status`                                                                                                          |
+| `undo`         | Undo the last commit but keep the changes.                         | `reset HEAD~1`                                                                                                    |
 
 #### **Color Settings**
 
@@ -359,7 +368,7 @@ To apply the `.gitignore_global` file globally for all repositories:
 **Note:** Ensure your `.gitconfig` is set up correctly to recognize this global ignore file.
 This is achieved through the `core.excludesfile` setting, which is already included in the `.gitconfig` file provided in this repository.
 
-Refer to the [`.gitconfig`](#gitconfig) section for more details.
+Refer to the [`.gitconfig`][.gitconfig] section for more details.
 
 ### Features List
 
@@ -481,6 +490,7 @@ Implemented OAuth2 login functionality, allowing users to authenticate with Goog
 
 [FIXES]
  - #123
+
 [REFERENCES]
  - OAuth2 Documentation: https://example.com/oauth2
 ```
@@ -503,4 +513,87 @@ Implemented OAuth2 login functionality, allowing users to authenticate with Goog
 - Enhances tracking and debugging with detailed commit history.
 - Adheres to conventional commit message standards, aiding in automated workflows and versioning.
 
+## scripts/commit-gen.py
+
+The `commit-gen.py` script simplifies generating standardized commit messages for my projects.
+It generates messages that follow the format outlined in the [`.gitmessage`][.gitmessage] section.
+
+### Usage
+
+The script is designed to be used primarily via the `git smart-commit` alias, and it is preconfigured in Codespaces through the `install.sh` script.
+
+#### **Manual Usage**
+
+To run the script manually:
+
+1. Ensure you have Python installed and the necessary dependencies set up (configured via `install.sh`).
+2. Execute the script from the `scripts/` directory or its installed location:
+   ```bash
+   python3 ~/.dotfiles/scripts/commit-gen.py
+   ```
+3. Follow the interactive prompt to create a commit message.
+
+The generated message will be displayed, allowing you to paste it directly into your Git commit command or editor.
+
+## install.sh
+
+The `install.sh` script configures the development environment and installs dependencies.
+It is designed to streamline the setup process for GitHub Codespaces primarily.
+
+### Usage
+
+To use the `install.sh` script:
+
+1. Clone the repository into your Codespaces or local machine:
+
+   ```bash
+   git clone https://github.com/username/dotfiles.git ~/.dotfiles
+   ```
+
+2. Run the script:
+
+   ```bash
+   ~/.dotfiles/install.sh
+   ```
+
+3. Restart your terminal or apply the changes:
+   ```bash
+   source ~/.bashrc
+   ```
+
+### Features List
+
+1. **Links Dotfiles**: The script symlinks key configuration files from the repository to the home directory. These files include:
+
+   - `.bashrc`
+   - `.gitconfig`
+   - `.editorconfig`
+   - `.gitattributes`
+   - `.gitignore_global`
+   - `.gitmessage`
+
+2. **Python Setup**:
+
+   - Ensures Python 3 and `python3-venv` are installed.
+   - Creates a virtual environment (`.venv`) in the repository if it doesn’t already exist.
+   - Installs Python dependencies from `requirements.txt`.
+
+3. **Script Linking**:
+
+   - Links the `commit-gen.py` script to the `~/bin` directory for use via the `commit-gen` command.
+   - Ensures the script is executable and accessible in your terminal.
+
+4. **PATH Configuration**:
+   - Ensures `~/bin` is included in the `PATH` environment variable.
+   - Adds the necessary `export PATH="$HOME/bin:$PATH"` line to `.bashrc` if not already present.
+
+### Notes
+
+- The script assumes a Linux-based environment Codespaces setup.
+- For details about the `commit-gen.py` script, refer to the [`scripts/commit-gen.py`][scripts/commit-gen.py] section.
+
+[.gitconfig]: #gitconfig
+[.gitignore_global]: #gitignore_global
+[.gitmessage]: #gitmessage
+[scripts/commit-gen.py]: #scriptscommit-genpy
 [visualstudio.gitignore]: https://github.com/github/gitignore/blob/main/VisualStudio.gitignore

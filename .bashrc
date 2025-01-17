@@ -1,4 +1,4 @@
-# .bashrc: Sets configuration for interactive bash shell
+# .bashrc: Configurates the behavior of the Bash shell.
 
 # === Core Configuration ===
 # This section includes essential default settings from the system `.bashrc`.
@@ -86,6 +86,7 @@ alias ....="cd ../../.."
 alias gst="git status"
 alias gca="git amend"
 alias gci="git commit"
+alias gsc="git smart-commit"
 alias gf="git fetch"
 alias gfi="git fixup"
 alias gpl="git pull"
