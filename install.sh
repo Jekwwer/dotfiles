@@ -11,7 +11,7 @@ BIN_DIR="$HOME/bin"
 VENV_DIR="$DOTFILES_DIR/.venv"
 
 # Files to link
-FILES_TO_SYMLINK=(".bashrc" ".curlrc" ".gitattributes" ".gitconfig" ".gitignore_global" ".gitmessage" ".wgetrc")
+FILES_TO_SYMLINK=(".bashrc" ".curlrc" ".editorconfig" ".gitattributes" ".gitconfig" ".gitignore_global" ".gitmessage" ".wgetrc")
 
 # Logging setup
 LOG_FILE="$DOTFILES_DIR/install.log"
