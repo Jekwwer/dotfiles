@@ -9,6 +9,7 @@ This repository provides:
 - **Bash Configuration** (`.bashrc`): Custom prompts, aliases, functions, and shell enhancements.
 - **Git Configuration** (`.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Standardized settings, improved workflows, and commit message templates.
 - **Curl Configuration** (`.curlrc`): Enhanced `curl` settings for security, performance, and usability.
+- **Wget Configuration** (`.wgetrc`): Enhanced `wget` settings for reliability, security, and convenience.
 - **Scripts**:
   - **`scripts/commit-gen.py`**: A Python script for generating consistent, Conventional Commits-style messages interactively.
   - **`install.sh`**: A setup script for linking dotfiles, configuring dependencies, and preparing the environment.
@@ -187,6 +188,37 @@ The `.curlrc` file provides a global configuration for the `curl` command-line t
 - **User-Agent Customization**: Sets a meaningful user-agent string based on the `curl` version (`--user-agent`).
 - **Fail on HTTP Errors**: Stops processing on 4xx/5xx errors for better error handling in scripts (`--fail`).
 - **IPv4 Fallback**: Ensures compatibility by preferring IPv4 if IPv6 is unavailable (`--ipv4`).
+
+## .wgetrc
+
+The `.wgetrc` file provides a global configuration for the `wget` command-line tool, enhancing usability, security, and reliability for file downloads and website mirroring.
+
+### Usage
+
+1. Copy the `.wgetrc` file to your home directory:
+   ```bash
+   cp ~/.dotfiles/.wgetrc ~/.wgetrc
+   ```
+2. The `.wgetrc` file is automatically applied by `wget` when present in the home directory.
+
+### Features List
+
+- **Retry Logic**: Retries failed downloads up to 3 times (`tries = 3`) for improved reliability.
+- **Timeouts**:
+  - DNS lookup timeout set to 10 seconds (`dns_timeout = 10`).
+  - Read timeout set to 20 seconds (`read_timeout = 20`).
+- **Recursive Downloads**:
+  - Enables recursive downloads up to 5 levels deep (`recursive = on`, `level = 5`).
+- **Resumable Downloads**: Automatically resumes partial downloads (`continue = on`).
+- **Secure Connections**:
+  - Enforces SSL/TLS usage and verifies certificates (`check_certificate = on`).
+  - Uses trusted CA certificates from the system (`ca_directory = /etc/ssl/certs`).
+- **Automatic Timestamping**: Prevents re-downloading unchanged files by checking modification times (`timestamping = on`).
+- **User-Agent Customization**: Sets a meaningful user-agent string based on the `wget` version (`user_agent`).
+- **Logging**: Logs all download activity to `~/wget-log.txt` for auditing and debugging purposes (`logfile = ~/wget-log.txt`).
+- **Output Management**:
+  - Specifies a default output file name (`output_document = wget-output.txt`).
+  - Keeps downloads organized by defaulting to the `~/Downloads` directory (`dir_prefix = ~/Downloads`).
 
 ## .gitattributes
 
