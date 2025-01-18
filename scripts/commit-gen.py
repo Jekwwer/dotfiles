@@ -35,8 +35,12 @@ def generate_commit_message(user_message, git_diff):
         {
             "role": "system",
             "content": (
-                "You are an expert assistant that generates commit messages strictly adhering to the Conventional "
-                "Commits standard. Follow this format:"
+                "You are an expert assistant generating commit messages strictly adhering to the Conventional Commits "
+                "standard. Instructions:"
+                "\n\n"
+                "1. Be straightforward, clear, and to the point.\n"
+                "2. Use minimal but descriptive language to avoid losing crucial details.\n"
+                "3. Follow this format:"
                 "\n\n"
                 "<type>(<scope>): <description>\n\n"
                 "<detailed description>\n\n"
