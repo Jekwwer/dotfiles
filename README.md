@@ -7,6 +7,7 @@ This repository contains configuration files (`dotfiles`) and scripts for person
 This repository provides:
 
 - **Bash Configuration** (`.bashrc`): Custom prompts, aliases, functions, and shell enhancements.
+- **Editor Configuration** (`.editorconfig`): Enforces consistent coding styles for various file types.
 - **Git Configuration** (`.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Standardized settings, improved workflows, and commit message templates.
 - **Curl Configuration** (`.curlrc`): Enhanced `curl` settings for security, performance, and usability.
 - **Wget Configuration** (`.wgetrc`): Enhanced `wget` settings for reliability, security, and convenience.
@@ -219,6 +220,47 @@ The `.wgetrc` file provides a global configuration for the `wget` command-line t
 - **Output Management**:
   - Specifies a default output file name (`output_document = wget-output.txt`).
   - Keeps downloads organized by defaulting to the `~/Downloads` directory (`dir_prefix = ~/Downloads`).
+
+## .editorconfig
+
+The `.editorconfig` file provides consistent coding style enforcement across various file types in my projects,
+if a repository-specific .editorconfig file is not present.
+
+### Usage
+
+1. Copy the `.editorconfig` file to your home directory:
+   ```bash
+   cp ~/.dotfiles/.editorconfig ~/.editorconfig
+   ```
+2. Optionally, place a project-specific `.editorconfig` in the root of any repository where you need custom rules.
+3. Supported by most modern text editors and IDEs out of the box. Check editor’s settings to ensure `.editorconfig` is enabled.
+
+### Features List
+
+- **Global Defaults**:
+
+  - **Encoding**: UTF-8 for all files (`charset = utf-8`).
+  - **Line Endings**: Unix-style newlines (`end_of_line = lf`).
+  - **Indentation**: Default 2-space indentation (`indent_size = 2`, `indent_style = space`).
+  - **Trailing Whitespace**: Automatically trims trailing whitespace (`trim_trailing_whitespace = true`).
+  - **Final Newline**: Ensures files end with a newline (`insert_final_newline = true`).
+  - **Line Length**: Restricts global line length to 88 characters (`max_line_length = 88`).
+
+- **File-Specific Rules**:
+  - **Configuration Files**:
+    - Retains trailing whitespace for files like `.editorconfig` and `.gitignore` (`trim_trailing_whitespace = false`).
+  - **Markdown Files**:
+    - Increases max line length for readability (`max_line_length = 120`).
+    - Preserves intentional trailing whitespace for line breaks (`trim_trailing_whitespace = false`).
+  - **JSON Files**:
+    - Enforces 2-space indentation, typical for JSON (`indent_size = 2`).
+    - Removes line length restrictions (`max_line_length = off`).
+  - **Python Files**:
+    - Uses 4-space indentation to adhere to PEP 8 standards (`indent_size = 4`).
+  - **Shell Scripts**:
+    - Uses 4-space indentation for readability in shell scripts (`indent_size = 4`).
+  - **Text and Log Files**:
+    - Preserves trailing whitespace for compatibility with some tools (`trim_trailing_whitespace = false`).
 
 ## .gitattributes
 
