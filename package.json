@@ -35,5 +35,6 @@
   "bugs": {
     "url": "https://github.com/Jekwwer/dotfiles/issues"
   },
-  "homepage": "https://github.com/Jekwwer/dotfiles#readme"
+  "homepage": "https://github.com/Jekwwer/dotfiles#readme",
+  "license": "UNLICENSED"
 }

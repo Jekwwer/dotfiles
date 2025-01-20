@@ -15,10 +15,10 @@ This repository provides:
   - **`scripts/commit-gen.py`**: A Python script for generating consistent, Conventional Commits-style messages interactively.
   - **`install.sh`**: A setup script for linking dotfiles, configuring dependencies, and preparing the environment.
 
-## License
+## Disclaimer
 
-This repository does not have a license and is shared for personal reference only.
-You may not use, modify, or distribute them without explicit permission.
+All rights reserved. These dotfiles are provided for reference purposes only. 
+Redistribution, modification, or reuse is not permitted without explicit permission from the author.
 
 ## Installation
 
