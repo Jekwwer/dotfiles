@@ -3,16 +3,16 @@
 ## 1.0.0 - 2025-01-20
 ### ⚠ BREAKING CHANGES
 
-* - Added aliases for frequent commands (e.g., ci, co, lg).
-* - Enabled GPG signing and template use for commits.
-* - Configured diff and merge tools with VS Code.
-* - Optimized credential and rebase behaviors.
+## Tagging Transition Notice
 
-[PURPOSE]
- - Streamline Git workflows with helpful aliases and configurations.
+As of `v1.0.0`, I have transitioned from using date-based tags (e.g., `2025-01-01`) to semantic versioning (e.g., `v1.0.0`).
 
-[IMPACT]
- - Simplifies Git operations and boosts efficiency.
+This change allows us to:
+- Align with the [Semantic Versioning](https://semver.org/) standard.
+- Automate releases with tools like Semantic Release.
+- Improve consistency and compatibility across projects.
+
+Version `v1.0.0` includes all commits from the repository start point.
 
 ### 🐞 Bug Fixes
 
