@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.1.0 - 2025-01-20
+### 📖 Documentation
+
+* **changelog:** add notice about versioning style migration ([f7ac57b](https://github.com/Jekwwer/dotfiles/commit/f7ac57bf596a026e15d94b235efab34c7eda4e16))
+* **readme:** clarify licensing information ([3912022](https://github.com/Jekwwer/dotfiles/commit/3912022c332cb2467469cbfa7e08a68de4aeb0c2))
+
+### 🚀 New Features
+
+* **ci:** add dependency verification to release workflow ([08351ff](https://github.com/Jekwwer/dotfiles/commit/08351ff503176011d81d4b43ba53447663df5d79))
+
 ## 1.0.0 - 2025-01-20
 ### ⚠ BREAKING CHANGES
 
