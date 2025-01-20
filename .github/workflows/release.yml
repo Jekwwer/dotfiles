@@ -20,7 +20,11 @@ jobs:
           node-version: "20"
 
       - name: install-dependencies
-        run: npm ci
+        run: npm clean-install
+
+      #Verify the integrity of provenance attestations and registry signatures for installed dependencies
+      - name: verify-dependencies
+        run: npm audit signatures
 
       - name: release
         env:
