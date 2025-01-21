@@ -1,24 +1,7 @@
 {
   "name": "jekwwer-dotfiles",
   "version": "1.1.0",
-  "scripts": {
-    "release": "semantic-release"
-  },
-  "devDependencies": {
-    "@semantic-release/changelog": "^6.0.3",
-    "@semantic-release/commit-analyzer": "^13.0.1",
-    "@semantic-release/git": "^10.0.1",
-    "@semantic-release/github": "^11.0.1",
-    "@semantic-release/release-notes-generator": "^14.0.3",
-    "conventional-changelog": "^6.0.0",
-    "conventional-changelog-conventionalcommits": "^8.0.0",
-    "semantic-release": "^24.2.1"
-  },
   "description": "This repository contains configuration files (`dotfiles`) and scripts for personalizing and automating my development environment. It includes advanced configurations and tools for streamlining workflows and improving productivity.",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Jekwwer/dotfiles.git"
-  },
   "keywords": [
     "dotfiles",
     "configuration",
@@ -31,10 +14,27 @@
     "macos",
     "conventional-commits"
   ],
-  "author": "Jekwwer",
+  "homepage": "https://github.com/Jekwwer/dotfiles#readme",
   "bugs": {
     "url": "https://github.com/Jekwwer/dotfiles/issues"
   },
-  "homepage": "https://github.com/Jekwwer/dotfiles#readme",
-  "license": "UNLICENSED"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jekwwer/dotfiles.git"
+  },
+  "license": "UNLICENSED",
+  "author": "Jekwwer",
+  "scripts": {
+    "release": "semantic-release"
+  },
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "conventional-changelog": "^6.0.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "semantic-release": "^24.2.1"
+  }
 }
