@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.2.0 - 2025-01-21
+### 🚀 New Features
+
+* **release:** add custom sort and migrate config to .js ([1c2d6e0](https://github.com/Jekwwer/dotfiles/commit/1c2d6e0ef998e18668102d97f1992425550e0ca4))
+
+### 🐞 Bug Fixes
+
+* **docs:** correct spelling errors in configuration files ([c27b46c](https://github.com/Jekwwer/dotfiles/commit/c27b46c34d094dec1a6145cc153cfb7bcb3718ea))
+
+### 📦 Chores
+
+* **changelog:** sort entries by new config ([9810bf4](https://github.com/Jekwwer/dotfiles/commit/9810bf4122e124470bd745454631a11e20163127))
+* **ci:** add range to node version in release workflow ([b4283ee](https://github.com/Jekwwer/dotfiles/commit/b4283ee0de2648f6f29dd5d7c531c7145a961414))
+* enhance package.json with logically sorted metadata ([4a8aa43](https://github.com/Jekwwer/dotfiles/commit/4a8aa439ed66716818aaf39789ed143903240498))
+
 ## 1.1.0 - 2025-01-20
 ### 🚀 New Features
 
@@ -11,13 +26,14 @@
 * **readme:** clarify licensing information ([3912022](https://github.com/Jekwwer/dotfiles/commit/3912022c332cb2467469cbfa7e08a68de4aeb0c2))
 
 ## 1.0.0 - 2025-01-20
+
 ### ⚠ BREAKING CHANGES
 
-## Tagging Transition Notice
+#### Tagging Transition Notice
 
 As of `v1.0.0`, I have transitioned from using date-based tags (e.g., `2025-01-01`) to semantic versioning (e.g., `v1.0.0`).
 
-This change allows us to:
+This change allows me to:
 - Align with the [Semantic Versioning](https://semver.org/) standard.
 - Automate releases with tools like Semantic Release.
 - Improve consistency and compatibility across projects.
