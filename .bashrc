@@ -1,4 +1,4 @@
-# .bashrc: Configurates the behavior of the Bash shell.
+# .bashrc: Configures the behavior of the Bash shell.
 
 # === Core Configuration ===
 # This section includes essential default settings from the system `.bashrc`.

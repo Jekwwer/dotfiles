@@ -1,4 +1,4 @@
-# .gitconfig: Configurates Git settings and aliases.
+# .gitconfig: Configures Git settings and aliases.
 
 [alias]
   amend = commit --amend

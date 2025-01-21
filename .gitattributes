@@ -1,4 +1,4 @@
-# .gitattributes: Configurates Git to handle files with specific attributes/settings.
+# .gitattributes: Configures Git to handle files with specific attributes/settings.
 
 # === Text File Settings ===
 # Normalize line endings for all text files
