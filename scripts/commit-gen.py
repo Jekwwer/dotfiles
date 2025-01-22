@@ -10,6 +10,21 @@ import subprocess
 # Initialize the OpenAI client with your API key
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
+def run_pre_commit_hooks():
+    """
+    Run git pre-commit hooks if available.
+    """
+    try:
+        print("Running pre-commit hooks...")
+        subprocess.run(["pre-commit", "run", "--all-files"], check=True)
+        print("Pre-commit hooks executed successfully.")
+    except FileNotFoundError:
+        print("pre-commit is not installed or not configured.")
+    except subprocess.CalledProcessError as e:
+        print(f"Pre-commit hooks failed: {e}. Exiting.")
+        return False
+    return True
+
 def get_git_diff_staged():
     """
     Get the current `git diff --cached` output, including only staged changes.
@@ -24,7 +39,6 @@ def get_git_diff_staged():
     except subprocess.CalledProcessError as e:
         print(f"Error while fetching staged git diff: {e}")
         return None
-
 
 def generate_commit_message(user_message, git_diff):
     """
@@ -89,6 +103,10 @@ def generate_commit_message(user_message, git_diff):
 
 def main():
     print("Welcome to the Commit Message Generator!")
+
+    # Run pre-commit hooks
+    if not run_pre_commit_hooks():
+        return
 
     # Get user input
     user_message = input("Enter a brief description of the changes: ").strip()
