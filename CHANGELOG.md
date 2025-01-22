@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.3.0 - 2025-01-22
+
+### 🚀 New Features
+
+* **commit-gen:** add pre-commit check to prevent wasted tokens ([75960a1](https://github.com/Jekwwer/dotfiles/commit/75960a11d585331637cc526e3073b86fdfe4b0a7))
+
+### 📖 Documentation
+
+* **readme:** update with Node.gitignore reference and details ([ba905e6](https://github.com/Jekwwer/dotfiles/commit/ba905e62142955e55706c47152e41fff1a91072a))
+
+### 📦 Chores
+
+* **gitignore:** add Node gitignore patterns to global gitignore ([9fc5118](https://github.com/Jekwwer/dotfiles/commit/9fc51182468a1f7d3b9f21fe6275d5e4e0d2128f))
+
 ## 1.2.0 - 2025-01-21
 ### 🚀 New Features
 
