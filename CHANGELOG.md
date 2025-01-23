@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.1 - 2025-01-23
+### 🐞 Bug Fixes
+
+* **gitconfig:** redirect input/output to display prompts from commit-gen ([1767883](https://github.com/Jekwwer/dotfiles/commit/176788337180f261972d27f28eb3d0e47e0ea9dc))
+
 ## 1.3.0 - 2025-01-22
 
 ### 🚀 New Features

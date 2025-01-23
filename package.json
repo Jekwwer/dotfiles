@@ -1,6 +1,6 @@
 {
   "name": "jekwwer-dotfiles",
-  "version": "1.3.0",
+  "version": "1.3.1",
   "description": "This repository contains configuration files (`dotfiles`) and scripts for personalizing and automating my development environment. It includes advanced configurations and tools for streamlining workflows and improving productivity.",
   "keywords": [
     "dotfiles",
