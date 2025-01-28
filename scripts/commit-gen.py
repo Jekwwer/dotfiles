@@ -4,8 +4,10 @@
 # Generates a commit message based on user input and git diff using OpenAI's GPT.
 
 import os
-from openai import OpenAI
 import subprocess
+import tempfile
+import sys
+from openai import OpenAI
 
 # Initialize the OpenAI client with your API key
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -20,8 +22,9 @@ def run_pre_commit_hooks():
         print("Pre-commit hooks executed successfully.")
     except FileNotFoundError:
         print("pre-commit is not installed or not configured.")
-    except subprocess.CalledProcessError as e:
-        print(f"Pre-commit hooks failed: {e}. Exiting.")
+        return True  # Continue execution if pre-commit is not installed
+    except subprocess.CalledProcessError:
+        print("Pre-commit hooks failed. Exiting.")
         return False
     return True
 
@@ -90,10 +93,9 @@ def generate_commit_message(user_message, git_diff):
         }
     ]
 
-    # API call to OpenAI
     try:
         response = client.chat.completions.create(
-            model="gpt-4o",  # Replace with the correct model if needed
+            model="gpt-4o",  # Replace with your preferred model
             messages=messages
         )
         return response.choices[0].message.content
@@ -101,30 +103,53 @@ def generate_commit_message(user_message, git_diff):
         print(f"Error while generating commit message: {e}")
         return None
 
+def write_to_file(content):
+    """
+    Write content to a temporary file and return the file path.
+    """
+    with tempfile.NamedTemporaryFile(delete=False, mode="w", prefix="commit_msg_", suffix=".txt") as temp_file:
+        temp_file.write(content)
+        return temp_file.name
+
 def main():
     print("Welcome to the Commit Message Generator!")
 
     # Run pre-commit hooks
     if not run_pre_commit_hooks():
-        return
+        sys.exit(1)
 
     # Get user input
     user_message = input("Enter a brief description of the changes: ").strip()
     if not user_message:
         print("A description is required. Exiting.")
-        return
+        sys.exit(1)
 
     # Get git diff
     git_diff = get_git_diff_staged()
     if git_diff is None:
         print("No diff to analyze. Exiting.")
-        return
+        sys.exit(1)
 
     # Generate commit message
     commit_message = generate_commit_message(user_message, git_diff)
-    if commit_message:
-        print("\nGenerated Commit Message:\n")
-        print(commit_message)
+    if not commit_message:
+        print("Failed to generate a commit message. Exiting.")
+        sys.exit(1)
+
+    # Write commit message to a temporary file
+    temp_file_path = write_to_file(commit_message)
+
+    print("\nGenerated Commit Message:")
+    print(commit_message)
+
+    # Open git commit editor with the generated message
+    try:
+        subprocess.run(["git", "commit", "--file", temp_file_path, "--edit", "--no-verify"], check=True)
+    except subprocess.CalledProcessError as e:
+        print(f"Git commit failed: {e}")
+    finally:
+        # Clean up temporary file
+        os.remove(temp_file_path)
 
 if __name__ == "__main__":
     main()
