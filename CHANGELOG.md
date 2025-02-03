@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.4.0 - 2025-02-03
+### 🚀 New Features
+
+* **prettierrc:** clean up editorconfig and add synced Prettier configuration ([6ebe70b](https://github.com/Jekwwer/dotfiles/commit/6ebe70bd68466d6891466e5b8d5dfea7ec40960a))
+
+### 📖 Documentation
+
+* **license:** add LICENSE file and update license references ([ba6a8cc](https://github.com/Jekwwer/dotfiles/commit/ba6a8cc2d36a50c6ad93b9c9a969bcbc93738800))
+
+### 📦 Chores
+
+* **releaserc:** remove unnecessary rule and asset settings ([a1c5b57](https://github.com/Jekwwer/dotfiles/commit/a1c5b57693a8a7c94ae44623a3adc9feeb2fb3f1))
+
+### 🛠️ Refactoring
+
+* **smart-commit:** move alias logic to script and optimize pre-commit execution ([7d05e99](https://github.com/Jekwwer/dotfiles/commit/7d05e99b5c8e0e7965ea64ed3b3202c604bf72c0))
+
 ## 1.3.1 - 2025-01-23
 ### 🐞 Bug Fixes
 
