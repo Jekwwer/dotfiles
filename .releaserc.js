@@ -10,7 +10,6 @@ module.exports = {
           { type: 'fix', release: 'patch' },
           { type: 'security', release: 'patch' },
           { type: 'deps', release: 'patch' },
-          { type: 'docs', scope: 'API', release: 'patch' },
           { type: 'docs', release: false },
           { type: 'style', release: false },
           { type: 'refactor', release: false },
@@ -111,7 +110,7 @@ module.exports = {
     [
       '@semantic-release/git',
       {
-        assets: ['CHANGELOG.md', 'package.json', 'package-lock.json'],
+        assets: ["CHANGELOG.md"],
         message:
           'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       },
