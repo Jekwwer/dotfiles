@@ -17,8 +17,11 @@ This repository provides:
 
 ## Disclaimer
 
-All rights reserved. These dotfiles are provided for reference purposes only. 
-Redistribution, modification, or reuse is not permitted without explicit permission from the author.
+All rights reserved. These dotfiles are provided solely for reference and personal review. 
+
+Unauthorized redistribution, modification, or reuse of any part of this repository is strictly prohibited without explicit written permission from the author.
+
+For licensing inquiries, please contact <licensing@jekwwer.com>.
 
 ## Installation
 
