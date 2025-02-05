@@ -2,9 +2,7 @@
 
 This repository contains configuration files (`dotfiles`) and scripts for personalizing and automating my development environment. It includes advanced configurations and tools for streamlining workflows and improving productivity.
 
-## Overview
-
-This repository provides:
+## Features ✨
 
 - **Bash Configuration** (`.bashrc`): Custom prompts, aliases, functions, and shell enhancements.
 - **Editor Configuration** (`.editorconfig`): Enforces consistent coding styles for various file types.
@@ -15,15 +13,15 @@ This repository provides:
   - **`scripts/commit-gen.py`**: A Python script for generating consistent, Conventional Commits-style messages interactively.
   - **`install.sh`**: A setup script for linking dotfiles, configuring dependencies, and preparing the environment.
 
-## Disclaimer
+## License 🛡️
 
 All rights reserved. These dotfiles are provided solely for reference and personal review. 
 
 Unauthorized redistribution, modification, or reuse of any part of this repository is strictly prohibited without explicit written permission from the author.
 
-For licensing inquiries, please contact <licensing@jekwwer.com>.
+For licensing inquiries, please contact [licensing@jekwwer.com][licensing@jekwwer.com].
 
-## Installation
+## Installation 📦
 
 1. Clone the repository into your Codespaces or local machine:
 
@@ -698,6 +696,12 @@ To use the `install.sh` script:
    - Ensures `~/bin` is included in the `PATH` environment variable.
    - Adds the necessary `export PATH="$HOME/bin:$PATH"` line to `.bashrc` if not already present.
 
+## Contact 📬
+
+For questions, reach out via [evgenii.shiliaev@jekwwer.com][evgenii.shiliaev@jekwwer.com].
+
+---
+
 ### Notes
 
 - The script assumes a Linux-based environment Codespaces setup.
@@ -709,3 +713,5 @@ To use the `install.sh` script:
 [scripts/commit-gen.py]: #scriptscommit-genpy
 [node.gitignore]: https://github.com/github/gitignore/blob/main/Node.gitignore
 [visualstudio.gitignore]: https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
+[evgenii.shiliaev@jekwwer.com]: mailto:evgenii.shiliaev@jekwwer.com
+[licensing@jekwwer.com]: mailto:licensing@jekwwer.com
