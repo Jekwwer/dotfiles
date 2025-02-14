@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.4.1 - 2025-02-14
+### 🔒 Security Updates
+
+* **deps:** update [@octokit](https://github.com/octokit) dependencies to mitigate security vulnerabilities ([8b8615d](https://github.com/Jekwwer/dotfiles/commit/8b8615db224c181f9ae0011497c3ee7659904168)), closes [#1](https://github.com/Jekwwer/dotfiles/issues/1) [#2](https://github.com/Jekwwer/dotfiles/issues/2)
+
+### 📖 Documentation
+
+* **readme:** update README for common-docs v1.1.0 release ([a6c506e](https://github.com/Jekwwer/dotfiles/commit/a6c506e6bc1fd31f80089280d7fc7b32a6983327))
+
+### 🛠️ Refactoring
+
+* **config:** simplify `.wgetrc` settings for interactive use ([cb606c3](https://github.com/Jekwwer/dotfiles/commit/cb606c313e0c5515f4126f0686fa620d358a56e2))
+* **curlrc:** enhance interactivity and simplify configuration ([95be648](https://github.com/Jekwwer/dotfiles/commit/95be648c93271ffa24b2b6f347c4913751c32ff9))
+
 ## 1.4.0 - 2025-02-03
 ### 🚀 New Features
 
