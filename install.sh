@@ -33,6 +33,9 @@ for file in "${FILES_TO_SYMLINK[@]}"; do
     echo "Linked $DOTFILES_DIR/$file to $target"
 done
 
+# Set global gitignore path
+git config --global core.excludesfile "$HOME/.gitignore_global"
+
 # Ensure Python is installed
 if ! command -v python3 &> /dev/null; then
     echo "Python3 is not installed. Exiting."
