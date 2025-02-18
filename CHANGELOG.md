@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.5.0 - 2025-02-18
+### 🚀 New Features
+
+* **commit-gen:** update breaking changes instructions ([ee572b1](https://github.com/Jekwwer/dotfiles/commit/ee572b1723f3a72a7f503c5d41d035082e50f467))
+
+### 🐞 Bug Fixes
+
+* **config:** remove invalid attribute from .prettierrc ([deea858](https://github.com/Jekwwer/dotfiles/commit/deea858e008880e8f6feadec6a2221a7308a90c7))
+* **install:** resolve global gitignore configuration issue ([3ce8da2](https://github.com/Jekwwer/dotfiles/commit/3ce8da2093e93f56ea6b7e5d95f22b2041b668b6))
+* **package:** update package manager syntax ([072b4cd](https://github.com/Jekwwer/dotfiles/commit/072b4cdac1fe42880047fbf37b29a64359b05d86))
+
+### 📖 Documentation
+
+* **editorconfig:** add note about unofficial attribute ([d9c5cd1](https://github.com/Jekwwer/dotfiles/commit/d9c5cd185bb78102161101174753e84d8f9af0f7))
+* **template:** update commit message template instructions ([2cbb310](https://github.com/Jekwwer/dotfiles/commit/2cbb310d9a80e2c15f24bfdf558ec870db87ec0d))
+
+### 📦 Chores
+
+* **gitignore:** add direct references to gitignore sources ([d7ec82e](https://github.com/Jekwwer/dotfiles/commit/d7ec82ea348d0f07833fd496977e8ccc4762e830))
+
+### 🛠️ Refactoring
+
+* **config:** remove old parser options from releaserc ([8fca38d](https://github.com/Jekwwer/dotfiles/commit/8fca38dd8ca8bf8bdc0a45ec4f664e4d8e45f10f))
+
 ## 1.4.1 - 2025-02-14
 ### 🔒 Security Updates
 
