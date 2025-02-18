@@ -2,7 +2,7 @@
 # Based on: https://github.com/github/gitignore/blob/main/Node.gitignore
 #           https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
-### Node.gitignore ###
+### https://github.com/github/gitignore/blob/main/Node.gitignore ###
 # Logs
 logs
 *.log
@@ -140,7 +140,7 @@ dist
 .yarn/install-state.gz
 .pnp.*
 
-### Visual Studio.gitignore ###
+### https://github.com/github/gitignore/blob/main/VisualStudio.gitignore ###
 # User-specific files
 *.rsuser
 *.suo
