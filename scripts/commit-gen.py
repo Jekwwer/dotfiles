@@ -68,11 +68,14 @@ def generate_commit_message(user_message, git_diff):
                 "[DEPENDENCIES UPDATED]\n - <list of updated dependencies>\n\n"
                 "[DEPENDENCIES REMOVED]\n - <list of removed dependencies>\n\n"
                 "[FEATURES/CHANGES]\n - <list of new features, updates, or changes>\n\n"
-                "[BREAKING CHANGE]\n - <description of breaking changes and user adaptation details>\n\n"
+                "[TECHNIQUES]\n - <details about methods, tools, or approaches used>\n\n"
                 "[PURPOSE]\n - <reason for the change>\n\n"
                 "[IMPACT]\n - <impact on the project, users, or performance>\n\n"
                 "[FIXES/CLOSES/RESOLVES]\n - #<list of related issue numbers>\n\n"
-                "[REFERENCES]\n - <links to related resources>"
+                "[REFERENCES]\n - <links to related resources>\n\n"
+                "4. Only for a breaking change, append a '!' to the <type> in the commit header (e.g., feat!: or fix!:).\n"
+                "5. Only for a breaking change, In the commit body (within <detailed description>) include a separate line starting with "
+                "'BREAKING CHANGE:' followed by the description of the breaking changes and any necessary adaptations."
             )
         },
         {
