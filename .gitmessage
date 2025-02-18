@@ -2,6 +2,7 @@
 #
 # Guidelines for the header:
 # - <type>: Commit type, e.g., feat, fix, docs, chore, refactor, deps, test, security, etc.
+#   Append a ! to <type> (e.g., feat!) if the commit introduces a breaking change.
 # - <scope>: Optional. The specific module, feature, or area affected.
 # - <description>: A short, imperative summary of the change.
 #
@@ -10,8 +11,9 @@
 <type>(<scope>): <description>
 
 # Detailed description:
-# - Explain the change in more depth if necessary.
-# - Provide additional context or motivations.
+# - Use this section to provide additional context or explain the change in more depth.
+# - For breaking changes, include a separate line that starts with:
+BREAKING CHANGE: <description of breaking changes and required adaptations>
 
 <detailed description>
 
@@ -60,13 +62,6 @@
 
 [TECHNIQUES]
  - <details of techniques used>
-
-# Breaking Changes:
-# - Use this section for any breaking changes.
-# - Provide details about what broke and how users can adapt.
-
-[BREAKING CHANGE]
- - <description of breaking change>
 
 # Purpose:
 # - Explain why this change was needed.

@@ -527,9 +527,6 @@ This template is designed to align with best practices, follow the **Conventiona
 [TECHNIQUES]
  - <details about methods, tools, or approaches used>
 
-[BREAKING CHANGE]
- - <description of breaking changes and user adaptation details>
-
 [PURPOSE]
  - <reason for the change or issue being addressed>
 
@@ -556,6 +553,8 @@ This template is designed to align with best practices, follow the **Conventiona
   - `chore`: Maintenance tasks like updating dependencies or build processes.
   - `security`: Changes related to security, such as fixing vulnerabilities, adding input validation, or enhancing authentication mechanisms.
   - `deps`: Changes related to project dependencies, such as adding, updating, or removing libraries and modules.
+  
+  Append a `!` to `<type>` (e.g., `feat!`) if the commit introduces a breaking change.
 - **`<scope>`**: Specifies the specific area of the codebase affected (optional).
 - **`<description>`**: A concise, imperative summary of the change.
 - **`<detailed description>`**: A more comprehensive explanation of the change (optional).
@@ -563,7 +562,6 @@ This template is designed to align with best practices, follow the **Conventiona
 - **`[DEPENDENCIES ADDED/UPDATED/REMOVED]`**: Highlights any dependency changes.
 - **`[FEATURES/CHANGES]`**: Details the new features or changes made in the commit.
 - **`[TECHNIQUES]`**: Describes tools, methods, or approaches used (optional).
-- **`[BREAKING CHANGE]`**: Specifies breaking changes and required user actions.
 - **`[PURPOSE]`**: Explains the rationale behind the change.
 - **`[IMPACT]`**: Describes the effect on the project, users, or performance.
 - **`[FIXES/CLOSES/RESOLVES]`**: References related issues, pull requests, or tasks.
@@ -572,36 +570,40 @@ This template is designed to align with best practices, follow the **Conventiona
 ### Example Commit Message
 
 ```plaintext
-feat(auth): add OAuth2 login support
+feat!(auth): overhaul login API for enhanced security
 
-Implemented OAuth2 login functionality, allowing users to authenticate with Google and GitHub.
+Refactored the authentication system to adopt a more secure and modern approach.
+This change deprecates the old login endpoints and introduces a new OAuth2-based mechanism.
+
+BREAKING CHANGE: The previous login endpoints have been removed. Clients must update their integrations
+to use the new OAuth2 endpoints as described in the migration guide.
 
 [FILES ADDED]
- - src/auth/oauth2.js
- - src/auth/oauth2.test.js
+ - src/auth/oauth2_new.js
+ - docs/migration-guide.md
 
 [FILES MODIFIED]
  - src/auth/index.js
+ - src/auth/login.js
 
 [DEPENDENCIES ADDED]
- - google-auth-library
- - @octokit/auth
+ - new-auth-library
 
 [FEATURES/CHANGES]
- - Added OAuth2 authentication for Google and GitHub.
- - Improved error handling for authentication flows.
+ - Transitioned to OAuth2 for authentication.
+ - Enhanced token management and session handling.
 
 [PURPOSE]
- - Enhance security and provide seamless third-party login support.
+ - Improve overall security and modernize the authentication flow.
 
 [IMPACT]
- - Simplifies user authentication and improves overall security.
+ - Breaking change: Requires client updates to use the new endpoints.
 
 [FIXES]
- - #123
+ - #124
 
 [REFERENCES]
- - OAuth2 Documentation: https://example.com/oauth2
+ - Migration Guide: https://example.com/migration-guide
 ```
 
 ### Usage
