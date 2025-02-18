@@ -18,28 +18,12 @@ module.exports = {
           { type: 'test', scope: 'critical', release: 'patch' },
           { type: 'test', release: false },
         ],
-        parserOpts: {
-          noteKeywords: [
-            'BREAKING CHANGE',
-            'BREAKING CHANGES',
-            '[BREAKING CHANGE]',
-            '[BREAKING CHANGES]',
-          ],
-        },
       },
     ],
     [
       '@semantic-release/release-notes-generator',
       {
         preset: 'conventionalcommits',
-        parserOpts: {
-          noteKeywords: [
-            'BREAKING CHANGE',
-            'BREAKING CHANGES',
-            '[BREAKING CHANGE]',
-            '[BREAKING CHANGES]',
-          ],
-        },
         presetConfig: {
           header: '# Release Notes',
           types: [
