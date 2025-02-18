@@ -1,5 +1,8 @@
 # .editorconfig: Enforces consistent coding styles.
 
+# NOTE: 'max_line_length' is included as a style guideline reference.
+# It is not enforced by EditorConfig itself.
+
 # Global settings: UTF-8 encoding, Unix-style newlines, 2-space indentation
 [*]
 charset = utf-8
