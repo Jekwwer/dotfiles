@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.6.0 - 2025-06-13
+### 🚀 New Features
+
+* **ci:** add caching to release workflow and optimize commands ([3f8a6ae](https://github.com/Jekwwer/dotfiles/commit/3f8a6ae73e8a1098bd5162a8f28733e34cb51c80))
+* **commitmsg-generator:** add poetry support for pre-commit hooks ([c01f29e](https://github.com/Jekwwer/dotfiles/commit/c01f29e0fcc313638349e88f9bd1339d11a7f7ab))
+* **config:** expand prettier configuration ([5a5d704](https://github.com/Jekwwer/dotfiles/commit/5a5d704008a090b33facbbf13fa14475cf5f24dc))
+
+### 🐞 Bug Fixes
+
+* **shell:** enhance setup message for clarity and branding ([fa999a0](https://github.com/Jekwwer/dotfiles/commit/fa999a00fa88e1013d5ba62035bcb506b713a53c))
+* **wgetrc:** correct spelling typo in configuration comment ([e39bf4b](https://github.com/Jekwwer/dotfiles/commit/e39bf4bdcdb3eee7ccff3923eb5d2af7e6db7e89))
+
+### 📦 Dependency Updates
+
+* **ci:** bump actions/setup-node to v4.4.0 ([9350e8c](https://github.com/Jekwwer/dotfiles/commit/9350e8c5e13efe7ef49d95840ddc1c92bd423557))
+* **npm:** bump dependencies to latest versions ([7fd5d8e](https://github.com/Jekwwer/dotfiles/commit/7fd5d8ef95e99414fd2bec2750db7cea9dba0d7a))
+
+### 📖 Documentation
+
+* **README:** update installation instructions for Codespaces users ([8b335bb](https://github.com/Jekwwer/dotfiles/commit/8b335bb958b83d698282b0b3e87dd78635c0620c))
+
+### 📦 Chores
+
+* **editorconfig:** unify comment styles ([61e51f1](https://github.com/Jekwwer/dotfiles/commit/61e51f1ac783786d73d756f238932b8a163660fe))
+* **license:** change license to GPL v3 ([90acc0e](https://github.com/Jekwwer/dotfiles/commit/90acc0ebe1f58c28295a3cdfff6378ea88f29e0d))
+* **metadata:** update package.json metadata ([782522d](https://github.com/Jekwwer/dotfiles/commit/782522d0492972e3450d4a8668dda18a84c489e8))
+* **release:** update package files on release ([10ce635](https://github.com/Jekwwer/dotfiles/commit/10ce635e48bc7dacc0b2d91b61f02fd92e50bf20))
+
 ## 1.5.0 - 2025-02-18
 ### 🚀 New Features
 
