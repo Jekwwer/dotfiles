@@ -13,7 +13,7 @@ insert_final_newline = true
 max_line_length = 88
 trim_trailing_whitespace = true
 
-# Configuration file settings (e.g., .editorconfig, .gitignore)
+# Configuration files specific settings
 [.*]
 trim_trailing_whitespace = false
 
@@ -34,6 +34,6 @@ indent_size = 4
 [*.sh]
 indent_size = 4
 
-# Text and log files
+# Text/Log file-specific settings
 [*.{txt,log}]
 trim_trailing_whitespace = false
