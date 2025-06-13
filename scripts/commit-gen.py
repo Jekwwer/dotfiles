@@ -5,6 +5,7 @@
 
 import os
 import subprocess
+import shutil
 import tempfile
 import sys
 from openai import OpenAI
@@ -14,15 +15,24 @@ client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
 def run_pre_commit_hooks():
     """
-    Run git pre-commit hooks if available.
+    Run git pre-commit hooks if available, preferring a global install,
+    otherwise using `poetry run pre-commit`.
     """
+    # Determine which command to use
+    if shutil.which("pre-commit"):
+        cmd = ["pre-commit", "run", "--all-files"]
+        runner = "pre-commit"
+    elif shutil.which("poetry"):
+        cmd = ["poetry", "run", "pre-commit", "run", "--all-files"]
+        runner = "poetry run pre-commit"
+    else:
+        print("pre-commit is not installed globally nor via Poetry; skipping hooks.")
+        return True  # Nothing to run, continue execution
+
     try:
-        print("Running pre-commit hooks...")
-        subprocess.run(["pre-commit", "run", "--all-files"], check=True)
+        print(f"Running pre-commit hooks via `{runner}`...")
+        subprocess.run(cmd, check=True)
         print("Pre-commit hooks executed successfully.")
-    except FileNotFoundError:
-        print("pre-commit is not installed or not configured.")
-        return True  # Continue execution if pre-commit is not installed
     except subprocess.CalledProcessError:
         print("Pre-commit hooks failed. Exiting.")
         return False
