@@ -1,3 +1,4 @@
+// .releaserc.js: Configures the semantic-release process.
 module.exports = {
   branches: ['main'],
   plugins: [
@@ -94,7 +95,11 @@ module.exports = {
     [
       '@semantic-release/git',
       {
-        assets: ["CHANGELOG.md"],
+        assets: [
+          'package.json',
+          'package-lock.json',
+          'CHANGELOG.md',
+        ],
         message:
           'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       },
