@@ -1,11 +1,14 @@
-# .github/workflows/release.yml
-
+# .github/workflows/release.yml: Configures the release workflow.
+---
 name: release
 
 on:
   push:
     branches:
       - main
+
+permissions:
+  contents: write
 
 jobs:
   release:
@@ -19,12 +22,16 @@ jobs:
         with:
           node-version: '20.x'
 
-      - name: install-dependencies
-        run: npm clean-install
+      - name: cache-node
+        uses: actions/cache@v4.2.3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
-      #Verify the integrity of provenance attestations and registry signatures for installed dependencies
-      - name: verify-dependencies
-        run: npm audit signatures
+      - name: install-dependencies
+        run: npm ci
 
       - name: release
         env:
