@@ -18,7 +18,7 @@
     "type": "git",
     "url": "git+https://github.com/Jekwwer/dotfiles.git"
   },
-  "license": "ALL RIGHTS RESERVED",
+  "license": "GPL-3.0-only",
   "author": {
     "name": "Evgenii \"Jekwwer\" Shiliaev",
     "email": "evgenii.shiliaev@jekwwer.com",

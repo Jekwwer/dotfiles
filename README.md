@@ -15,11 +15,8 @@ This repository contains configuration files (`dotfiles`) and scripts for person
 
 ## License 🛡️
 
-All rights reserved. These dotfiles are provided solely for reference and personal review. 
-
-Unauthorized redistribution, modification, or reuse of any part of this repository is strictly prohibited without explicit written permission from the author.
-
-For licensing inquiries, please contact [licensing@jekwwer.com][licensing@jekwwer.com].
+This project is released under the [GNU General Public License v3.0][LICENSE].  
+You may redistribute and modify this software under the terms of GPL v3 as published by the Free Software Foundation; see the [LICENSE][LICENSE] file for details.
 
 ## Installation 📦
 
@@ -709,6 +706,7 @@ For questions, reach out via [evgenii.shiliaev@jekwwer.com][evgenii.shiliaev@jek
 - The script assumes a Linux-based environment Codespaces setup.
 - For details about the `commit-gen.py` script, refer to the [`scripts/commit-gen.py`][scripts/commit-gen.py] section.
 
+[LICENSE]: LICENSE
 [.gitconfig]: #gitconfig
 [.gitignore_global]: #gitignore_global
 [.gitmessage]: #gitmessage
@@ -716,4 +714,3 @@ For questions, reach out via [evgenii.shiliaev@jekwwer.com][evgenii.shiliaev@jek
 [node.gitignore]: https://github.com/github/gitignore/blob/main/Node.gitignore
 [visualstudio.gitignore]: https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 [evgenii.shiliaev@jekwwer.com]: mailto:evgenii.shiliaev@jekwwer.com
-[licensing@jekwwer.com]: mailto:licensing@jekwwer.com
