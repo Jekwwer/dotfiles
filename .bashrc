@@ -152,4 +152,4 @@ alias enable_correct="shopt -s cdspell"
 alias disable_correct="shopt -u cdspell"
 
 # Display a reminder message
-echo "Welcome, $(whoami)! Bash is now ready to work!"
+echo "Hey—you're using dotfiles by Jekwwer! 👉 https://github.com/Jekwwer/dotfiles"
