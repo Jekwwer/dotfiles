@@ -1,19 +1,15 @@
 {
   "name": "jekwwer-dotfiles",
   "version": "1.3.1",
-  "description": "This repository contains configuration files (`dotfiles`) and scripts for personalizing and automating my development environment. It includes advanced configurations and tools for streamlining workflows and improving productivity.",
+  "description": "Jekwwer's dotfiles for GitHub Codespaces, including a commit message generator.",
   "keywords": [
     "dotfiles",
-    "configuration",
-    "developer-setup",
+    "codespaces",
     "automation",
-    "productivity",
-    "bash",
+    "shell",
     "git",
-    "linux",
-    "macos",
-    "conventional-commits"
-  ],
+    "commit-message-generator"
+],
   "homepage": "https://github.com/Jekwwer/dotfiles#readme",
   "bugs": {
     "url": "https://github.com/Jekwwer/dotfiles/issues"
@@ -23,9 +19,13 @@
     "url": "git+https://github.com/Jekwwer/dotfiles.git"
   },
   "license": "ALL RIGHTS RESERVED",
-  "author": "Jekwwer",
-  "scripts": {
-    "release": "semantic-release"
+  "author": {
+    "name": "Evgenii \"Jekwwer\" Shiliaev",
+    "email": "evgenii.shiliaev@jekwwer.com",
+    "url": "https://jekwwer.com"
+  },
+    "engines": {
+    "node": ">=20.18 <21"
   },
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
