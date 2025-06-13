@@ -20,6 +20,8 @@ You may redistribute and modify this software under the terms of GPL v3 as pub
 
 ## Installation 📦
 
+> **Codespaces users:** If you’ve already set this repo as your “dotfiles” in your GitHub Codespaces settings, no further setup is required—your Codespaces environment will automatically apply these configurations.
+
 1. Clone the repository into your Codespaces or local machine:
 
    ```bash
