@@ -25,7 +25,7 @@ You may redistribute and modify this software under the terms of GPL v3 as pub
 1. Clone the repository into your Codespaces or local machine:
 
    ```bash
-   git clone https://github.com/username/dotfiles.git ~/.dotfiles
+   git clone https://github.com/Jekwwer/dotfiles.git ~/.dotfiles
    ```
 
 2. Run the `install.sh` script:
