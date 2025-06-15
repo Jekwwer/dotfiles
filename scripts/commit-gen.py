@@ -20,10 +20,10 @@ def run_pre_commit_hooks():
     """
     # Determine which command to use
     if shutil.which("pre-commit"):
-        cmd = ["pre-commit", "run", "--all-files"]
+        cmd = ["pre-commit"]
         runner = "pre-commit"
     elif shutil.which("poetry"):
-        cmd = ["poetry", "run", "pre-commit", "run", "--all-files"]
+        cmd = ["poetry", "run", "pre-commit"]
         runner = "poetry run pre-commit"
     else:
         print("pre-commit is not installed globally nor via Poetry; skipping hooks.")
