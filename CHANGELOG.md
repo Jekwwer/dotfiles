@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.6.1 - 2025-06-15
+### 🐞 Bug Fixes
+
+* **commit-gen:** update pre-commit command to run only on staged files ([a4520d1](https://github.com/Jekwwer/dotfiles/commit/a4520d14e3a06aa5f32681f8e1d986fdae6b98fc))
+* **docs:** correct username in clone command in installation section ([d55dd2d](https://github.com/Jekwwer/dotfiles/commit/d55dd2d1c2d50ff12f4d0c67ecb5d8c00483c280))
+
 ## 1.6.0 - 2025-06-13
 ### 🚀 New Features
 
