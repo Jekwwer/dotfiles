@@ -35,11 +35,8 @@ You may redistribute and modify this software under the terms of GPL v3 as pub
 
    This script will:
 
-   - Overwrite existing configuration files in your home directory:
-     - `.bashrc`, `.gitconfig`, `.editorconfig`, `.gitattributes`, `.gitignore_global`, `.gitmessage`
-   - Configure shell and Git settings for a streamlined workflow.
-
-   **Note:** Overwriting ensures your custom configurations take precedence over any pre-existing files in the home directory.
+   - Symlink configuration files into your home directory:
+     - `.bashrc`, `.curlrc`, `.editorconfig`, `.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`, `.wgetrc`
 
 3. Restart your terminal or apply the changes:
    ```bash
@@ -616,17 +613,14 @@ Closes #124
 
 ## install.sh
 
-The `install.sh` script configures the development environment and installs dependencies.
-It is designed to streamline the setup process for GitHub Codespaces primarily.
+The `install.sh` script symlinks dotfiles into `$HOME`. Works in GitHub Codespaces (run automatically) and on local machines.
 
 ### Usage
 
-To use the `install.sh` script:
-
-1. Clone the repository into your Codespaces or local machine:
+1. Clone the repository:
 
    ```bash
-   git clone https://github.com/username/dotfiles.git ~/.dotfiles
+   git clone https://github.com/Jekwwer/dotfiles.git ~/.dotfiles
    ```
 
 2. Run the script:
@@ -635,24 +629,16 @@ To use the `install.sh` script:
    ~/.dotfiles/install.sh
    ```
 
-3. Restart your terminal or apply the changes:
+3. Apply shell changes in the current session:
    ```bash
    source ~/.bashrc
    ```
 
 ### Features List
 
-1. **Links Dotfiles**: The script symlinks key configuration files from the repository to the home directory. These files include:
-
-   - `.bashrc`
-   - `.curlrc`
-   - `.gitattributes`
-   - `.gitconfig`
-   - `.gitignore_global`
-   - `.gitmessage`
-
-2. **PATH Configuration**:
-   - Ensures `~/bin` and `~/.local/bin` are included in the `PATH` via `.bashrc`.
+1. **Auto-detects its own location** — no hardcoded paths; works wherever the repo is cloned.
+2. **Symlinks dotfiles** into `$HOME`:
+   - `.bashrc`, `.curlrc`, `.editorconfig`, `.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`, `.wgetrc`
 
 ## Contact 📬
 
