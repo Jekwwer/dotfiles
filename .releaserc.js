@@ -7,6 +7,7 @@ module.exports = {
       {
         preset: 'conventionalcommits',
         releaseRules: [
+          { breaking: true, release: 'major' },
           { type: 'feat', release: 'minor' },
           { type: 'security', release: 'patch' },
           { type: 'fix', release: 'patch' },
