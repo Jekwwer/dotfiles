@@ -193,22 +193,13 @@ The `.wgetrc` file provides a global configuration for the `wget` command-line t
 
 ### Features List
 
-- **Retry Logic**: Retries failed downloads up to 3 times (`tries = 3`) for improved reliability.
+- **Retry Logic**: Retries failed downloads up to 3 times (`tries = 3`).
 - **Timeouts**:
-  - DNS lookup timeout set to 10 seconds (`dns_timeout = 10`).
+  - Connection timeout set to 15 seconds (`connect_timeout = 15`).
   - Read timeout set to 20 seconds (`read_timeout = 20`).
-- **Recursive Downloads**:
-  - Enables recursive downloads up to 5 levels deep (`recursive = on`, `level = 5`).
+  - DNS lookup timeout set to 10 seconds (`dns_timeout = 10`).
 - **Resumable Downloads**: Automatically resumes partial downloads (`continue = on`).
-- **Secure Connections**:
-  - Enforces SSL/TLS usage and verifies certificates (`check_certificate = on`).
-  - Uses trusted CA certificates from the system (`ca_directory = /etc/ssl/certs`).
-- **Automatic Timestamping**: Prevents re-downloading unchanged files by checking modification times (`timestamping = on`).
-- **User-Agent Customization**: Sets a meaningful user-agent string based on the `wget` version (`user_agent`).
-- **Logging**: Logs all download activity to `~/wget-log.txt` for auditing and debugging purposes (`logfile = ~/wget-log.txt`).
-- **Output Management**:
-  - Specifies a default output file name (`output_document = wget-output.txt`).
-  - Keeps downloads organized by defaulting to the `~/Downloads` directory (`dir_prefix = ~/Downloads`).
+- **Secure Connections**: Uses trusted CA certificates from the system (`ca_directory = /etc/ssl/certs`).
 
 ## .editorconfig
 
