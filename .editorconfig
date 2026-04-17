@@ -11,19 +11,15 @@ insert_final_newline = true
 max_line_length = 88
 trim_trailing_whitespace = true
 
-# Markdown-specific settings
 [*.md]
 max_line_length = 120
 trim_trailing_whitespace = false
 
-# JSON-specific settings
 [*.json]
 max_line_length = off
 
-# Shell-specific settings
 [*.sh]
 indent_size = 4
 
-# Text/Log file-specific settings
 [*.{txt,log}]
 trim_trailing_whitespace = false
