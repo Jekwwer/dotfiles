@@ -18,9 +18,7 @@ Personal development environment configuration for Linux/Codespaces and macOS.
 
 ## License 🛡️
 
-This project is released under the [GNU General Public License v3.0][LICENSE].  
-You may redistribute and modify this software under the terms of GPL v3 as published by the Free Software Foundation;
-see the [LICENSE][LICENSE] file for details.
+This project is released under the [MIT License][LICENSE].
 
 ## Installation 📦
 
