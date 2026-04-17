@@ -4,8 +4,6 @@
   amend = commit --amend
   br = branch
   ci = commit
-  smart-commit = "!f() { commit-gen; }; f"
-  sci = smart-commit
   co = checkout
   d = diff
   ds = diff --staged

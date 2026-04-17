@@ -26,10 +26,6 @@ trim_trailing_whitespace = false
 [*.json]
 max_line_length = off
 
-# Python-specific settings
-[*.py]
-indent_size = 4
-
 # Shell-specific settings
 [*.sh]
 indent_size = 4

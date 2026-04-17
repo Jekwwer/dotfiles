@@ -10,8 +10,7 @@ This repository contains configuration files (`dotfiles`) and scripts for person
 - **Curl Configuration** (`.curlrc`): Enhanced `curl` settings for security, performance, and usability.
 - **Wget Configuration** (`.wgetrc`): Enhanced `wget` settings for reliability, security, and convenience.
 - **Scripts**:
-  - **`scripts/commit-gen.py`**: A Python script for generating consistent, Conventional Commits-style messages interactively.
-  - **`install.sh`**: A setup script for linking dotfiles, configuring dependencies, and preparing the environment.
+  - **`install.sh`**: A setup script for linking dotfiles and preparing the environment.
 
 ## License 🛡️
 
@@ -38,7 +37,6 @@ You may redistribute and modify this software under the terms of GPL v3 as pub
 
    - Overwrite existing configuration files in your home directory:
      - `.bashrc`, `.gitconfig`, `.editorconfig`, `.gitattributes`, `.gitignore_global`, `.gitmessage`
-   - Set up a Python virtual environment for tools and scripts.
    - Configure shell and Git settings for a streamlined workflow.
 
    **Note:** Overwriting ensures your custom configurations take precedence over any pre-existing files in the home directory.
@@ -104,7 +102,6 @@ This `.bashrc` configuration includes the following key components:
 | `gl`     | Show a concise, graphical Git log.                   | `git log --oneline --graph --decorate`   |
 | `gca`    | Amend the last Git commit.                           | `git amend`                              |
 | `gci`    | Commit changes in Git.                               | `git commit`                             |
-| `gsci`   | Commit changes in Git using `scripts/commit-gen.py`. | `git smart-commit`                       |
 | `gf`     | Fetch changes from the remote repository.            | `git fetch`                              |
 | `gfi`    | Amend the last commit without changing the message.  | `git fixup`                              |
 | `gpl`    | Pull changes from the remote repository.             | `git pull`                               |
@@ -331,8 +328,6 @@ This `.gitconfig` includes settings and configurations for:
 | `amend`        | Amend the last commit.                                             | `commit --amend`                                                                                                  |
 | `br`           | Show branches.                                                     | `branch`                                                                                                          |
 | `ci`           | Commit changes.                                                    | `commit`                                                                                                          |
-| `smart-commit` | Commit changes using a generated commit message from `commit-gen`. | See `.gitconfig`.                                                                                                 |
-| `sci`          | Shortened version of `smart-commit`.                               | `smart-commit`                                                                                                    |
 | `co`           | Switch branches or restore working tree files.                     | `checkout`                                                                                                        |
 | `d`            | Show differences between commits or working tree.                  | `diff`                                                                                                            |
 | `ds`           | Show differences in staged files.                                  | `diff --staged`                                                                                                   |
@@ -623,28 +618,6 @@ to use the new OAuth2 endpoints as described in the migration guide.
 - Enhances tracking and debugging with detailed commit history.
 - Adheres to conventional commit message standards, aiding in automated workflows and versioning.
 
-## scripts/commit-gen.py
-
-The `commit-gen.py` script simplifies generating standardized commit messages for my projects.
-It generates messages that follow the format outlined in the [`.gitmessage`][.gitmessage] section.
-
-### Usage
-
-The script is designed to be used primarily via the `git smart-commit` alias, and it is preconfigured in Codespaces through the `install.sh` script.
-
-#### **Manual Usage**
-
-To run the script manually:
-
-1. Ensure you have Python installed and the necessary dependencies set up (configured via `install.sh`).
-2. Execute the script from the `scripts/` directory or its installed location:
-   ```bash
-   python3 ~/.dotfiles/scripts/commit-gen.py
-   ```
-3. Follow the interactive prompt to create a commit message.
-
-The generated message will be displayed, allowing you to paste it directly into your Git commit command or editor.
-
 ## install.sh
 
 The `install.sh` script configures the development environment and installs dependencies.
@@ -682,20 +655,8 @@ To use the `install.sh` script:
    - `.gitignore_global`
    - `.gitmessage`
 
-2. **Python Setup**:
-
-   - Ensures Python 3 and `python3-venv` are installed.
-   - Creates a virtual environment (`.venv`) in the repository if it doesn’t already exist.
-   - Installs Python dependencies from `requirements.txt`.
-
-3. **Script Linking**:
-
-   - Links the `commit-gen.py` script to the `~/bin` directory for use via the `commit-gen` command.
-   - Ensures the script is executable and accessible in your terminal.
-
-4. **PATH Configuration**:
-   - Ensures `~/bin` is included in the `PATH` environment variable.
-   - Adds the necessary `export PATH="$HOME/bin:$PATH"` line to `.bashrc` if not already present.
+2. **PATH Configuration**:
+   - Ensures `~/bin` and `~/.local/bin` are included in the `PATH` via `.bashrc`.
 
 ## Contact 📬
 
@@ -706,13 +667,11 @@ For questions, reach out via [evgenii.shiliaev@jekwwer.com][evgenii.shiliaev@jek
 ### Notes
 
 - The script assumes a Linux-based environment Codespaces setup.
-- For details about the `commit-gen.py` script, refer to the [`scripts/commit-gen.py`][scripts/commit-gen.py] section.
 
 [LICENSE]: LICENSE
 [.gitconfig]: #gitconfig
 [.gitignore_global]: #gitignore_global
 [.gitmessage]: #gitmessage
-[scripts/commit-gen.py]: #scriptscommit-genpy
 [node.gitignore]: https://github.com/github/gitignore/blob/main/Node.gitignore
 [visualstudio.gitignore]: https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 [evgenii.shiliaev@jekwwer.com]: mailto:evgenii.shiliaev@jekwwer.com

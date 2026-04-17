@@ -1,14 +1,13 @@
 {
   "name": "jekwwer-dotfiles",
   "version": "1.6.1",
-  "description": "Jekwwer's dotfiles for GitHub Codespaces, including a commit message generator.",
+  "description": "Jekwwer's dotfiles for GitHub Codespaces",
   "keywords": [
     "dotfiles",
     "codespaces",
     "automation",
     "shell",
-    "git",
-    "commit-message-generator"
+    "git"
   ],
   "homepage": "https://github.com/Jekwwer/dotfiles#readme",
   "bugs": {
