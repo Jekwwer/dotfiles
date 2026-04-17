@@ -1,5 +1,45 @@
 # Changelog
 
+## 2.0.0 - 2026-04-17
+### ⚠ BREAKING CHANGES
+
+* commit-gen is no longer available. Remove any scripts, aliases, or gitconfig hooks that reference it.
+
+### 🚀 New Features
+
+* **gitconfig:** add modern git options, fix deprecated alias, drop redundant settings ([ea6ae00](https://github.com/Jekwwer/dotfiles/commit/ea6ae006b8de352b82d07b369eb47062edd7c719))
+* remove commit-gen script and infrastructure ([3ea96df](https://github.com/Jekwwer/dotfiles/commit/3ea96df746d575c81a43ca58fc9b42988d455e86))
+* **shell:** split shell config into .shell_common, .bashrc, and .zshrc ([d8789cd](https://github.com/Jekwwer/dotfiles/commit/d8789cd44d45b35f19e16f9fcdaa2fb074102bea))
+
+### 🐞 Bug Fixes
+
+* **bashrc:** remove bugs/dead code, add cdspell, fix colors, update docs ([6172697](https://github.com/Jekwwer/dotfiles/commit/61726977a194719bda2edc9557c9863a916d6748))
+* **ci:** add fetch-depth, fix permissions, drop NPM_TOKEN, bump Node ([ece5518](https://github.com/Jekwwer/dotfiles/commit/ece551884d19ffcb80789373e94bd60d27ad65d7))
+* **install:** make portable, harden error handling, drop noise ([acab28b](https://github.com/Jekwwer/dotfiles/commit/acab28be692b677fc56654325f089b77c4a515d1))
+* **prettierrc:** set JSON printWidth to 10000 for no-limit intent ([6016c51](https://github.com/Jekwwer/dotfiles/commit/6016c5190923f48cf096ef717cacf548814f1129))
+* **release:** add breaking change rule to trigger major release ([1cc7898](https://github.com/Jekwwer/dotfiles/commit/1cc78981c13bc89bc04e2e945f0961f23220dea6))
+* **wgetrc:** fix timestamping conflict, add connect_timeout, remove noise ([c90c4bd](https://github.com/Jekwwer/dotfiles/commit/c90c4bd478a0dfcc0ef56ef56f8935298c6f6cc0))
+
+### 📖 Documentation
+
+* **gitmessage:** fix BREAKING CHANGE, drop TECHNIQUES, rename CHANGES, fix issue refs ([9887064](https://github.com/Jekwwer/dotfiles/commit/98870645074f5ae2f72b2d6ba2494af0140fcffd))
+* slim README, add CHEATSHEET.md, update package.json metadata ([ffabb3e](https://github.com/Jekwwer/dotfiles/commit/ffabb3e8c092778c75cec2f478ca47f439a6108f))
+
+### 🛠️ Refactoring
+
+* **curlrc:** simplify config, add retry-all-errors, swap fail-with-body ([c65fd53](https://github.com/Jekwwer/dotfiles/commit/c65fd53c202cb2a8ede3330b4c7ef075c8896f63))
+
+### 🎨 Code Style Improvements
+
+* **editorconfig:** fix root flag, remove bad override, clean comments ([564e885](https://github.com/Jekwwer/dotfiles/commit/564e8850fcbfcb0a0943820cb2cfc39f8d68a6f3))
+* **gitattributes:** fix globs, add types, drop invalid attrs, clean up ([d961176](https://github.com/Jekwwer/dotfiles/commit/d9611768df66047800af9171641fe9b62cd9b238))
+* **gitignore_global:** remove redundant filename comment ([bda9110](https://github.com/Jekwwer/dotfiles/commit/bda911019485d4887a47726568394b56d15f0c87))
+* **releaserc:** fix section order, add perf rule, drop redundant deps ([24fe551](https://github.com/Jekwwer/dotfiles/commit/24fe5514ec1ef1fbfbfe13cc7326da1fbcff7bb0))
+
+### 🔧 Chores
+
+* **license:** switch from GPL-3.0 to MIT ([7c2b7e4](https://github.com/Jekwwer/dotfiles/commit/7c2b7e4066449090af5c6ffa5a13bc328841d5ac))
+
 ## 1.6.1 - 2025-06-15
 ### 🐞 Bug Fixes
 
