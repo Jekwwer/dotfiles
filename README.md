@@ -305,11 +305,14 @@ The `.gitconfig` file configures various Git settings such as user information, 
 This `.gitconfig` includes settings and configurations for:
 
 - **Aliases**: Shortcuts for commonly used Git commands.
-- **Color Settings**: Enables colored output for better command readability.
+- **Branch Settings**: Controls branch display order.
+- **Column Settings**: Enables columnar output where applicable.
 - **Commit Settings**: Adds features like commit templates and GPG signing.
 - **Core Settings**: Configures editors, line endings, and global ignore files.
 - **Credential Management**: Simplifies handling of credentials.
 - **Diff and Merge Tools**: Uses `code` for visual comparison and conflict resolution.
+- **Fetch Settings**: Prunes stale remote-tracking branches on fetch.
+- **Help Settings**: Prompts before applying autocorrected commands.
 - **Log and Format**: Enhances log readability with customized output and graphs.
 - **Push and Pull Behavior**: Enforces safe and consistent workflows.
 - **Rebase and Tag Settings**: Streamlines rebase operations and tag sorting.
@@ -332,15 +335,21 @@ This `.gitconfig` includes settings and configurations for:
 | `lgm`          | Show detailed log with graph, decorations, and commit body.        | `log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit` |
 | `pushf`        | Force push safely with lease.                                      | `push --force-with-lease`                                                                                         |
 | `ri`           | Interactive rebase.                                                | `rebase -i`                                                                                                       |
-| `save`         | Save changes to stash.                                             | `stash save`                                                                                                      |
+| `save`         | Save changes to stash.                                             | `stash push`                                                                                                      |
 | `st`           | Show the working tree status.                                      | `status`                                                                                                          |
 | `undo`         | Undo the last commit but keep the changes.                         | `reset HEAD~1`                                                                                                    |
 
-#### **Color Settings**
+#### **Branch Settings**
 
-| Feature | Description                             | Value  |
-| ------- | --------------------------------------- | ------ |
-| `ui`    | Enable colored output for Git commands. | `true` |
+| Feature | Description                          | Value             |
+| ------- | ------------------------------------ | ----------------- |
+| `sort`  | Sort branches by most recently used. | `-committerdate`  |
+
+#### **Column Settings**
+
+| Feature | Description                                    | Value  |
+| ------- | ---------------------------------------------- | ------ |
+| `ui`    | Display output in columns where supported.     | `auto` |
 
 #### **Commit Settings**
 
@@ -351,12 +360,14 @@ This `.gitconfig` includes settings and configurations for:
 
 #### **Core Settings**
 
-| Feature        | Description                                              | Value                 |
-| -------------- | -------------------------------------------------------- | --------------------- |
-| `autocrlf`     | Normalize line endings for cross-platform compatibility. | `input`               |
-| `editor`       | Set the default editor for Git commands.                 | `code --wait`         |
-| `excludesfile` | Specify the global `.gitignore` file.                    | `~/.gitignore_global` |
-| `pager`        | Set the pager for command output.                        | `less -RFX`           |
+| Feature          | Description                                              | Value                 |
+| ---------------- | -------------------------------------------------------- | --------------------- |
+| `autocrlf`       | Normalize line endings for cross-platform compatibility. | `input`               |
+| `editor`         | Set the default editor for Git commands.                 | `code --wait`         |
+| `excludesfile`   | Specify the global `.gitignore` file.                    | `~/.gitignore_global` |
+| `fsmonitor`      | Use filesystem monitor for faster status checks.         | `true`                |
+| `pager`          | Set the pager for command output.                        | `less -RFX`           |
+| `untrackedCache` | Cache untracked file results for faster status checks.   | `true`                |
 
 #### **Credential Settings**
 
@@ -366,16 +377,30 @@ This `.gitconfig` includes settings and configurations for:
 
 #### **Diff Settings**
 
-| Feature | Description                                      | Value                               |
-| ------- | ------------------------------------------------ | ----------------------------------- |
-| `tool`  | Set the default diff tool.                       | `code`                              |
-| `cmd`   | Specify the command for `code` as the diff tool. | `code --wait --diff $LOCAL $REMOTE` |
+| Feature       | Description                                      | Value                               |
+| ------------- | ------------------------------------------------ | ----------------------------------- |
+| `algorithm`   | Use histogram diff for more readable output.     | `histogram`                         |
+| `colorMoved`  | Highlight moved code blocks distinctly.          | `default`                           |
+| `tool`        | Set the default diff tool.                       | `code`                              |
+| `cmd`         | Specify the command for `code` as the diff tool. | `code --wait --diff $LOCAL $REMOTE` |
+
+#### **Fetch Settings**
+
+| Feature | Description                                     | Value  |
+| ------- | ----------------------------------------------- | ------ |
+| `prune` | Remove stale remote-tracking branches on fetch. | `true` |
 
 #### **GitHub Settings**
 
 | Feature | Description      | Value     |
 | ------- | ---------------- | --------- |
 | `user`  | GitHub username. | `jekwwer` |
+
+#### **Help Settings**
+
+| Feature       | Description                                        | Value    |
+| ------------- | -------------------------------------------------- | -------- |
+| `autocorrect` | Prompt before applying autocorrected git commands. | `prompt` |
 
 #### **Initialization Settings**
 
@@ -385,11 +410,10 @@ This `.gitconfig` includes settings and configurations for:
 
 #### **Log Settings**
 
-| Feature        | Description                               | Value   |
-| -------------- | ----------------------------------------- | ------- |
-| `abbrevCommit` | Show abbreviated commit hashes in logs.   | `true`  |
-| `decorate`     | Show references in logs.                  | `short` |
-| `graph`        | Display logs with a graph representation. | `true`  |
+| Feature        | Description                             | Value   |
+| -------------- | --------------------------------------- | ------- |
+| `abbrevCommit` | Show abbreviated commit hashes in logs. | `true`  |
+| `decorate`     | Show references in logs.                | `short` |
 
 #### **Format Settings**
 
@@ -413,15 +437,16 @@ This `.gitconfig` includes settings and configurations for:
 
 #### **Push Settings**
 
-| Feature   | Description                    | Value    |
-| --------- | ------------------------------ | -------- |
-| `default` | Set the default push behavior. | `simple` |
+| Feature            | Description                                         | Value  |
+| ------------------ | --------------------------------------------------- | ------ |
+| `autoSetupRemote`  | Automatically set upstream on first push.           | `true` |
 
 #### **Rebase Settings**
 
-| Feature     | Description                                  | Value  |
-| ----------- | -------------------------------------------- | ------ |
-| `autoStash` | Automatically stash changes before rebasing. | `true` |
+| Feature      | Description                                          | Value  |
+| ------------ | ---------------------------------------------------- | ------ |
+| `autoStash`  | Automatically stash changes before rebasing.         | `true` |
+| `updateRefs` | Automatically update stacked branch refs on rebase.  | `true` |
 
 #### **Rerere Settings**
 

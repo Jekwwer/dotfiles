@@ -1,4 +1,5 @@
-# .gitconfig: Configures Git settings and aliases.
+[branch]
+  sort = -committerdate
 
 [alias]
   amend = commit --amend
@@ -14,12 +15,12 @@
   lgm = log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit
   pushf = push --force-with-lease
   ri = rebase -i
-  save = stash save
+  save = stash push
   st = status
   undo = reset HEAD~1
 
-[color]
-  ui = true
+[column]
+  ui = auto
 
 [commit]
   gpgSign = true
@@ -29,12 +30,16 @@
   autocrlf = input
   editor = code --wait
   excludesfile = ~/.gitignore_global
+  fsmonitor = true
   pager = less -RFX
+  untrackedCache = true
 
 [credential]
   helper = cache
 
 [diff]
+  algorithm = histogram
+  colorMoved = default
   tool = code
 
 [difftool "code"]
@@ -43,13 +48,18 @@
 [github]
   user = jekwwer
 
+[fetch]
+  prune = true
+
+[help]
+  autocorrect = prompt
+
 [init]
   defaultBranch = main
 
 [log]
   abbrevCommit = true
   decorate = short
-  graph = true
 
 [format]
   pretty = format:%C(auto)%h %C(bold blue)%an %C(auto)%d %s %C(dim white)(%ar)
@@ -65,10 +75,11 @@
   rebase = true
 
 [push]
-  default = simple
+  autoSetupRemote = true
 
 [rebase]
   autoStash = true
+  updateRefs = true
 
 [rerere]
   enabled = true
