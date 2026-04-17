@@ -62,24 +62,22 @@ The `.bashrc` file configures how shell behaves and customizes command-line envi
 
 This `.bashrc` configuration includes the following key components:
 
-- **Core Configuration** for interactive shell checks, terminal title customization, and programmatic completion.
-  - Includes the `core.excludesfile` setting to reference the global ignore file. Refer to the [`.gitignore_global`][.gitignore_global] section for setup instructions.
+- **Core Configuration** for interactive shell checks, lesspipe integration, and programmatic completion.
 - **Aliases** for quick and easy command shortcuts.
-- **Functions** to automate common or repetitive tasks.
+- **Functions** for history search and config reload.
 - **Environment Variables** to set up a personalized working environment.
 - **History Settings** to manage and streamline command history effectively.
-- **Prompt Customization** for a visually informative shell prompt.
-- **Shell Enhancements** for features like auto-correction, recursive globbing, and colored output.
+- **Prompt Customization** for a colorful, git-aware shell prompt.
+- **Shell Enhancements** for typo correction, recursive globbing, and colored output.
 
 #### **Core Configuration**
 
 | Feature                      | Description                                        | Command/Setting                                                |
 | ---------------------------- | -------------------------------------------------- | -------------------------------------------------------------- |
-| Interactive Shell Check      | Ensures `.bashrc` runs only in interactive shells. | `case $- in *i*) ;; *) return;; esac`                          |
-| Terminal Size Updates        | Updates `LINES` and `COLUMNS` dynamically.         | `shopt -s checkwinsize`                                        |
-| Terminal Title Customization | Sets terminal title to `user@host:dir`.            | `case "$TERM" in xterm*\|rxvt*) ... esac`                      |
-| Lesspipe Integration         | Enhances `less` for non-text files.                | `[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"` |
-| Programmatic Completion      | Enables enhanced command-line completions.         | Loads from `/usr/share/bash-completion` if available.          |
+| Interactive Shell Check | Ensures `.bashrc` runs only in interactive shells. | `case $- in *i*) ;; *) return;; esac`                          |
+| Terminal Size Updates   | Updates `LINES` and `COLUMNS` dynamically.         | `shopt -s checkwinsize`                                        |
+| Lesspipe Integration    | Enhances `less` for non-text files.                | `[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"` |
+| Programmatic Completion | Enables enhanced command-line completions.         | Loads from `/usr/share/bash-completion` if available.          |
 
 #### **Aliases**
 
@@ -103,17 +101,16 @@ This `.bashrc` configuration includes the following key components:
 | `gfi`    | Amend the last commit without changing the message.  | `git fixup`                              |
 | `gpl`    | Pull changes from the remote repository.             | `git pull`                               |
 | `gps`    | Push changes to the remote repository.               | `git push`                               |
-| `gpf`    | Force push changes to the remote repository.         | `git push --force`                       |
+| `gpf`    | Force push safely (refuses if remote has new commits). | `git push --force-with-lease`          |
 | `update` | Update and upgrade system packages.                  | `sudo apt update && sudo apt upgrade -y` |
 | `clr`    | Clear the terminal screen.                           | `clear`                                  |
 
 #### **Functions**
 
-| Function       | Description                                                          | Exact Command                                          |
-| -------------- | -------------------------------------------------------------------- | ------------------------------------------------------ |
-| `log [file]`   | Append a timestamped message to a log file (default: `logfile.txt`). | `echo "$(date +'%Y-%m-%d %H:%M:%S') $*" >> "$logfile"` |
-| `hgrep [text]` | Search the command history for a specific keyword.                   | `history \| grep "$1"`                                 |
-| `reload`       | Reload the `.bashrc` configuration without restarting the terminal.  | `source ~/.bashrc`                                     |
+| Function       | Description                                                         | Exact Command          |
+| -------------- | ------------------------------------------------------------------- | ---------------------- |
+| `hgrep [text]` | Search the command history for a specific keyword.                  | `history \| grep "$1"` |
+| `reload`       | Reload the `.bashrc` configuration without restarting the terminal. | `source ~/.bashrc`     |
 
 #### **Environment Variables**
 
@@ -142,16 +139,16 @@ This `.bashrc` configuration includes the following key components:
 | ----------------- | ------------------------------------------------- | --------------------------------------------------------- |
 | Username/Hostname | Displays the username and hostname in the prompt. | `\[\e[1;32m\]\u@\h`                                       |
 | Current Directory | Displays the current directory in the prompt.     | `\[\e[1;34m\]\w`                                          |
-| Git Branch        | Displays the current Git branch in the prompt.    | `$(git branch 2>/dev/null \| grep '\*' \| sed 's/\* //')` |
+| Git Branch        | Displays the current Git branch in the prompt.    | `git branch --show-current 2>/dev/null`                   |
 
 #### **Shell Enhancements**
 
-| Feature            | Description                                     | Command/Setting                                 |
-| ------------------ | ----------------------------------------------- | ----------------------------------------------- |
-| Auto-correction    | Corrects minor typos in directory names.        | `shopt -s dirspell`                             |
-| Recursive Globbing | Allows searching through directories with `**`. | `shopt -s globstar`                             |
-| Colorful Output    | Adds colors to `ls` and other commands.         | `CLICOLOR=1`, `LSCOLORS=GxFxCxDxBxegedabagaced` |
-| Bash Completion    | Enables enhanced tab completion.                | `source /etc/bash_completion` if available.     |
+| Feature               | Description                                              | Command/Setting                                                    |
+| --------------------- | -------------------------------------------------------- | ------------------------------------------------------------------ |
+| Recursive Globbing    | Allows searching through directories with `**`.          | `shopt -s globstar`                                                |
+| Tab-completion Typos  | Corrects typos in directory names during tab-completion. | `shopt -s dirspell`                                                |
+| `cd` Typos            | Corrects typos when running `cd`.                        | `shopt -s cdspell`                                                 |
+| Colorful Output       | Adds colors to `ls` output.                              | macOS: `CLICOLOR=1` / Linux: `alias ls='ls --color=auto'`          |
 
 ## .curlrc
 
