@@ -1,0 +1,65 @@
+# .shell_common: Shared configuration sourced by .bashrc and .zshrc.
+
+# === Environment Variables ===
+export EDITOR="vim"
+export VISUAL="vim"
+export PAGER="less"
+export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
+
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
+# === Aliases ===
+alias ll='ls -la'
+alias la='ls -A'
+alias l='ls -CF'
+
+alias rm='rm -i'
+alias mv='mv -i'
+alias cp='cp -i'
+
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias gst="git status"
+alias gca="git amend"
+alias gci="git commit"
+alias gf="git fetch"
+alias gfi="git fixup"
+alias gpl="git pull"
+alias gps="git push"
+alias gpf="git push --force-with-lease"
+alias gco="git checkout"
+alias gl="git log --oneline --graph --decorate"
+
+alias clr="clear"
+
+# OS-specific: colors and package manager
+if [[ "$(uname)" == "Darwin" ]]; then
+    export CLICOLOR=1
+    export LSCOLORS=GxFxCxDxBxegedabagaced
+    alias update="brew update && brew upgrade"
+else
+    alias ls='ls --color=auto'
+    alias update="sudo apt update && sudo apt upgrade -y"
+fi
+
+# === Functions ===
+hgrep() {
+    history | grep "$1"
+}
+
+reload() {
+    if [[ -n "$ZSH_VERSION" ]]; then
+        source ~/.zshrc
+    else
+        source ~/.bashrc
+    fi
+    echo "Shell configuration reloaded!"
+}
+
+# === Git Prompt ===
+git_branch() {
+    git branch --show-current 2>/dev/null
+}

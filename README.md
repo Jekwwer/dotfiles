@@ -1,12 +1,17 @@
 # dotfiles
 
-This repository contains configuration files (`dotfiles`) and scripts for personalizing and automating my development environment. It includes advanced configurations and tools for streamlining workflows and improving productivity.
+This repository contains configuration files (`dotfiles`) and scripts for personalizing and automating my development
+environment. It includes advanced configurations and tools for streamlining workflows and improving productivity.
 
 ## Features ✨
 
-- **Bash Configuration** (`.bashrc`): Custom prompts, aliases, functions, and shell enhancements.
+- **Shell Configuration**:
+  - **`.shell_common`**: Shared aliases, functions, and environment variables sourced by both shells.
+  - **`.bashrc`** (Linux/Codespaces): Bash-specific history, completions, and prompt.
+  - **`.zshrc`** (macOS): Zsh-specific history, options, and prompt.
 - **Editor Configuration** (`.editorconfig`): Enforces consistent coding styles for various file types.
-- **Git Configuration** (`.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Standardized settings, improved workflows, and commit message templates.
+- **Git Configuration** (`.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Standardized settings,
+  improved workflows, and commit message templates.
 - **Curl Configuration** (`.curlrc`): Enhanced `curl` settings for security, performance, and usability.
 - **Wget Configuration** (`.wgetrc`): Enhanced `wget` settings for reliability, security, and convenience.
 - **Scripts**:
@@ -15,11 +20,13 @@ This repository contains configuration files (`dotfiles`) and scripts for person
 ## License 🛡️
 
 This project is released under the [GNU General Public License v3.0][LICENSE].  
-You may redistribute and modify this software under the terms of GPL v3 as published by the Free Software Foundation; see the [LICENSE][LICENSE] file for details.
+You may redistribute and modify this software under the terms of GPL v3 as published by the Free Software Foundation;
+see the [LICENSE][LICENSE] file for details.
 
 ## Installation 📦
 
-> **Codespaces users:** If you’ve already set this repo as your “dotfiles” in your GitHub Codespaces settings, no further setup is required—your Codespaces environment will automatically apply these configurations.
+> **Codespaces users:** If you’ve already set this repo as your “dotfiles” in your GitHub Codespaces settings, no
+> further setup is required—your Codespaces environment will automatically apply these configurations.
 
 1. Clone the repository into your Codespaces or local machine:
 
@@ -34,18 +41,29 @@ You may redistribute and modify this software under the terms of GPL v3 as pub
    ```
 
    This script will:
-
    - Symlink configuration files into your home directory:
-     - `.bashrc`, `.curlrc`, `.editorconfig`, `.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`, `.wgetrc`
+     - `.shell_common`, `.curlrc`, `.editorconfig`, `.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`,
+       `.wgetrc`
+     - `.zshrc` on macOS or `.bashrc` on Linux/Codespaces
 
 3. Restart your terminal or apply the changes:
+
+   macOS:
+
+   ```bash
+   source ~/.zshrc
+   ```
+
+   Linux/Codespaces:
+
    ```bash
    source ~/.bashrc
    ```
 
 ## .bashrc
 
-The `.bashrc` file configures how shell behaves and customizes command-line environment.
+The `.bashrc` file configures the Bash shell on Linux/Codespaces. It sources `.shell_common` for shared aliases,
+functions, and environment variables, then adds Bash-specific history settings, completions, and a git-aware prompt.
 
 ### Usage
 
@@ -60,68 +78,20 @@ The `.bashrc` file configures how shell behaves and customizes command-line envi
 
 ### Features List
 
-This `.bashrc` configuration includes the following key components:
-
 - **Core Configuration** for interactive shell checks, lesspipe integration, and programmatic completion.
-- **Aliases** for quick and easy command shortcuts.
-- **Functions** for history search and config reload.
-- **Environment Variables** to set up a personalized working environment.
 - **History Settings** to manage and streamline command history effectively.
 - **Prompt Customization** for a colorful, git-aware shell prompt.
-- **Shell Enhancements** for typo correction, recursive globbing, and colored output.
+- **Shell Enhancements** for typo correction and recursive globbing.
+- **Shared Configuration** sourced from [`.shell_common`][.shell_common].
 
 #### **Core Configuration**
 
-| Feature                      | Description                                        | Command/Setting                                                |
-| ---------------------------- | -------------------------------------------------- | -------------------------------------------------------------- |
+| Feature                 | Description                                        | Command/Setting                                                |
+| ----------------------- | -------------------------------------------------- | -------------------------------------------------------------- |
 | Interactive Shell Check | Ensures `.bashrc` runs only in interactive shells. | `case $- in *i*) ;; *) return;; esac`                          |
 | Terminal Size Updates   | Updates `LINES` and `COLUMNS` dynamically.         | `shopt -s checkwinsize`                                        |
 | Lesspipe Integration    | Enhances `less` for non-text files.                | `[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"` |
 | Programmatic Completion | Enables enhanced command-line completions.         | Loads from `/usr/share/bash-completion` if available.          |
-
-#### **Aliases**
-
-| Alias    | Description                                          | Exact Command                            |
-| -------- | ---------------------------------------------------- | ---------------------------------------- |
-| `ll`     | List files in long format including hidden files.    | `ls -la`                                 |
-| `la`     | List all files, including hidden ones.               | `ls -A`                                  |
-| `l`      | List files in compact format.                        | `ls -CF`                                 |
-| `rm`     | Safer `rm` with confirmation before deletion.        | `rm -i`                                  |
-| `mv`     | Safer `mv` with confirmation before overwriting.     | `mv -i`                                  |
-| `cp`     | Safer `cp` with confirmation before overwriting.     | `cp -i`                                  |
-| `..`     | Navigate to the parent directory.                    | `cd ..`                                  |
-| `...`    | Navigate two levels up.                              | `cd ../..`                               |
-| `....`   | Navigate three levels up.                            | `cd ../../..`                            |
-| `gst`    | Display Git status.                                  | `git status`                             |
-| `gco`    | Checkout a branch in Git.                            | `git checkout`                           |
-| `gl`     | Show a concise, graphical Git log.                   | `git log --oneline --graph --decorate`   |
-| `gca`    | Amend the last Git commit.                           | `git amend`                              |
-| `gci`    | Commit changes in Git.                               | `git commit`                             |
-| `gf`     | Fetch changes from the remote repository.            | `git fetch`                              |
-| `gfi`    | Amend the last commit without changing the message.  | `git fixup`                              |
-| `gpl`    | Pull changes from the remote repository.             | `git pull`                               |
-| `gps`    | Push changes to the remote repository.               | `git push`                               |
-| `gpf`    | Force push safely (refuses if remote has new commits). | `git push --force-with-lease`          |
-| `update` | Update and upgrade system packages.                  | `sudo apt update && sudo apt upgrade -y` |
-| `clr`    | Clear the terminal screen.                           | `clear`                                  |
-
-#### **Functions**
-
-| Function       | Description                                                         | Exact Command          |
-| -------------- | ------------------------------------------------------------------- | ---------------------- |
-| `hgrep [text]` | Search the command history for a specific keyword.                  | `history \| grep "$1"` |
-| `reload`       | Reload the `.bashrc` configuration without restarting the terminal. | `source ~/.bashrc`     |
-
-#### **Environment Variables**
-
-| Variable | Description                                      | Value                              |
-| -------- | ------------------------------------------------ | ---------------------------------- |
-| `EDITOR` | Sets the default text editor.                    | `vim`                              |
-| `VISUAL` | Sets the default visual editor.                  | `vim`                              |
-| `PAGER`  | Sets the default text viewer.                    | `less`                             |
-| `PATH`   | Adds user-specific binary directories to `PATH`. | `$HOME/bin:$HOME/.local/bin:$PATH` |
-| `LANG`   | Sets language and locale.                        | `en_US.UTF-8`                      |
-| `LC_ALL` | Enforces UTF-8 locale for all settings.          | `en_US.UTF-8`                      |
 
 #### **History Settings**
 
@@ -135,24 +105,159 @@ This `.bashrc` configuration includes the following key components:
 
 #### **Prompt Customization**
 
-| Feature           | Description                                       | Value                                                     |
-| ----------------- | ------------------------------------------------- | --------------------------------------------------------- |
-| Username/Hostname | Displays the username and hostname in the prompt. | `\[\e[1;32m\]\u@\h`                                       |
-| Current Directory | Displays the current directory in the prompt.     | `\[\e[1;34m\]\w`                                          |
-| Git Branch        | Displays the current Git branch in the prompt.    | `git branch --show-current 2>/dev/null`                   |
+| Feature           | Description                                       | Value                                   |
+| ----------------- | ------------------------------------------------- | --------------------------------------- |
+| Username/Hostname | Displays the username and hostname in the prompt. | `\[\e[1;32m\]\u@\h`                     |
+| Current Directory | Displays the current directory in the prompt.     | `\[\e[1;34m\]\w`                        |
+| Git Branch        | Displays the current Git branch in the prompt.    | `git branch --show-current 2>/dev/null` |
 
 #### **Shell Enhancements**
 
-| Feature               | Description                                              | Command/Setting                                                    |
-| --------------------- | -------------------------------------------------------- | ------------------------------------------------------------------ |
-| Recursive Globbing    | Allows searching through directories with `**`.          | `shopt -s globstar`                                                |
-| Tab-completion Typos  | Corrects typos in directory names during tab-completion. | `shopt -s dirspell`                                                |
-| `cd` Typos            | Corrects typos when running `cd`.                        | `shopt -s cdspell`                                                 |
-| Colorful Output       | Adds colors to `ls` output.                              | macOS: `CLICOLOR=1` / Linux: `alias ls='ls --color=auto'`          |
+| Feature              | Description                                              | Command/Setting     |
+| -------------------- | -------------------------------------------------------- | ------------------- |
+| Recursive Globbing   | Allows searching through directories with `**`.          | `shopt -s globstar` |
+| Tab-completion Typos | Corrects typos in directory names during tab-completion. | `shopt -s dirspell` |
+| `cd` Typos           | Corrects typos when running `cd`.                        | `shopt -s cdspell`  |
+
+## .shell_common
+
+The `.shell_common` file contains shared configuration sourced by both `.bashrc` and `.zshrc`. It provides a common
+baseline — aliases, functions, environment variables, and OS-specific settings — so behavior stays consistent across
+Linux and macOS.
+
+### Usage
+
+1. Copy the `.shell_common` file to your home directory:
+   ```bash
+   cp ~/.dotfiles/.shell_common ~/.shell_common
+   ```
+2. Ensure your shell configuration sources it (already done if you use the provided `.bashrc` or `.zshrc`):
+   ```bash
+   source ~/.shell_common
+   ```
+
+### Features List
+
+- **Environment Variables** for editor, pager, PATH, and locale settings.
+- **Aliases** for file listing, navigation, safe file operations, Git shortcuts, and system updates.
+- **Functions** for history search and config reload.
+- **OS-Specific Settings**: `CLICOLOR`/`LSCOLORS` and Homebrew `update` alias on macOS; `ls --color=auto` and `apt`
+  `update` alias on Linux.
+- **Git Prompt Helper**: `git_branch` function used by both `.bashrc` and `.zshrc` prompts.
+
+#### **Environment Variables**
+
+| Variable | Description                                      | Value                              |
+| -------- | ------------------------------------------------ | ---------------------------------- |
+| `EDITOR` | Sets the default text editor.                    | `vim`                              |
+| `VISUAL` | Sets the default visual editor.                  | `vim`                              |
+| `PAGER`  | Sets the default text viewer.                    | `less`                             |
+| `PATH`   | Adds user-specific binary directories to `PATH`. | `$HOME/bin:$HOME/.local/bin:$PATH` |
+| `LANG`   | Sets language and locale.                        | `en_US.UTF-8`                      |
+| `LC_ALL` | Enforces UTF-8 locale for all settings.          | `en_US.UTF-8`                      |
+
+#### **Aliases**
+
+| Alias    | Description                                            | Exact Command                                                                          |
+| -------- | ------------------------------------------------------ | -------------------------------------------------------------------------------------- |
+| `ll`     | List files in long format including hidden files.      | `ls -la`                                                                               |
+| `la`     | List all files, including hidden ones.                 | `ls -A`                                                                                |
+| `l`      | List files in compact format.                          | `ls -CF`                                                                               |
+| `rm`     | Safer `rm` with confirmation before deletion.          | `rm -i`                                                                                |
+| `mv`     | Safer `mv` with confirmation before overwriting.       | `mv -i`                                                                                |
+| `cp`     | Safer `cp` with confirmation before overwriting.       | `cp -i`                                                                                |
+| `..`     | Navigate to the parent directory.                      | `cd ..`                                                                                |
+| `...`    | Navigate two levels up.                                | `cd ../..`                                                                             |
+| `....`   | Navigate three levels up.                              | `cd ../../..`                                                                          |
+| `gst`    | Display Git status.                                    | `git status`                                                                           |
+| `gco`    | Checkout a branch in Git.                              | `git checkout`                                                                         |
+| `gl`     | Show a concise, graphical Git log.                     | `git log --oneline --graph --decorate`                                                 |
+| `gca`    | Amend the last Git commit.                             | `git amend`                                                                            |
+| `gci`    | Commit changes in Git.                                 | `git commit`                                                                           |
+| `gf`     | Fetch changes from the remote repository.              | `git fetch`                                                                            |
+| `gfi`    | Amend the last commit without changing the message.    | `git fixup`                                                                            |
+| `gpl`    | Pull changes from the remote repository.               | `git pull`                                                                             |
+| `gps`    | Push changes to the remote repository.                 | `git push`                                                                             |
+| `gpf`    | Force push safely (refuses if remote has new commits). | `git push --force-with-lease`                                                          |
+| `update` | Update and upgrade system packages (OS-specific).      | macOS: `brew update && brew upgrade` / Linux: `sudo apt update && sudo apt upgrade -y` |
+| `clr`    | Clear the terminal screen.                             | `clear`                                                                                |
+
+#### **Functions**
+
+| Function       | Description                                                     | Exact Command                           |
+| -------------- | --------------------------------------------------------------- | --------------------------------------- |
+| `hgrep [text]` | Search the command history for a specific keyword.              | `history \| grep "$1"`                  |
+| `reload`       | Reload the shell configuration without restarting the terminal. | `source ~/.zshrc` or `source ~/.bashrc` |
+
+#### **Git Prompt Helper**
+
+| Function     | Description                         | Command                                 |
+| ------------ | ----------------------------------- | --------------------------------------- |
+| `git_branch` | Prints the current Git branch name. | `git branch --show-current 2>/dev/null` |
+
+#### **OS-Specific Settings**
+
+| Setting        | macOS                                           | Linux                                    |
+| -------------- | ----------------------------------------------- | ---------------------------------------- |
+| `ls` colors    | `CLICOLOR=1`, `LSCOLORS=GxFxCxDxBxegedabagaced` | `alias ls='ls --color=auto'`             |
+| `update` alias | `brew update && brew upgrade`                   | `sudo apt update && sudo apt upgrade -y` |
+
+## .zshrc
+
+The `.zshrc` file configures the Zsh shell on macOS. It sources `.shell_common` for shared settings and adds
+Zsh-specific history options, completion initialization, shell options, and a git-aware prompt.
+
+### Usage
+
+1. Copy the `.zshrc` file to your home directory:
+   ```bash
+   cp ~/.dotfiles/.zshrc ~/.zshrc
+   ```
+2. Apply the changes:
+   ```bash
+   source ~/.zshrc
+   ```
+
+### Features List
+
+- **Completion Setup**: Initializes the Zsh completion system (`autoload -U compinit && compinit`).
+- **History Settings**: Configures history size, file location, deduplication, and incremental writes.
+- **Shell Options**: Enables recursive globbing and typo correction.
+- **Prompt Customization**: Git-aware, colorized prompt using `PROMPT_SUBST`.
+- **Shared Configuration** sourced from [`.shell_common`][.shell_common].
+
+#### **History Settings**
+
+| Setting              | Description                                           | Value                              |
+| -------------------- | ----------------------------------------------------- | ---------------------------------- |
+| `HISTSIZE`           | Maximum number of commands kept in memory.            | `5000`                             |
+| `SAVEHIST`           | Maximum number of commands saved to the history file. | `10000`                            |
+| `HISTFILE`           | Path to the history file.                             | `~/.zsh_history`                   |
+| `HISTORY_IGNORE`     | Excludes trivial commands from history.               | `(ls\|cd\|cd -\|pwd\|exit\|clear)` |
+| `HIST_IGNORE_DUPS`   | Skips duplicate consecutive entries.                  | `setopt HIST_IGNORE_DUPS`          |
+| `HIST_IGNORE_SPACE`  | Skips commands prefixed with a space.                 | `setopt HIST_IGNORE_SPACE`         |
+| `INC_APPEND_HISTORY` | Writes each command to the history file immediately.  | `setopt INC_APPEND_HISTORY`        |
+
+#### **Shell Options**
+
+| Option            | Description                                           |
+| ----------------- | ----------------------------------------------------- |
+| `GLOB_STAR_SHORT` | Enables `**` recursive glob without requiring `**/*`. |
+| `CORRECT`         | Suggests corrections for mistyped commands.           |
+| `CORRECT_ALL`     | Suggests corrections for all command arguments.       |
+
+#### **Prompt Customization**
+
+| Feature           | Description                                       | Value                     |
+| ----------------- | ------------------------------------------------- | ------------------------- |
+| Username/Hostname | Displays the username and hostname in the prompt. | `%F{green}%n@%m`          |
+| Current Directory | Displays the current directory in the prompt.     | `%F{blue}%~`              |
+| Git Branch        | Displays the current Git branch in the prompt.    | `%F{yellow}$(git_branch)` |
 
 ## .curlrc
 
-The `.curlrc` file provides a global configuration for the `curl` command-line tool, enhancing usability, security, and reliability for HTTP requests.
+The `.curlrc` file provides a global configuration for the `curl` command-line tool, enhancing usability, security, and
+reliability for HTTP requests.
 
 ### Usage
 
@@ -171,11 +276,13 @@ The `.curlrc` file provides a global configuration for the `curl` command-line t
   - Connection timeout set to 15 seconds (`--connect-timeout 15`).
   - Maximum transfer time set to 120 seconds (`--max-time 120`); override with `--max-time 0` for large downloads.
 - **Secure Connections**: Enforces 2048-bit keys and SHA-256+ signatures (`--ciphers DEFAULT:@SECLEVEL=2`).
-- **Fail with Body**: Exits non-zero on HTTP errors (4xx/5xx) but still prints the response body for debugging (`--fail-with-body`).
+- **Fail with Body**: Exits non-zero on HTTP errors (4xx/5xx) but still prints the response body for debugging
+  (`--fail-with-body`).
 
 ## .wgetrc
 
-The `.wgetrc` file provides a global configuration for the `wget` command-line tool, enhancing usability, security, and reliability for file downloads and website mirroring.
+The `.wgetrc` file provides a global configuration for the `wget` command-line tool, enhancing usability, security, and
+reliability for file downloads and website mirroring.
 
 ### Usage
 
@@ -197,8 +304,8 @@ The `.wgetrc` file provides a global configuration for the `wget` command-line t
 
 ## .editorconfig
 
-The `.editorconfig` file provides consistent coding style enforcement across various file types in my projects,
-if a repository-specific .editorconfig file is not present.
+The `.editorconfig` file provides consistent coding style enforcement across various file types in my projects, if a
+repository-specific .editorconfig file is not present.
 
 ### Usage
 
@@ -207,12 +314,12 @@ if a repository-specific .editorconfig file is not present.
    cp ~/.dotfiles/.editorconfig ~/.editorconfig
    ```
 2. Optionally, place a project-specific `.editorconfig` in the root of any repository where you need custom rules.
-3. Supported by most modern text editors and IDEs out of the box. Check editor’s settings to ensure `.editorconfig` is enabled.
+3. Supported by most modern text editors and IDEs out of the box. Check editor’s settings to ensure `.editorconfig` is
+   enabled.
 
 ### Features List
 
 - **Global Defaults**:
-
   - **Encoding**: UTF-8 for all files (`charset = utf-8`).
   - **Line Endings**: Unix-style newlines (`end_of_line = lf`).
   - **Indentation**: Default 2-space indentation (`indent_size = 2`, `indent_style = space`).
@@ -233,7 +340,8 @@ if a repository-specific .editorconfig file is not present.
 
 ## .gitattributes
 
-The `.gitattributes` file configures how Git handles specific files and attributes. It ensures consistency, optimizes performance, and simplifies collaboration.
+The `.gitattributes` file configures how Git handles specific files and attributes. It ensures consistency, optimizes
+performance, and simplifies collaboration.
 
 ### Usage
 
@@ -253,16 +361,20 @@ The `.gitattributes` file configures how Git handles specific files and attribut
 
 ### Features List
 
-- **Line Endings**: Normalizes text files with `* text=auto`; enforces LF on checkout for `.sh`, `.py`, `.js`, `.ts`, `.tsx`, `.css`, `.html`, `.java`, `.c`, `.cpp`, `.md`, `.yml`, `.yaml`, `.json`, `.xml`, `.toml`.
-- **Binary Files**: Marks images (`.png`, `.jpg`, `.jpeg`, `.gif`, `.svg`), documents (`.pdf`), icons (`.ico`), fonts (`.ttf`, `.otf`, `.woff`, `.woff2`), and archives (`.zip`, `.tar.gz`, `.iso`) as binary.
+- **Line Endings**: Normalizes text files with `* text=auto`; enforces LF on checkout for `.sh`, `.py`, `.js`, `.ts`,
+  `.tsx`, `.css`, `.html`, `.java`, `.c`, `.cpp`, `.md`, `.yml`, `.yaml`, `.json`, `.xml`, `.toml`.
+- **Binary Files**: Marks images (`.png`, `.jpg`, `.jpeg`, `.gif`, `.svg`), documents (`.pdf`), icons (`.ico`), fonts
+  (`.ttf`, `.otf`, `.woff`, `.woff2`), and archives (`.zip`, `.tar.gz`, `.iso`) as binary.
 - **Custom Diffs**: Uses structured diff drivers for JSON and XML files.
 - **Large File Diffs**: Skips diffing for `.log` files where diffs are not useful.
-- **Export Exclusions**: Excludes `.bak`, `.tmp`, `.swp`, `.DS_Store`, `.idea/`, `.vscode/`, and `node_modules/` from `git archive` exports.
+- **Export Exclusions**: Excludes `.bak`, `.tmp`, `.swp`, `.DS_Store`, `.idea/`, `.vscode/`, and `node_modules/` from
+  `git archive` exports.
 - **Language Stats**: Excludes generated files (`.min.js`, `.map`) from GitHub language statistics.
 
 ## .gitconfig
 
-The `.gitconfig` file configures various Git settings such as user information, aliases, and preferences for how Git should behave.
+The `.gitconfig` file configures various Git settings such as user information, aliases, and preferences for how Git
+should behave.
 
 ### Usage
 
@@ -297,36 +409,36 @@ This `.gitconfig` includes settings and configurations for:
 
 #### **Aliases**
 
-| Alias          | Description                                                        | Command/Details                                                                                                   |
-| -------------- | ------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------- |
-| `amend`        | Amend the last commit.                                             | `commit --amend`                                                                                                  |
-| `br`           | Show branches.                                                     | `branch`                                                                                                          |
-| `ci`           | Commit changes.                                                    | `commit`                                                                                                          |
-| `co`           | Switch branches or restore working tree files.                     | `checkout`                                                                                                        |
-| `d`            | Show differences between commits or working tree.                  | `diff`                                                                                                            |
-| `ds`           | Show differences in staged files.                                  | `diff --staged`                                                                                                   |
-| `del-branch`   | Delete a remote branch.                                            | `push origin --delete <branch>`                                                                                   |
-| `fixup`        | Amend the last commit without changing the message.                | `commit --amend --no-edit`                                                                                        |
-| `lg`           | Show a concise log with graph and decorations.                     | `log --oneline --graph --decorate`                                                                                |
-| `lga`          | Show all commits in a concise log with graph and decorations.      | `log --all --oneline --graph --decorate`                                                                          |
-| `lgm`          | Show detailed log with graph, decorations, and commit body.        | `log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit` |
-| `pushf`        | Force push safely with lease.                                      | `push --force-with-lease`                                                                                         |
-| `ri`           | Interactive rebase.                                                | `rebase -i`                                                                                                       |
-| `save`         | Save changes to stash.                                             | `stash push`                                                                                                      |
-| `st`           | Show the working tree status.                                      | `status`                                                                                                          |
-| `undo`         | Undo the last commit but keep the changes.                         | `reset HEAD~1`                                                                                                    |
+| Alias        | Description                                                   | Command/Details                                                                                                   |
+| ------------ | ------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `amend`      | Amend the last commit.                                        | `commit --amend`                                                                                                  |
+| `br`         | Show branches.                                                | `branch`                                                                                                          |
+| `ci`         | Commit changes.                                               | `commit`                                                                                                          |
+| `co`         | Switch branches or restore working tree files.                | `checkout`                                                                                                        |
+| `d`          | Show differences between commits or working tree.             | `diff`                                                                                                            |
+| `ds`         | Show differences in staged files.                             | `diff --staged`                                                                                                   |
+| `del-branch` | Delete a remote branch.                                       | `push origin --delete <branch>`                                                                                   |
+| `fixup`      | Amend the last commit without changing the message.           | `commit --amend --no-edit`                                                                                        |
+| `lg`         | Show a concise log with graph and decorations.                | `log --oneline --graph --decorate`                                                                                |
+| `lga`        | Show all commits in a concise log with graph and decorations. | `log --all --oneline --graph --decorate`                                                                          |
+| `lgm`        | Show detailed log with graph, decorations, and commit body.   | `log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit` |
+| `pushf`      | Force push safely with lease.                                 | `push --force-with-lease`                                                                                         |
+| `ri`         | Interactive rebase.                                           | `rebase -i`                                                                                                       |
+| `save`       | Save changes to stash.                                        | `stash push`                                                                                                      |
+| `st`         | Show the working tree status.                                 | `status`                                                                                                          |
+| `undo`       | Undo the last commit but keep the changes.                    | `reset HEAD~1`                                                                                                    |
 
 #### **Branch Settings**
 
-| Feature | Description                          | Value             |
-| ------- | ------------------------------------ | ----------------- |
-| `sort`  | Sort branches by most recently used. | `-committerdate`  |
+| Feature | Description                          | Value            |
+| ------- | ------------------------------------ | ---------------- |
+| `sort`  | Sort branches by most recently used. | `-committerdate` |
 
 #### **Column Settings**
 
-| Feature | Description                                    | Value  |
-| ------- | ---------------------------------------------- | ------ |
-| `ui`    | Display output in columns where supported.     | `auto` |
+| Feature | Description                                | Value  |
+| ------- | ------------------------------------------ | ------ |
+| `ui`    | Display output in columns where supported. | `auto` |
 
 #### **Commit Settings**
 
@@ -354,12 +466,12 @@ This `.gitconfig` includes settings and configurations for:
 
 #### **Diff Settings**
 
-| Feature       | Description                                      | Value                               |
-| ------------- | ------------------------------------------------ | ----------------------------------- |
-| `algorithm`   | Use histogram diff for more readable output.     | `histogram`                         |
-| `colorMoved`  | Highlight moved code blocks distinctly.          | `default`                           |
-| `tool`        | Set the default diff tool.                       | `code`                              |
-| `cmd`         | Specify the command for `code` as the diff tool. | `code --wait --diff $LOCAL $REMOTE` |
+| Feature      | Description                                      | Value                               |
+| ------------ | ------------------------------------------------ | ----------------------------------- |
+| `algorithm`  | Use histogram diff for more readable output.     | `histogram`                         |
+| `colorMoved` | Highlight moved code blocks distinctly.          | `default`                           |
+| `tool`       | Set the default diff tool.                       | `code`                              |
+| `cmd`        | Specify the command for `code` as the diff tool. | `code --wait --diff $LOCAL $REMOTE` |
 
 #### **Fetch Settings**
 
@@ -414,16 +526,16 @@ This `.gitconfig` includes settings and configurations for:
 
 #### **Push Settings**
 
-| Feature            | Description                                         | Value  |
-| ------------------ | --------------------------------------------------- | ------ |
-| `autoSetupRemote`  | Automatically set upstream on first push.           | `true` |
+| Feature           | Description                               | Value  |
+| ----------------- | ----------------------------------------- | ------ |
+| `autoSetupRemote` | Automatically set upstream on first push. | `true` |
 
 #### **Rebase Settings**
 
-| Feature      | Description                                          | Value  |
-| ------------ | ---------------------------------------------------- | ------ |
-| `autoStash`  | Automatically stash changes before rebasing.         | `true` |
-| `updateRefs` | Automatically update stacked branch refs on rebase.  | `true` |
+| Feature      | Description                                         | Value  |
+| ------------ | --------------------------------------------------- | ------ |
+| `autoStash`  | Automatically stash changes before rebasing.        | `true` |
+| `updateRefs` | Automatically update stacked branch refs on rebase. | `true` |
 
 #### **Rerere Settings**
 
@@ -446,8 +558,8 @@ This `.gitconfig` includes settings and configurations for:
 
 ## .gitignore_global
 
-The `.gitignore_global` file specifies files and directories that should be ignored by Git globally, across all repositories.
-This prevents tracking of unnecessary or sensitive files, improving repository cleanliness and security.
+The `.gitignore_global` file specifies files and directories that should be ignored by Git globally, across all
+repositories. This prevents tracking of unnecessary or sensitive files, improving repository cleanliness and security.
 
 ### Usage
 
@@ -462,29 +574,31 @@ To apply the `.gitignore_global` file globally for all repositories:
    git config --global core.excludesfile ~/.gitignore_global
    ```
 
-**Note:** Ensure your `.gitconfig` is set up correctly to recognize this global ignore file.
-This is achieved through the `core.excludesfile` setting, which is already included in the `.gitconfig` file provided in this repository.
+**Note:** Ensure your `.gitconfig` is set up correctly to recognize this global ignore file. This is achieved through
+the `core.excludesfile` setting, which is already included in the `.gitconfig` file provided in this repository.
 
 Refer to the [`.gitconfig`][.gitconfig] section for more details.
 
 ### Features List
 
-This file is based on [github/gitignore/VisualStudio.gitignore][visualstudio.gitignore]
-and [github/gitignore/Node.gitignore][node.gitignore], accumulating best practices and includes patterns for:
+This file is based on [github/gitignore/VisualStudio.gitignore][visualstudio.gitignore] and
+[github/gitignore/Node.gitignore][node.gitignore], accumulating best practices and includes patterns for:
 
 - **User-specific files**: Temporary editor files, settings, and logs.
 - **Build directories**: `bin/`, `obj/`, and platform-specific folders like `x64/` and `x86/`.
 - **Tool-specific files**: Files generated by Visual Studio, Xamarin, Node.js, Python, and others.
 - **Temporary files**: Backup files, `.tmp` files, and cache directories.
 - **Publish and deployment files**: Files created during Azure or web deployment.
-- **Node.js-specific files**: Logs, runtime data, dependency directories (`node_modules/`, `jspm_packages/`, etc.), coverage data, cache files, and other Node.js-specific artifacts.
+- **Node.js-specific files**: Logs, runtime data, dependency directories (`node_modules/`, `jspm_packages/`, etc.),
+  coverage data, cache files, and other Node.js-specific artifacts.
 
 For a detailed list of ignored files and directories, refer to the `.gitignore_global` file in this repository.
 
 ## .gitmessage
 
-The `.gitmessage` file defines a standardized commit message template to ensure consistency, clarity, and quality in commit messages.
-This template is designed to align with best practices, follow the **Conventional Commits** standard, and provide essential details about changes.
+The `.gitmessage` file defines a standardized commit message template to ensure consistency, clarity, and quality in
+commit messages. This template is designed to align with best practices, follow the **Conventional Commits** standard,
+and provide essential details about changes.
 
 ### Template Structure
 
@@ -537,10 +651,12 @@ Closes #<issue-number>
   - `perf`: Performance improvements.
   - `test`: Adding or updating tests.
   - `chore`: Maintenance tasks like updating dependencies or build processes.
-  - `security`: Changes related to security, such as fixing vulnerabilities, adding input validation, or enhancing authentication mechanisms.
+  - `security`: Changes related to security, such as fixing vulnerabilities, adding input validation, or enhancing
+    authentication mechanisms.
   - `deps`: Changes related to project dependencies, such as adding, updating, or removing libraries and modules.
-  
+
   Append a `!` to `<type>` (e.g., `feat!`) if the commit introduces a breaking change.
+
 - **`<scope>`**: Specifies the specific area of the codebase affected (optional).
 - **`<description>`**: A concise, imperative summary of the change.
 - **`<detailed description>`**: A more comprehensive explanation of the change (optional).
@@ -610,7 +726,8 @@ Closes #124
 
 ## install.sh
 
-The `install.sh` script symlinks dotfiles into `$HOME`. Works in GitHub Codespaces (run automatically) and on local machines.
+The `install.sh` script symlinks dotfiles into `$HOME`. Works in GitHub Codespaces (run automatically) and on local
+machines.
 
 ### Usage
 
@@ -627,6 +744,15 @@ The `install.sh` script symlinks dotfiles into `$HOME`. Works in GitHub Codespac
    ```
 
 3. Apply shell changes in the current session:
+
+   macOS:
+
+   ```bash
+   source ~/.zshrc
+   ```
+
+   Linux/Codespaces:
+
    ```bash
    source ~/.bashrc
    ```
@@ -635,7 +761,9 @@ The `install.sh` script symlinks dotfiles into `$HOME`. Works in GitHub Codespac
 
 1. **Auto-detects its own location** — no hardcoded paths; works wherever the repo is cloned.
 2. **Symlinks dotfiles** into `$HOME`:
-   - `.bashrc`, `.curlrc`, `.editorconfig`, `.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`, `.wgetrc`
+   - `.shell_common`, `.curlrc`, `.editorconfig`, `.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`,
+     `.wgetrc`
+3. **OS detection** — symlinks `.zshrc` on macOS and `.bashrc` on Linux/Codespaces.
 
 ## Contact 📬
 
@@ -643,14 +771,11 @@ For questions, reach out via [evgenii.shiliaev@jekwwer.com][evgenii.shiliaev@jek
 
 ---
 
-### Notes
-
-- The script assumes a Linux-based environment Codespaces setup.
-
 [LICENSE]: LICENSE
 [.gitconfig]: #gitconfig
 [.gitignore_global]: #gitignore_global
 [.gitmessage]: #gitmessage
+[.shell_common]: #shell_common
 [node.gitignore]: https://github.com/github/gitignore/blob/main/Node.gitignore
 [visualstudio.gitignore]: https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 [evgenii.shiliaev@jekwwer.com]: mailto:evgenii.shiliaev@jekwwer.com

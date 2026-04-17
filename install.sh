@@ -8,7 +8,7 @@ if [[ ! -d "$DOTFILES_DIR" ]]; then
     exit 1
 fi
 
-FILES_TO_SYMLINK=(".bashrc" ".curlrc" ".editorconfig" ".gitattributes" ".gitconfig" ".gitignore_global" ".gitmessage" ".wgetrc")
+FILES_TO_SYMLINK=(".curlrc" ".editorconfig" ".gitattributes" ".gitconfig" ".gitignore_global" ".gitmessage" ".shell_common" ".wgetrc")
 
 echo "Installation started at $(date)"
 echo "Linking dotfiles..."
@@ -17,6 +17,16 @@ for file in "${FILES_TO_SYMLINK[@]}"; do
     echo "Linked $DOTFILES_DIR/$file -> $HOME/$file"
 done
 
+if [[ "$(uname)" == "Darwin" ]]; then
+    ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+    echo "Linked $DOTFILES_DIR/.zshrc -> $HOME/.zshrc"
+    RC_FILE=".zshrc"
+else
+    ln -sf "$DOTFILES_DIR/.bashrc" "$HOME/.bashrc"
+    echo "Linked $DOTFILES_DIR/.bashrc -> $HOME/.bashrc"
+    RC_FILE=".bashrc"
+fi
+
 echo "Dotfiles installation complete!"
-echo "Run 'source ~/.bashrc' to apply shell changes in the current session."
+echo "Run 'source ~/$RC_FILE' to apply shell changes in the current session."
 echo "Installation completed at $(date)"
