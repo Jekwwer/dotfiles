@@ -534,11 +534,8 @@ This template is designed to align with best practices, follow the **Conventiona
 [DEPENDENCIES REMOVED]
  - <list of removed dependencies>
 
-[FEATURES/CHANGES]
- - <list of new features, updates, or changes>
-
-[TECHNIQUES]
- - <details about methods, tools, or approaches used>
+[CHANGES]
+ - <list of changes>
 
 [PURPOSE]
  - <reason for the change or issue being addressed>
@@ -546,8 +543,7 @@ This template is designed to align with best practices, follow the **Conventiona
 [IMPACT]
  - <impact on the project, users, or performance>
 
-[FIXES/CLOSES/RESOLVES]
- - #<list of related issue numbers>
+Closes #<issue-number>
 
 [REFERENCES]
  - <links to documentation, code reviews, or other resources>
@@ -573,11 +569,10 @@ This template is designed to align with best practices, follow the **Conventiona
 - **`<detailed description>`**: A more comprehensive explanation of the change (optional).
 - **`[FILES ADDED/MODIFIED/REMOVED]`**: Lists the files affected by the commit.
 - **`[DEPENDENCIES ADDED/UPDATED/REMOVED]`**: Highlights any dependency changes.
-- **`[FEATURES/CHANGES]`**: Details the new features or changes made in the commit.
-- **`[TECHNIQUES]`**: Describes tools, methods, or approaches used (optional).
+- **`[CHANGES]`**: Lists individual changes when the subject line is a summary of multiple items.
 - **`[PURPOSE]`**: Explains the rationale behind the change.
 - **`[IMPACT]`**: Describes the effect on the project, users, or performance.
-- **`[FIXES/CLOSES/RESOLVES]`**: References related issues, pull requests, or tasks.
+- **`Closes #N`**: References and auto-closes related issues on merge (one per line).
 - **`[REFERENCES]`**: Links to related documentation, code reviews, or designs (optional).
 
 ### Example Commit Message
@@ -602,7 +597,7 @@ to use the new OAuth2 endpoints as described in the migration guide.
 [DEPENDENCIES ADDED]
  - new-auth-library
 
-[FEATURES/CHANGES]
+[CHANGES]
  - Transitioned to OAuth2 for authentication.
  - Enhanced token management and session handling.
 
@@ -612,8 +607,7 @@ to use the new OAuth2 endpoints as described in the migration guide.
 [IMPACT]
  - Breaking change: Requires client updates to use the new endpoints.
 
-[FIXES]
- - #124
+Closes #124
 
 [REFERENCES]
  - Migration Guide: https://example.com/migration-guide

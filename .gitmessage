@@ -12,8 +12,6 @@
 
 # Detailed description:
 # - Use this section to provide additional context or explain the change in more depth.
-# - For breaking changes, include a separate line that starts with:
-BREAKING CHANGE: <description of breaking changes and required adaptations>
 
 <detailed description>
 
@@ -51,17 +49,11 @@ BREAKING CHANGE: <description of breaking changes and required adaptations>
 [DEPENDENCIES REMOVED]
  - <list of dependencies>
 
-# Features/Changes:
-# - Summarize the new features, updates, or changes in this commit.
+# Changes:
+# - List individual changes when the subject line is a summary of multiple items.
 
-[FEATURES/CHANGES]
- - <list of features or changes>
-
-# Techniques:
-# - Optionally document the approaches, tools, or methods used.
-
-[TECHNIQUES]
- - <details of techniques used>
+[CHANGES]
+ - <list of changes>
 
 # Purpose:
 # - Explain why this change was needed.
@@ -75,16 +67,16 @@ BREAKING CHANGE: <description of breaking changes and required adaptations>
 [IMPACT]
  - <description of the impact>
 
-# Issue References:
-# - Use one of these keywords to reference issues resolved by this commit:
-#   FIXES, CLOSES, or RESOLVES.
-# - Add the issue number(s).
-
-[FIXES/CLOSES/RESOLVES]
- - #<issue number>
-
 # References:
 # - Link to related documentation, code reviews, or designs.
 
 [REFERENCES]
  - <links to resources>
+
+# Footers (must be last — nothing after these lines):
+# - Issue refs: each on its own line, GitHub auto-closes the issue.
+# - BREAKING CHANGE: must be the final footer; any text after it becomes part of the note.
+
+Closes #<issue-number>
+
+# BREAKING CHANGE: <description of breaking changes and required adaptations>
