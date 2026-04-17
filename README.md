@@ -244,16 +244,11 @@ if a repository-specific .editorconfig file is not present.
   - **Line Length**: Restricts global line length to 88 characters (`max_line_length = 88`).
 
 - **File-Specific Rules**:
-  - **Configuration Files**:
-    - Retains trailing whitespace for files like `.editorconfig` and `.gitignore` (`trim_trailing_whitespace = false`).
   - **Markdown Files**:
     - Increases max line length for readability (`max_line_length = 120`).
     - Preserves intentional trailing whitespace for line breaks (`trim_trailing_whitespace = false`).
   - **JSON Files**:
-    - Enforces 2-space indentation, typical for JSON (`indent_size = 2`).
     - Removes line length restrictions (`max_line_length = off`).
-  - **Python Files**:
-    - Uses 4-space indentation to adhere to PEP 8 standards (`indent_size = 4`).
   - **Shell Scripts**:
     - Uses 4-space indentation for readability in shell scripts (`indent_size = 4`).
   - **Text and Log Files**:
@@ -281,13 +276,12 @@ The `.gitattributes` file configures how Git handles specific files and attribut
 
 ### Features List
 
-- **Line Endings**: Normalizes text files with `* text=auto` and ensures LF endings for specific types (e.g., `.sh`, `.py`, `.json`).
-- **Binary Files**: Marks files like images (`*.png`, `*.jpg`), fonts (`*.woff`, `*.ttf`), and archives (`*.zip`, `*.tar.gz`) as binary.
-- **Merge Conflicts**: Enables `diff3` markers for better conflict resolution.
-- **Custom Diffs**: Uses readable diffs for JSON and XML files.
-- **Exclusions**: Ignores large files (`*.log`, `*.iso`) and temporary files (`*.tmp`, `.DS_Store`) from diffs and exports.
-- **Language Stats**: Excludes generated files like `.min.js` from GitHub language statistics.
-- **Locking**: Marks files like `*.lock` as lockable for collaboration.
+- **Line Endings**: Normalizes text files with `* text=auto`; enforces LF on checkout for `.sh`, `.py`, `.js`, `.ts`, `.tsx`, `.css`, `.html`, `.java`, `.c`, `.cpp`, `.md`, `.yml`, `.yaml`, `.json`, `.xml`, `.toml`.
+- **Binary Files**: Marks images (`.png`, `.jpg`, `.jpeg`, `.gif`, `.svg`), documents (`.pdf`), icons (`.ico`), fonts (`.ttf`, `.otf`, `.woff`, `.woff2`), and archives (`.zip`, `.tar.gz`, `.iso`) as binary.
+- **Custom Diffs**: Uses structured diff drivers for JSON and XML files.
+- **Large File Diffs**: Skips diffing for `.log` files where diffs are not useful.
+- **Export Exclusions**: Excludes `.bak`, `.tmp`, `.swp`, `.DS_Store`, `.idea/`, `.vscode/`, and `node_modules/` from `git archive` exports.
+- **Language Stats**: Excludes generated files (`.min.js`, `.map`) from GitHub language statistics.
 
 ## .gitconfig
 
