@@ -170,22 +170,14 @@ The `.curlrc` file provides a global configuration for the `curl` command-line t
 
 ### Features List
 
-- **Automatic Retries**: Retries failed requests up to 3 times on transient errors (`--retry 3`).
+- **Progress Display**: Shows a progress bar for downloads (`--progress-bar`).
+- **Automatic Redirect Handling**: Follows HTTP redirects automatically (`--location`).
+- **Retries**: Retries up to 3 times on any error, including HTTP 5xx responses (`--retry 3`, `--retry-all-errors`).
 - **Timeouts**:
   - Connection timeout set to 15 seconds (`--connect-timeout 15`).
-  - Maximum request time set to 120 seconds (`--max-time 120`).
-- **Silent Mode with Error Reporting**: Suppresses unnecessary progress output but displays errors (`--silent`, `--show-error`).
-- **Secure Connections**:
-  - Enforces SSL/TLS usage (`--ssl`).
-  - Ensures strong cryptographic protocols with secure ciphers (`--ciphers DEFAULT:@SECLEVEL=2`).
-  - Verifies SSL certificates to prevent man-in-the-middle attacks.
-- **Automatic Redirect Handling**: Follows HTTP redirects automatically (`--location`).
-- **Default Output Handling**:
-  - Prevents overwriting existing files by default (`--output /tmp/curl-output.txt`).
-  - Avoids buffering for real-time responses (`--no-buffer`).
-- **User-Agent Customization**: Sets a meaningful user-agent string based on the `curl` version (`--user-agent`).
-- **Fail on HTTP Errors**: Stops processing on 4xx/5xx errors for better error handling in scripts (`--fail`).
-- **IPv4 Fallback**: Ensures compatibility by preferring IPv4 if IPv6 is unavailable (`--ipv4`).
+  - Maximum transfer time set to 120 seconds (`--max-time 120`); override with `--max-time 0` for large downloads.
+- **Secure Connections**: Enforces 2048-bit keys and SHA-256+ signatures (`--ciphers DEFAULT:@SECLEVEL=2`).
+- **Fail with Body**: Exits non-zero on HTTP errors (4xx/5xx) but still prints the response body for debugging (`--fail-with-body`).
 
 ## .wgetrc
 
