@@ -1,4 +1,3 @@
-// .releaserc.js: Configures the semantic-release process.
 module.exports = {
   branches: ['main'],
   plugins: [
