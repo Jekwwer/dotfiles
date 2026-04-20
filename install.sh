@@ -27,6 +27,10 @@ else
     RC_FILE=".bashrc"
 fi
 
+mkdir -p "$HOME/bin"
+ln -sf "$DOTFILES_DIR/scripts/prune-cspell-words" "$HOME/bin/prune-cspell-words"
+echo "Linked $DOTFILES_DIR/scripts/prune-cspell-words -> $HOME/bin/prune-cspell-words"
+
 echo "Dotfiles installation complete!"
 echo "Run 'source ~/$RC_FILE' to apply shell changes in the current session."
 echo "Installation completed at $(date)"

@@ -1,0 +1,200 @@
+#!/usr/bin/env python3
+"""Remove stale words from a cspell.json words list.
+
+Searches all non-gitignored, non-cspell-ignored files for each word.
+Words not found anywhere are removed from cspell.json.
+
+Usage:
+    prune-cspell-words                        # uses ./cspell.json
+    prune-cspell-words -c path/cspell.json    # explicit config path
+    prune-cspell-words --dry-run              # preview without modifying
+    prune-cspell-words --verbose              # show each word as checked
+"""
+
+import argparse
+import fnmatch
+import json
+import subprocess
+import sys
+from pathlib import Path
+from typing import Any
+
+
+def parse_args() -> argparse.Namespace:
+    """Parse command-line arguments."""
+    parser = argparse.ArgumentParser(
+        description="Remove stale words from a cspell.json words list.",
+    )
+    parser.add_argument(
+        "-c",
+        "--config",
+        default="cspell.json",
+        metavar="PATH",
+        help="path to cspell config file (default: ./cspell.json)",
+    )
+    parser.add_argument(
+        "-n",
+        "--dry-run",
+        action="store_true",
+        help="show which words would be removed without modifying the file",
+    )
+    parser.add_argument(
+        "-v",
+        "--verbose",
+        action="store_true",
+        help="print each word as it is checked",
+    )
+    return parser.parse_args()
+
+
+def get_searchable_files(
+    repo_root: Path, config_path: Path, ignore_patterns: list[str]
+) -> list[Path]:
+    """Return files that cspell would check: tracked and untracked non-ignored files.
+
+    Args:
+        repo_root: Root directory for git operations (parent of config file).
+        config_path: Path to cspell.json — excluded from search results.
+        ignore_patterns: Glob patterns from cspell ignorePaths.
+
+    Returns:
+        List of files to search.
+    """
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard"],
+            capture_output=True,
+            text=True,
+            check=True,
+            cwd=repo_root,
+        )
+    except subprocess.CalledProcessError:
+        print("error: not a git repository", file=sys.stderr)
+        sys.exit(1)
+
+    files: list[Path] = []
+    for line in result.stdout.splitlines():
+        if not line:
+            continue
+        path = repo_root / line
+        if path == config_path or not path.is_file():
+            continue
+        name = path.name
+        rel = str(Path(line))
+        if any(
+            fnmatch.fnmatch(name, pat) or fnmatch.fnmatch(rel, pat)
+            for pat in ignore_patterns
+        ):
+            continue
+        files.append(path)
+    return files
+
+
+def word_in_files(word: str, files: list[Path]) -> bool:
+    """Return True if word appears as a whole word (case-insensitive) in any file.
+
+    Args:
+        word: Word to search for.
+        files: Files to search.
+
+    Returns:
+        True if found, False otherwise.
+    """
+    if not files:
+        return False
+    result = subprocess.run(
+        ["grep", "-ril", "-w", "--", word, *[str(f) for f in files]],
+        capture_output=True,
+        text=True,
+    )
+    return bool(result.stdout.strip())
+
+
+def check_words(
+    words: list[Any], files: list[Path], verbose: bool
+) -> tuple[list[Any], list[str]]:
+    """Check each word against searchable files, returning (kept, removed).
+
+    Args:
+        words: Words list from cspell config.
+        files: Files to search.
+        verbose: Print each word as it is checked.
+
+    Returns:
+        Tuple of (kept words, removed words).
+    """
+    kept: list[Any] = []
+    removed: list[str] = []
+
+    for word in words:
+        if not isinstance(word, str):
+            kept.append(word)
+            continue
+
+        if verbose:
+            print(f"  checking {word!r} ...", end=" ", flush=True)
+
+        if word_in_files(word, files):
+            kept.append(word)
+            if verbose:
+                print("keep")
+        else:
+            removed.append(word)
+            if verbose:
+                print("remove")
+            else:
+                print(f"  remove: {word}")
+
+    return kept, removed
+
+
+def main() -> None:
+    """Entry point: parse args, check words, update config."""
+    args = parse_args()
+
+    config_path = Path(args.config).resolve()
+    if not config_path.exists():
+        print(f"error: config not found: {config_path}", file=sys.stderr)
+        sys.exit(1)
+
+    config: dict[str, Any] = json.loads(config_path.read_text())
+    words: Any = config.get("words", [])
+
+    if not isinstance(words, list) or not words:
+        print("No words to check.")
+        return
+
+    ignore_patterns: list[str] = []
+    raw_ignore: Any = config.get("ignorePaths", [])
+    if isinstance(raw_ignore, list):
+        ignore_patterns = [p for p in raw_ignore if isinstance(p, str)]
+
+    repo_root = config_path.parent
+    files = get_searchable_files(repo_root, config_path, ignore_patterns)
+
+    print(f"Config : {config_path}")
+    print(f"Files  : {len(files)} searchable")
+    print(f"Words  : {len(words)} to check")
+    if args.dry_run:
+        print("Mode   : dry run (no changes written)")
+    print()
+
+    kept, removed = check_words(words, files, args.verbose)
+
+    print()
+    if not removed:
+        print("All words still in use — nothing removed.")
+        return
+
+    print(f"Removed {len(removed)} word(s): {', '.join(removed)}")
+
+    if args.dry_run:
+        print("(dry run — file not modified)")
+    else:
+        config["words"] = kept
+        config_path.write_text(json.dumps(config, indent=2) + "\n")
+        print(f"Updated: {config_path}")
+
+
+if __name__ == "__main__":
+    main()

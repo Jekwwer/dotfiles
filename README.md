@@ -15,6 +15,7 @@ Personal development environment configuration for Linux/Codespaces and macOS.
 - **Wget Configuration** (`.wgetrc`): Enhanced `wget` settings for reliability, security, and convenience.
 - **Scripts**:
   - **`install.sh`**: A setup script for linking dotfiles and preparing the environment.
+  - **`prune-cspell-words`**: Remove stale words from a `cspell.json` words list.
 
 ## License 🛡️
 
@@ -153,6 +154,19 @@ Symlinks all dotfiles into `$HOME`. Detects OS to link `.zshrc` (macOS) or `.bas
 - Always symlinks: `.shell_common`, `.curlrc`, `.editorconfig`, `.gitattributes`, `.gitconfig`, `.gitignore_global`,
   `.gitmessage`, `.wgetrc`
 - OS-aware: `.zshrc` on macOS, `.bashrc` on Linux/Codespaces
+- Creates `~/bin/` and symlinks `scripts/prune-cspell-words` into it
+
+## prune-cspell-words
+
+Remove stale words from a cspell.json words list. Symlinked into `~/bin/` by `install.sh`.
+
+```
+prune-cspell-words [-c PATH] [-n] [-v]
+```
+
+- `-c / --config PATH`: path to cspell config (default: `./cspell.json`)
+- `-n / --dry-run`: preview removals without modifying the file
+- `-v / --verbose`: print each word as it is checked
 
 ## Contact 📬
 
