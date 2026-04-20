@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.1.0 - 2026-04-20
+### 🚀 New Features
+
+* **scripts:** add prune-cspell-words CLI tool ([68e5bfc](https://github.com/Jekwwer/dotfiles/commit/68e5bfc9af7cd1441be0798a5b1a450d809782a6))
+
+### 🔧 Chores
+
+* **editorconfig:** remove redundant label comments ([00411a3](https://github.com/Jekwwer/dotfiles/commit/00411a353c129660ad37b9fbe95ba9d80d80559d))
+
 ## 2.0.0 - 2026-04-17
 ### ⚠ BREAKING CHANGES
 
