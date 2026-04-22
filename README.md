@@ -144,7 +144,8 @@ Conventional Commits template. Commit types that trigger a release:
 | `feat`                            | minor   |
 | `fix`, `security`, `deps`, `perf` | patch   |
 
-Append `!` for breaking changes (`feat!:`); add `BREAKING CHANGE: <description>` as the **last footer** — nothing after it, or the trailing content becomes part of the changelog note.
+Append `!` for breaking changes (`feat!:`); add `BREAKING CHANGE: <description>` as the **last footer** — nothing after
+it, or the trailing content becomes part of the changelog note.
 
 ## install.sh
 
