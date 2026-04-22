@@ -102,7 +102,7 @@ Fallback coding-style rules when a project has no `.editorconfig` of its own.
 
 - Defaults: UTF-8, LF endings, 2-space indent, trim trailing whitespace, final newline, 88-char line limit
 - Markdown: 120-char limit, preserve trailing whitespace (for line breaks)
-- JSON: no line length limit
+- JSON: 88-char limit
 - Shell scripts: 4-space indent
 - Text/log files: preserve trailing whitespace
 
