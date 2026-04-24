@@ -1,5 +1,19 @@
 # Changelog
 
+## 2.2.0 - 2026-04-24
+### 🚀 New Features
+
+* **gitmessage:** align with new commit-message skill style ([236793d](https://github.com/Jekwwer/dotfiles/commit/236793da5a02ed2d4fdca95e1716745bd89f4035))
+
+### 🎨 Code Style Improvements
+
+* apply prettier formatting ([c1ba139](https://github.com/Jekwwer/dotfiles/commit/c1ba139f4e89a732be8d7ecd37615bbaa3124e6d))
+
+### 🔧 Chores
+
+* **config:** set JSON line length limit to 88 ([7f9ef8c](https://github.com/Jekwwer/dotfiles/commit/7f9ef8c32968e87c324f75917d9e5de51984f0ea))
+* **releaserc:** remove redundant file-label comment ([568a54e](https://github.com/Jekwwer/dotfiles/commit/568a54e6899eaa761fdec01e9492559fddf1dcab))
+
 ## 2.1.0 - 2026-04-20
 ### 🚀 New Features
 
