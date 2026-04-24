@@ -2,43 +2,73 @@
 #
 # Guidelines for the header:
 # - <type>: Commit type, e.g., feat, fix, docs, chore, refactor, deps, test, security, etc.
-#   Append a ! to <type> (e.g., feat!) if the commit introduces a breaking change.
+#   Breaking change: ! before the colon, after the closing paren if scope is present.
+#   With scope:    type(scope)!: ...
+#   Without scope: type!: ...
 # - <scope>: Optional. The specific module, feature, or area affected.
-# - <description>: A short, imperative summary of the change.
+# - <description>: Short, imperative summary. Target ≤60 chars, hard cap 72. No trailing period.
 #
 # Example: feat(auth): add OAuth login support
+#
+# Style notes (body renders as plain text in `git log`, VS Code timeline, and most
+# GitHub views — only PR bodies render markdown):
+# - No backticks, no bold, no italics. Backticks only for regex or quoted string literals.
+# - One fact per bullet. Parentheticals inside a bullet: ≤6 words.
+# - Blank line before and after every [SECTION] header.
+# - If any bullet in a section wraps past one line, blank-line-separate every bullet in it.
+# - Prose blocks ([PURPOSE], [IMPACT], detailed description): max 2 sentences;
+#   past that, convert to bullets.
 
 <type>(<scope>): <description>
 
-# Detailed description:
-# - Use this section to provide additional context or explain the change in more depth.
+# Detailed description (rare):
+# - Use only for breaking-change migration narrative or cross-cutting context that
+#   structured sections cannot carry. Default: omit.
 
 <detailed description>
 
+# Changes:
+# - Include when the commit covers 3+ logically distinct changes.
+# - Logical ≠ mechanical: renaming 5 files is one logical change.
+
+[CHANGES]
+ - <list of changes>
+
+# Purpose:
+# - State the triggering cause, not the aspiration.
+# - Skip when the reason is self-evident from the header.
+
+[PURPOSE]
+ - <reason for the change>
+
+# Impact:
+# - Observable or actionable effects only. Skip for invisible internal refactors.
+# - Must not restate [PURPOSE].
+
+[IMPACT]
+ - <description of the impact>
+
 # Affected files:
-# - Use one or more of these sections to list affected files.
-# - List filenames and briefly describe their role in the change.
-#
-# [FILES ADDED]         -> Newly created files.
-# [FILES MODIFIED]      -> Files that were updated.
-# [FILES REMOVED]       -> Files that were deleted.
+# - Include deliberate additions and deletions so intent is visible without running git show.
+# - [FILES MODIFIED] is not used — `git show --stat` already reports that.
+# - Bare file list preferred; add " — role" only when a file's contribution is not
+#   inferable from [CHANGES] or header.
 
 [FILES ADDED]
- - <list of files>
-
-[FILES MODIFIED]
  - <list of files>
 
 [FILES REMOVED]
  - <list of files>
 
 # Dependencies:
-# - Document any changes to project dependencies.
-# - Use these sections for newly added, updated, or removed dependencies.
-#
-# [DEPENDENCIES ADDED]  -> New dependencies.
-# [DEPENDENCIES UPDATED]-> Updated dependencies.
-# [DEPENDENCIES REMOVED]-> Removed dependencies.
+# - Only for actual dependency file changes.
+# - Formats:
+#     ADDED:   - name: version            (e.g. - ruff-pre-commit: v0.15.11)
+#     UPDATED: - name: old → new          (e.g. - ruff: ^0.11.12 → ^0.15.11)
+#     REMOVED: - name: last-known-version (e.g. - pyupgrade: ^3.15)
+# - When >5 entries in one ecosystem: list 2-3 meaningful bumps individually, then
+#   "- plus X, Y, Z to latest" for the rest.
+# - Separate poetry deps from pre-commit hook revs into different sections if both present.
 
 [DEPENDENCIES ADDED]
  - <list of dependencies>
@@ -49,34 +79,19 @@
 [DEPENDENCIES REMOVED]
  - <list of dependencies>
 
-# Changes:
-# - List individual changes when the subject line is a summary of multiple items.
-
-[CHANGES]
- - <list of changes>
-
-# Purpose:
-# - Explain why this change was needed.
-
-[PURPOSE]
- - <reason for the change>
-
-# Impact:
-# - Describe the effect of the change on the project or users.
-
-[IMPACT]
- - <description of the impact>
-
 # References:
-# - Link to related documentation, code reviews, or designs.
+# - Links to related docs, designs, reviews, external issues.
 
 [REFERENCES]
  - <links to resources>
 
 # Footers (must be last — nothing after these lines):
-# - Issue refs: each on its own line, GitHub auto-closes the issue.
-# - BREAKING CHANGE: must be the final footer; any text after it becomes part of the note.
+# - Closes #<n>: one per line. GitHub auto-closes the issue.
+# - Refs #<n>:   one per line. Mention without closing.
+# - BREAKING CHANGE: must pair with ! in header; must be the final footer.
 
 Closes #<issue-number>
+
+Refs #<issue-number>
 
 # BREAKING CHANGE: <description of breaking changes and required adaptations>
