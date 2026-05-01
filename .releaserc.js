@@ -111,9 +111,16 @@ module.exports = {
     ],
     '@semantic-release/github',
     [
+      '@semantic-release/exec',
+      {
+        prepareCmd:
+          'sed -i -E "s/Copyright \\(c\\) ([0-9]{4})(–[0-9]{4})?/Copyright (c) \\1–$(date +%Y)/" LICENSE',
+      },
+    ],
+    [
       '@semantic-release/git',
       {
-        assets: ['package.json', 'package-lock.json', 'CHANGELOG.md'],
+        assets: ['package.json', 'package-lock.json', 'CHANGELOG.md', 'LICENSE'],
         message:
           'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
       },
