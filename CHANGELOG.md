@@ -5,10 +5,6 @@
 
 * **gitmessage:** align with new commit-message skill style ([236793d](https://github.com/Jekwwer/dotfiles/commit/236793da5a02ed2d4fdca95e1716745bd89f4035))
 
-### 🎨 Code Style Improvements
-
-* apply prettier formatting ([c1ba139](https://github.com/Jekwwer/dotfiles/commit/c1ba139f4e89a732be8d7ecd37615bbaa3124e6d))
-
 ### 🔧 Chores
 
 * **config:** set JSON line length limit to 88 ([7f9ef8c](https://github.com/Jekwwer/dotfiles/commit/7f9ef8c32968e87c324f75917d9e5de51984f0ea))
@@ -24,7 +20,7 @@
 * **editorconfig:** remove redundant label comments ([00411a3](https://github.com/Jekwwer/dotfiles/commit/00411a353c129660ad37b9fbe95ba9d80d80559d))
 
 ## 2.0.0 - 2026-04-17
-### ⚠ BREAKING CHANGES
+### ⚠️ BREAKING CHANGES
 
 * commit-gen is no longer available. Remove any scripts, aliases, or gitconfig hooks that reference it.
 
@@ -47,17 +43,6 @@
 
 * **gitmessage:** fix BREAKING CHANGE, drop TECHNIQUES, rename CHANGES, fix issue refs ([9887064](https://github.com/Jekwwer/dotfiles/commit/98870645074f5ae2f72b2d6ba2494af0140fcffd))
 * slim README, add CHEATSHEET.md, update package.json metadata ([ffabb3e](https://github.com/Jekwwer/dotfiles/commit/ffabb3e8c092778c75cec2f478ca47f439a6108f))
-
-### 🛠️ Refactoring
-
-* **curlrc:** simplify config, add retry-all-errors, swap fail-with-body ([c65fd53](https://github.com/Jekwwer/dotfiles/commit/c65fd53c202cb2a8ede3330b4c7ef075c8896f63))
-
-### 🎨 Code Style Improvements
-
-* **editorconfig:** fix root flag, remove bad override, clean comments ([564e885](https://github.com/Jekwwer/dotfiles/commit/564e8850fcbfcb0a0943820cb2cfc39f8d68a6f3))
-* **gitattributes:** fix globs, add types, drop invalid attrs, clean up ([d961176](https://github.com/Jekwwer/dotfiles/commit/d9611768df66047800af9171641fe9b62cd9b238))
-* **gitignore_global:** remove redundant filename comment ([bda9110](https://github.com/Jekwwer/dotfiles/commit/bda911019485d4887a47726568394b56d15f0c87))
-* **releaserc:** fix section order, add perf rule, drop redundant deps ([24fe551](https://github.com/Jekwwer/dotfiles/commit/24fe5514ec1ef1fbfbfe13cc7326da1fbcff7bb0))
 
 ### 🔧 Chores
 
@@ -90,7 +75,7 @@
 
 * **README:** update installation instructions for Codespaces users ([8b335bb](https://github.com/Jekwwer/dotfiles/commit/8b335bb958b83d698282b0b3e87dd78635c0620c))
 
-### 📦 Chores
+### 🔧 Chores
 
 * **editorconfig:** unify comment styles ([61e51f1](https://github.com/Jekwwer/dotfiles/commit/61e51f1ac783786d73d756f238932b8a163660fe))
 * **license:** change license to GPL v3 ([90acc0e](https://github.com/Jekwwer/dotfiles/commit/90acc0ebe1f58c28295a3cdfff6378ea88f29e0d))
@@ -113,13 +98,9 @@
 * **editorconfig:** add note about unofficial attribute ([d9c5cd1](https://github.com/Jekwwer/dotfiles/commit/d9c5cd185bb78102161101174753e84d8f9af0f7))
 * **template:** update commit message template instructions ([2cbb310](https://github.com/Jekwwer/dotfiles/commit/2cbb310d9a80e2c15f24bfdf558ec870db87ec0d))
 
-### 📦 Chores
+### 🔧 Chores
 
 * **gitignore:** add direct references to gitignore sources ([d7ec82e](https://github.com/Jekwwer/dotfiles/commit/d7ec82ea348d0f07833fd496977e8ccc4762e830))
-
-### 🛠️ Refactoring
-
-* **config:** remove old parser options from releaserc ([8fca38d](https://github.com/Jekwwer/dotfiles/commit/8fca38dd8ca8bf8bdc0a45ec4f664e4d8e45f10f))
 
 ## 1.4.1 - 2025-02-14
 ### 🔒 Security Updates
@@ -130,11 +111,6 @@
 
 * **readme:** update README for common-docs v1.1.0 release ([a6c506e](https://github.com/Jekwwer/dotfiles/commit/a6c506e6bc1fd31f80089280d7fc7b32a6983327))
 
-### 🛠️ Refactoring
-
-* **config:** simplify `.wgetrc` settings for interactive use ([cb606c3](https://github.com/Jekwwer/dotfiles/commit/cb606c313e0c5515f4126f0686fa620d358a56e2))
-* **curlrc:** enhance interactivity and simplify configuration ([95be648](https://github.com/Jekwwer/dotfiles/commit/95be648c93271ffa24b2b6f347c4913751c32ff9))
-
 ## 1.4.0 - 2025-02-03
 ### 🚀 New Features
 
@@ -144,13 +120,9 @@
 
 * **license:** add LICENSE file and update license references ([ba6a8cc](https://github.com/Jekwwer/dotfiles/commit/ba6a8cc2d36a50c6ad93b9c9a969bcbc93738800))
 
-### 📦 Chores
+### 🔧 Chores
 
 * **releaserc:** remove unnecessary rule and asset settings ([a1c5b57](https://github.com/Jekwwer/dotfiles/commit/a1c5b57693a8a7c94ae44623a3adc9feeb2fb3f1))
-
-### 🛠️ Refactoring
-
-* **smart-commit:** move alias logic to script and optimize pre-commit execution ([7d05e99](https://github.com/Jekwwer/dotfiles/commit/7d05e99b5c8e0e7965ea64ed3b3202c604bf72c0))
 
 ## 1.3.1 - 2025-01-23
 ### 🐞 Bug Fixes
@@ -167,7 +139,7 @@
 
 * **readme:** update with Node.gitignore reference and details ([ba905e6](https://github.com/Jekwwer/dotfiles/commit/ba905e62142955e55706c47152e41fff1a91072a))
 
-### 📦 Chores
+### 🔧 Chores
 
 * **gitignore:** add Node gitignore patterns to global gitignore ([9fc5118](https://github.com/Jekwwer/dotfiles/commit/9fc51182468a1f7d3b9f21fe6275d5e4e0d2128f))
 
@@ -180,7 +152,7 @@
 
 * **docs:** correct spelling errors in configuration files ([c27b46c](https://github.com/Jekwwer/dotfiles/commit/c27b46c34d094dec1a6145cc153cfb7bcb3718ea))
 
-### 📦 Chores
+### 🔧 Chores
 
 * **changelog:** sort entries by new config ([9810bf4](https://github.com/Jekwwer/dotfiles/commit/9810bf4122e124470bd745454631a11e20163127))
 * **ci:** add range to node version in release workflow ([b4283ee](https://github.com/Jekwwer/dotfiles/commit/b4283ee0de2648f6f29dd5d7c531c7145a961414))
@@ -198,7 +170,7 @@
 
 ## 1.0.0 - 2025-01-20
 
-### ⚠ BREAKING CHANGES
+### ⚠️ BREAKING CHANGES
 
 #### Tagging Transition Notice
 
@@ -250,10 +222,7 @@ Version `v1.0.0` includes all commits from the repository start point.
 * **readme:** update .bashrc section with core configuration details ([85ab4bb](https://github.com/Jekwwer/dotfiles/commit/85ab4bbebea006b282b952a2c55f129b084fb7e3))
 * **readme:** update README with detailed .curlrc information ([a2a2c16](https://github.com/Jekwwer/dotfiles/commit/a2a2c169ceff1610a02e74b620a34a996c40962c))
 
-### 📦 Chores
+### 🔧 Chores
 
 * **bashrc:** relax safety settings for usability ([8e5fb25](https://github.com/Jekwwer/dotfiles/commit/8e5fb25177b7a76da66f322691e7371ab87ea8ab))
 
-### 🛠️ Refactoring
-
-* **install:** update symlink process and logging in install script ([3e2ec18](https://github.com/Jekwwer/dotfiles/commit/3e2ec18046b496192422140126e2453cd49850c3))
