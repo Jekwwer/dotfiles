@@ -40,6 +40,12 @@ alias gd='git diff'
 alias gds='git diff --staged'
 alias gb='git branch'
 alias gl='git log --oneline --graph'
+alias gla='git log --all --oneline --graph'
+alias glm='git log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit'
+alias gri='git rebase -i'
+alias gsv='git stash push'
+alias gun='git reset HEAD~1'
+alias gdel='git push origin --delete'
 
 # OS-specific: colors and package manager
 if [[ "$(uname)" == 'Darwin' ]]; then

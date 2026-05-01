@@ -9,14 +9,19 @@
   d = diff
   ds = diff --staged
   del-branch = "!f() { git push origin --delete \"$1\"; }; f"
+  f = fetch
   fixup = commit --amend --no-edit
   lg = log --oneline --graph
   lga = log --all --oneline --graph
   lgm = log --pretty=format:"%C(auto)%h %C(bold blue)%an %C(auto)%d %s%n%b%C(reset)" --graph --decorate --abbrev-commit
+  pl = pull
+  ps = push
   pushf = push --force-with-lease
   ri = rebase -i
+  rs = restore
   save = stash push
   st = status
+  sw = switch
   undo = reset HEAD~1
 
 [column]
