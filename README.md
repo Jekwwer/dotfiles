@@ -85,9 +85,10 @@ Zsh shell config for macOS. Sources `.shell_common` for shared settings.
 
 ## .curlrc
 
-- Progress bar, follows redirects, retries up to 3× on any error
+- Progress bar, follows redirects (capped at 10), retries 3× on transient errors (5xx/408/429/network — not 4xx)
 - Timeouts: 15 s connect, 120 s max (override with `--max-time 0` for large downloads)
-- Enforces 2048-bit keys and SHA-256+ ciphers (`DEFAULT:@SECLEVEL=2`)
+- TLS 1.2 floor (portable across all curl backends); schemeless URLs default to https
+- `--compressed`: requests gzip/deflate, transparently decompresses
 - `--fail-with-body`: exits non-zero on 4xx/5xx but still prints the response
 
 ## .wgetrc
