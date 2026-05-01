@@ -70,7 +70,8 @@ reference.
 - Environment: `EDITOR`/`VISUAL=vim`, `PAGER=less`, `LESS=FRX`, UTF-8 locale, `~/bin` and `~/.local/bin` on `PATH`
 - Navigation aliases: `..`, `...`, `....`
 - File aliases: `ll`, `la`, `l`; safe `rm`/`mv`/`cp` (with `-i`)
-- Git aliases: `gst`, `gci`, `gca`, `gd`, `gds`, `gb`, `gco`, `gsw`, `grs`, `gf`, `gfi`, `gpl`, `gps`, `gpf`, `gl`
+- Git aliases: 21 `g*`-prefixed shortcuts covering status/commit/branch/diff/log/push/pull/rebase/stash etc. (see
+  CHEATSHEET for full list)
 - Functions: `hgrep <text>` (history search), `reload` (re-source config)
 - OS-specific: `CLICOLOR`/`LSCOLORS` + `brew` update alias on macOS; `ls --color=auto` + `apt` update alias on Linux
 - `git_branch` helper used by both prompts (falls back to `(short-sha)` when detached)

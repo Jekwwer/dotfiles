@@ -30,23 +30,29 @@ Quick reference for aliases, functions, and settings defined in this dotfiles re
 
 ### Git
 
-| Alias | Command                       |
-| ----- | ----------------------------- |
-| `gb`  | `git branch`                  |
-| `gca` | `git amend`                   |
-| `gci` | `git commit`                  |
-| `gco` | `git checkout`                |
-| `gd`  | `git diff`                    |
-| `gds` | `git diff --staged`           |
-| `gf`  | `git fetch`                   |
-| `gfi` | `git fixup`                   |
-| `gl`  | `git log --oneline --graph`   |
-| `gpl` | `git pull`                    |
-| `gpf` | `git push --force-with-lease` |
-| `gps` | `git push`                    |
-| `grs` | `git restore`                 |
-| `gst` | `git status`                  |
-| `gsw` | `git switch`                  |
+| Alias  | Command                             |
+| ------ | ----------------------------------- |
+| `gb`   | `git branch`                        |
+| `gca`  | `git amend`                         |
+| `gci`  | `git commit`                        |
+| `gco`  | `git checkout`                      |
+| `gd`   | `git diff`                          |
+| `gdel` | `git push origin --delete <branch>` |
+| `gds`  | `git diff --staged`                 |
+| `gf`   | `git fetch`                         |
+| `gfi`  | `git fixup`                         |
+| `gl`   | `git log --oneline --graph`         |
+| `gla`  | `git log --all --oneline --graph`   |
+| `glm`  | detailed log with body + graph      |
+| `gpl`  | `git pull`                          |
+| `gpf`  | `git push --force-with-lease`       |
+| `gps`  | `git push`                          |
+| `gri`  | `git rebase -i`                     |
+| `grs`  | `git restore`                       |
+| `gst`  | `git status`                        |
+| `gsv`  | `git stash push`                    |
+| `gsw`  | `git switch`                        |
+| `gun`  | `git reset HEAD~1`                  |
 
 ### Misc
 
@@ -63,24 +69,29 @@ Quick reference for aliases, functions, and settings defined in this dotfiles re
 
 ## Git Aliases (`.gitconfig`)
 
-| Alias        | Command                                  |
-| ------------ | ---------------------------------------- |
-| `amend`      | `commit --amend`                         |
-| `br`         | `branch`                                 |
-| `ci`         | `commit`                                 |
-| `co`         | `checkout`                               |
-| `d`          | `diff`                                   |
-| `del-branch` | `push origin --delete <branch>`          |
-| `ds`         | `diff --staged`                          |
-| `fixup`      | `commit --amend --no-edit`               |
-| `lg`         | `log --oneline --graph --decorate`       |
-| `lga`        | `log --all --oneline --graph --decorate` |
-| `lgm`        | detailed log with body + graph           |
-| `pushf`      | `push --force-with-lease`                |
-| `ri`         | `rebase -i`                              |
-| `save`       | `stash push`                             |
-| `st`         | `status`                                 |
-| `undo`       | `reset HEAD~1`                           |
+| Alias        | Command                         |
+| ------------ | ------------------------------- |
+| `amend`      | `commit --amend`                |
+| `br`         | `branch`                        |
+| `ci`         | `commit`                        |
+| `co`         | `checkout`                      |
+| `d`          | `diff`                          |
+| `del-branch` | `push origin --delete <branch>` |
+| `ds`         | `diff --staged`                 |
+| `f`          | `fetch`                         |
+| `fixup`      | `commit --amend --no-edit`      |
+| `lg`         | `log --oneline --graph`         |
+| `lga`        | `log --all --oneline --graph`   |
+| `lgm`        | detailed log with body + graph  |
+| `pl`         | `pull`                          |
+| `ps`         | `push`                          |
+| `pushf`      | `push --force-with-lease`       |
+| `ri`         | `rebase -i`                     |
+| `rs`         | `restore`                       |
+| `save`       | `stash push`                    |
+| `st`         | `status`                        |
+| `sw`         | `switch`                        |
+| `undo`       | `reset HEAD~1`                  |
 
 ## Environment Variables (`.shell_common`)
 
