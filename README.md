@@ -140,10 +140,10 @@ Global gitignore applied to all repositories. Covers:
 
 Conventional Commits template. Commit types that trigger a release:
 
-| Type                              | Release |
-| --------------------------------- | ------- |
-| `feat`                            | minor   |
-| `fix`, `security`, `deps`, `perf` | patch   |
+| Type                                       | Release |
+| ------------------------------------------ | ------- |
+| `feat`                                     | minor   |
+| `fix`, `security`, `deps`, `perf`, `build` | patch   |
 
 Append `!` for breaking changes (`feat!:`); add `BREAKING CHANGE: <description>` as the **last footer** — nothing after
 it, or the trailing content becomes part of the changelog note.

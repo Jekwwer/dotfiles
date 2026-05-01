@@ -5,6 +5,8 @@ module.exports = {
       '@semantic-release/commit-analyzer',
       {
         preset: 'conventionalcommits',
+        // Explicit list (including default-equivalent rules) self-documents
+        // the full project commit-type policy.
         releaseRules: [
           { breaking: true, release: 'major' },
           { type: 'feat', release: 'minor' },
@@ -12,11 +14,11 @@ module.exports = {
           { type: 'fix', release: 'patch' },
           { type: 'perf', release: 'patch' },
           { type: 'deps', release: 'patch' },
-          { type: 'test', scope: 'critical', release: 'patch' },
+          { type: 'build', release: 'patch' },
           { type: 'docs', release: false },
-          { type: 'test', release: false },
           { type: 'refactor', release: false },
           { type: 'style', release: false },
+          { type: 'test', release: false },
           { type: 'chore', release: false },
           { type: 'ci', release: false },
         ],
@@ -32,7 +34,10 @@ module.exports = {
             { type: 'security', section: '🔒 Security Updates' },
             { type: 'fix', section: '🐞 Bug Fixes' },
             { type: 'perf', section: '⚡ Performance Improvements' },
+            // revert: handled by semantic-release auto-cancel (pairs with reverted commit, excluded from release)
+            { type: 'revert', section: '⏪ Reverts' },
             { type: 'deps', section: '📦 Dependency Updates' },
+            { type: 'build', section: '🏗️ Build System' },
             { type: 'docs', section: '📖 Documentation' },
             { type: 'test', section: '✅ Testing' },
             { type: 'refactor', section: '🛠️ Refactoring' },
@@ -50,7 +55,9 @@ module.exports = {
               '🔒 Security Updates',
               '🐞 Bug Fixes',
               '⚡ Performance Improvements',
+              '⏪ Reverts',
               '📦 Dependency Updates',
+              '🏗️ Build System',
               '📖 Documentation',
               '✅ Testing',
               '🛠️ Refactoring',
