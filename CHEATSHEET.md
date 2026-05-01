@@ -30,25 +30,29 @@ Quick reference for aliases, functions, and settings defined in this dotfiles re
 
 ### Git
 
-| Alias | Command                                |
-| ----- | -------------------------------------- |
-| `gca` | `git amend`                            |
-| `gci` | `git commit`                           |
-| `gco` | `git checkout`                         |
-| `gf`  | `git fetch`                            |
-| `gfi` | `git fixup`                            |
-| `gl`  | `git log --oneline --graph --decorate` |
-| `gpl` | `git pull`                             |
-| `gpf` | `git push --force-with-lease`          |
-| `gps` | `git push`                             |
-| `gst` | `git status`                           |
+| Alias | Command                       |
+| ----- | ----------------------------- |
+| `gb`  | `git branch`                  |
+| `gca` | `git amend`                   |
+| `gci` | `git commit`                  |
+| `gco` | `git checkout`                |
+| `gd`  | `git diff`                    |
+| `gds` | `git diff --staged`           |
+| `gf`  | `git fetch`                   |
+| `gfi` | `git fixup`                   |
+| `gl`  | `git log --oneline --graph`   |
+| `gpl` | `git pull`                    |
+| `gpf` | `git push --force-with-lease` |
+| `gps` | `git push`                    |
+| `grs` | `git restore`                 |
+| `gst` | `git status`                  |
+| `gsw` | `git switch`                  |
 
 ### Misc
 
-| Alias    | Command                                                                                  |
-| -------- | ---------------------------------------------------------------------------------------- |
-| `clr`    | `clear`                                                                                  |
-| `update` | `brew update && brew upgrade` (macOS) / `sudo apt update && sudo apt upgrade -y` (Linux) |
+| Alias    | Command                                                                                                              |
+| -------- | -------------------------------------------------------------------------------------------------------------------- |
+| `update` | `brew update && brew upgrade && brew cleanup` (macOS) / `sudo apt update && sudo apt upgrade -y && sudo apt autoremove` (Linux) |
 
 ## Shell Functions (`.shell_common`)
 
@@ -85,6 +89,7 @@ Quick reference for aliases, functions, and settings defined in this dotfiles re
 | `EDITOR` | `vim`                              |
 | `VISUAL` | `vim`                              |
 | `PAGER`  | `less`                             |
+| `LESS`   | `FRX`                              |
 | `PATH`   | `$HOME/bin:$HOME/.local/bin:$PATH` |
 | `LANG`   | `en_US.UTF-8`                      |
 | `LC_ALL` | `en_US.UTF-8`                      |

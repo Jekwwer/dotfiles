@@ -57,7 +57,8 @@ This project is released under the [MIT License][LICENSE].
 Bash shell config for Linux/Codespaces. Sources `.shell_common` for shared settings.
 
 - Interactive-only guard, lesspipe integration, and bash-completion setup
-- History: 5 000 in memory / 10 000 on disk, dedup, ignores trivial commands, append-only
+- History: 5 000 in memory / 10 000 on disk, dedup, ignores trivial commands, append-only, timestamped, multi-line saved
+  as one entry
 - Shell options: `globstar`, `dirspell`, `cdspell`
 - Prompt: `user@host dir (branch)$` in color
 
@@ -66,21 +67,22 @@ Bash shell config for Linux/Codespaces. Sources `.shell_common` for shared setti
 Shared config sourced by both `.bashrc` and `.zshrc`. See [CHEATSHEET.md][CHEATSHEET.md] for the full alias and function
 reference.
 
-- Environment: `EDITOR`/`VISUAL=vim`, `PAGER=less`, UTF-8 locale, `~/bin` and `~/.local/bin` on `PATH`
+- Environment: `EDITOR`/`VISUAL=vim`, `PAGER=less`, `LESS=FRX`, UTF-8 locale, `~/bin` and `~/.local/bin` on `PATH`
 - Navigation aliases: `..`, `...`, `....`
 - File aliases: `ll`, `la`, `l`; safe `rm`/`mv`/`cp` (with `-i`)
-- Git aliases: `gst`, `gci`, `gca`, `gfi`, `gco`, `gf`, `gpl`, `gps`, `gpf`, `gl`
+- Git aliases: `gst`, `gci`, `gca`, `gd`, `gds`, `gb`, `gco`, `gsw`, `grs`, `gf`, `gfi`, `gpl`, `gps`, `gpf`, `gl`
 - Functions: `hgrep <text>` (history search), `reload` (re-source config)
 - OS-specific: `CLICOLOR`/`LSCOLORS` + `brew` update alias on macOS; `ls --color=auto` + `apt` update alias on Linux
-- `git_branch` helper used by both prompts
+- `git_branch` helper used by both prompts (falls back to `(short-sha)` when detached)
 
 ## .zshrc
 
 Zsh shell config for macOS. Sources `.shell_common` for shared settings.
 
 - Completion: `compinit`
-- History: 5 000 in memory / 10 000 on disk, dedup, ignores trivial commands, incremental write
-- Shell options: `GLOB_STAR_SHORT`, `CORRECT`, `CORRECT_ALL`
+- History: 5 000 in memory / 10 000 on disk, dedup-all, ignores trivial commands, shared across terminals, timestamped,
+  `!` expansion verified, blanks normalized
+- Shell options: `GLOB_STAR_SHORT`, `CORRECT`
 - Prompt: `user@host dir (branch)$` in color using `PROMPT_SUBST`
 
 ## .curlrc
