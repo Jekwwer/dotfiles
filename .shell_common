@@ -1,58 +1,59 @@
-# .shell_common: Shared configuration sourced by .bashrc and .zshrc.
-
 # === Environment Variables ===
-export EDITOR="vim"
-export VISUAL="vim"
-export PAGER="less"
+export EDITOR='vim'
+export VISUAL='vim'
+export PAGER='less'
+export LESS='FRX'
 export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+export LANG='en_US.UTF-8'
+export LC_ALL='en_US.UTF-8'
 
 # === Aliases ===
+# --- ls ---
 alias ll='ls -la'
 alias la='ls -A'
 alias l='ls -CF'
 
+# --- safety ---
 alias rm='rm -i'
 alias mv='mv -i'
 alias cp='cp -i'
 
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
+# --- navigation ---
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 
-alias gst="git status"
-alias gca="git amend"
-alias gci="git commit"
-alias gf="git fetch"
-alias gfi="git fixup"
-alias gpl="git pull"
-alias gps="git push"
-alias gpf="git push --force-with-lease"
-alias gco="git checkout"
-alias gsw="git switch"
-alias grs="git restore"
-alias gd="git diff"
-alias gds="git diff --staged"
-alias gb="git branch"
-alias gl="git log --oneline --graph --decorate"
-
-alias clr="clear"
+# --- git ---
+alias gst='git status'
+alias gca='git amend'
+alias gci='git commit'
+alias gf='git fetch'
+alias gfi='git fixup'
+alias gpl='git pull'
+alias gps='git push'
+alias gpf='git push --force-with-lease'
+alias gco='git checkout'
+alias gsw='git switch'
+alias grs='git restore'
+alias gd='git diff'
+alias gds='git diff --staged'
+alias gb='git branch'
+alias gl='git log --oneline --graph'
 
 # OS-specific: colors and package manager
-if [[ "$(uname)" == "Darwin" ]]; then
+if [[ "$(uname)" == 'Darwin' ]]; then
     export CLICOLOR=1
     export LSCOLORS=GxFxCxDxBxegedabagaced
-    alias update="brew update && brew upgrade"
+    alias update='brew update && brew upgrade && brew cleanup'
 else
     alias ls='ls --color=auto'
-    alias update="sudo apt update && sudo apt upgrade -y"
+    alias update='sudo apt update && sudo apt upgrade -y && sudo apt autoremove'
 fi
 
 # === Functions ===
 hgrep() {
-    history | grep "$1"
+    history | grep "$@"
 }
 
 reload() {
@@ -61,10 +62,15 @@ reload() {
     else
         source ~/.bashrc
     fi
-    echo "Shell configuration reloaded!"
+    echo 'Shell configuration reloaded!'
 }
 
 # === Git Prompt ===
 git_branch() {
-    git branch --show-current 2>/dev/null
+    local ref
+    if ref=$(git symbolic-ref --short HEAD 2>/dev/null); then
+        echo "$ref"
+    elif ref=$(git rev-parse --short HEAD 2>/dev/null); then
+        echo "($ref)"
+    fi
 }

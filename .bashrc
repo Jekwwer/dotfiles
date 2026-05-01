@@ -1,5 +1,3 @@
-# .bashrc: Bash shell configuration. Sources .shell_common for shared settings.
-
 case $- in
     *i*) ;;
       *) return;;
@@ -22,7 +20,9 @@ export HISTSIZE=5000
 export HISTFILESIZE=10000
 export HISTCONTROL=ignoreboth
 export HISTIGNORE="ls:cd:cd -:pwd:exit:clear"
+export HISTTIMEFORMAT="%F %T "
 shopt -s histappend
+shopt -s cmdhist
 PROMPT_COMMAND="history -a"
 
 # === Shared Configuration ===
