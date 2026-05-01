@@ -160,13 +160,14 @@ Symlinks all dotfiles into `$HOME`. Detects OS to link `.zshrc` (macOS) or `.bas
 
 ## prune-cspell-words
 
-Remove stale words from a cspell.json words list. Symlinked into `~/bin/` by `install.sh`.
+Remove stale words from a cspell config words list. Symlinked into `~/bin/` by `install.sh`.
 
 ```
 prune-cspell-words [-c PATH] [-n] [-v]
 ```
 
-- `-c / --config PATH`: path to cspell config (default: `./cspell.json`)
+- `-c / --config PATH`: path to cspell config (default: auto-detect standard JSON config in cwd — `.cspell.json`,
+  `cspell.json`, `.cSpell.json`, `cSpell.json`, or `cspell.config.json`)
 - `-n / --dry-run`: preview removals without modifying the file
 - `-v / --verbose`: print each word as it is checked
 

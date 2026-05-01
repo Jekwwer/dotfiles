@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-"""Remove stale words from a cspell.json words list.
+"""Remove stale words from a cspell config words list.
 
 Searches all non-gitignored, non-cspell-ignored files for each word.
-Words not found anywhere are removed from cspell.json.
+Words not found anywhere are removed from the config.
 
 Usage:
-    prune-cspell-words                        # uses ./cspell.json
-    prune-cspell-words -c path/cspell.json    # explicit config path
+    prune-cspell-words                        # auto-detect standard config in cwd
+    prune-cspell-words -c path/cspell.json    # explicit config path (non-standard)
     prune-cspell-words --dry-run              # preview without modifying
     prune-cspell-words --verbose              # show each word as checked
 """
@@ -19,18 +19,41 @@ import sys
 from pathlib import Path
 from typing import Any
 
+# JSON cspell config names that cspell itself recognizes, in priority order.
+# Non-JSON variants (yaml, yml, js, cjs, package.json) are out of scope —
+# this script reads and writes JSON only.
+DEFAULT_CONFIG_NAMES = [
+    ".cspell.json",
+    "cspell.json",
+    ".cSpell.json",
+    "cSpell.json",
+    "cspell.config.json",
+]
+
+
+def find_default_config() -> Path | None:
+    """Return the first standard cspell JSON config in cwd, or None."""
+    for name in DEFAULT_CONFIG_NAMES:
+        candidate = Path(name)
+        if candidate.is_file():
+            return candidate
+    return None
+
 
 def parse_args() -> argparse.Namespace:
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
-        description="Remove stale words from a cspell.json words list.",
+        description="Remove stale words from a cspell config words list.",
     )
     parser.add_argument(
         "-c",
         "--config",
-        default="cspell.json",
+        default=None,
         metavar="PATH",
-        help="path to cspell config file (default: ./cspell.json)",
+        help=(
+            "path to cspell config file "
+            "(default: auto-detect standard JSON config in cwd)"
+        ),
     )
     parser.add_argument(
         "-n",
@@ -152,10 +175,21 @@ def main() -> None:
     """Entry point: parse args, check words, update config."""
     args = parse_args()
 
-    config_path = Path(args.config).resolve()
-    if not config_path.exists():
-        print(f"error: config not found: {config_path}", file=sys.stderr)
-        sys.exit(1)
+    if args.config is None:
+        detected = find_default_config()
+        if detected is None:
+            print(
+                "error: no cspell config found in cwd "
+                f"(searched: {', '.join(DEFAULT_CONFIG_NAMES)})",
+                file=sys.stderr,
+            )
+            sys.exit(1)
+        config_path = detected.resolve()
+    else:
+        config_path = Path(args.config).resolve()
+        if not config_path.exists():
+            print(f"error: config not found: {config_path}", file=sys.stderr)
+            sys.exit(1)
 
     config: dict[str, Any] = json.loads(config_path.read_text())
     words: Any = config.get("words", [])
