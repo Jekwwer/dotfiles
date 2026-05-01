@@ -39,15 +39,40 @@ module.exports = {
             { type: 'deps', section: '📦 Dependency Updates' },
             { type: 'build', section: '🏗️ Build System' },
             { type: 'docs', section: '📖 Documentation' },
-            { type: 'test', section: '✅ Testing' },
-            { type: 'refactor', section: '🛠️ Refactoring' },
-            { type: 'style', section: '🎨 Code Style Improvements' },
+            { type: 'refactor', section: '🛠️ Refactoring', hidden: true },
+            { type: 'style', section: '🎨 Code Style Improvements', hidden: true },
+            { type: 'test', section: '✅ Testing', hidden: true },
             { type: 'chore', section: '🔧 Chores' },
             { type: 'ci', section: '🔄 Continuous Integration' },
           ],
         },
         writerOpts: {
           headerPartial: '## {{version}} - {{date}}',
+          // Upstream template hardcodes `⚠` (U+26A0) without VS-16, which renders
+          // as text-style glyph alongside emoji-style section icons. Override to
+          // append U+FE0F so it renders as colored emoji.
+          mainTemplate:
+            '{{> header}}\n' +
+            '{{#if noteGroups}}\n' +
+            '{{#each noteGroups}}\n' +
+            '\n' +
+            '### ⚠️ {{title}}\n' +
+            '\n' +
+            '{{#each notes}}\n' +
+            '* {{#if commit.scope}}**{{commit.scope}}:** {{/if}}{{text}}\n' +
+            '{{/each}}\n' +
+            '{{/each}}\n' +
+            '{{/if}}\n' +
+            '{{#each commitGroups}}\n' +
+            '\n' +
+            '{{#if title}}\n' +
+            '### {{title}}\n' +
+            '\n' +
+            '{{/if}}\n' +
+            '{{#each commits}}\n' +
+            '{{> commit root=@root}}\n' +
+            '{{/each}}\n' +
+            '{{/each}}\n',
           groupBy: 'type',
           commitGroupsSort: (a, b) => {
             const order = [
@@ -59,9 +84,9 @@ module.exports = {
               '📦 Dependency Updates',
               '🏗️ Build System',
               '📖 Documentation',
-              '✅ Testing',
               '🛠️ Refactoring',
               '🎨 Code Style Improvements',
+              '✅ Testing',
               '🔧 Chores',
               '🔄 Continuous Integration',
             ];
@@ -69,8 +94,6 @@ module.exports = {
           },
           commitsSort: ['scope', 'subject'],
         },
-        linkCompare: true,
-        linkReferences: true,
       },
     ],
     [
