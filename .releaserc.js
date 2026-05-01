@@ -109,19 +109,7 @@ module.exports = {
         npmPublish: false,
       },
     ],
-    [
-      '@semantic-release/github',
-      {
-        successComment:
-          ":tada: This ${issue.pull_request ? 'pull request' : 'issue'} has been included in version ${nextRelease.version} :tada:\n\nThe release is available on [GitHub release](${releases[0].url}).",
-        failComment:
-          "The release from branch ${branch.name} failed due to the following issues:\n\n${errors.map(e => `- ${e.message}`).join('\\n')}",
-        failTitle: 'The automated release failed 🚨',
-        releasedLabels: [
-          "released<%= nextRelease.channel ? ` on @${nextRelease.channel}` : '' %>",
-        ],
-      },
-    ],
+    '@semantic-release/github',
     [
       '@semantic-release/git',
       {
