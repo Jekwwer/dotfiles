@@ -9,8 +9,8 @@ Personal development environment configuration for Linux/Codespaces and macOS.
   - **`.bashrc`** (Linux/Codespaces): Bash-specific history, completions, and prompt.
   - **`.zshrc`** (macOS): Zsh-specific history, options, and prompt.
 - **Editor Configuration** (`.editorconfig`): Enforces consistent coding styles for various file types.
-- **Git Configuration** (`.gitattributes`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Standardized settings,
-  improved workflows, and commit message templates.
+- **Git Configuration** (`.gitattributes_global`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Standardized
+  settings, improved workflows, and commit message templates.
 - **Curl Configuration** (`.curlrc`): Enhanced `curl` settings for security, performance, and usability.
 - **Wget Configuration** (`.wgetrc`): Enhanced `wget` settings for reliability, security, and convenience.
 - **Scripts**:
@@ -110,14 +110,16 @@ Fallback coding-style rules when a project has no `.editorconfig` of its own.
 - Shell scripts: 4-space indent
 - Text/log files: preserve trailing whitespace
 
-## .gitattributes
+## .gitattributes_global
 
-- Normalizes line endings (`* text=auto`); enforces LF on checkout for source files
-- Marks images, fonts, PDFs, and archives as binary
-- Custom diff drivers for JSON and XML
-- Skips diffing `.log` files
+Applied globally via `core.attributesfile`. Per-repo `.gitattributes` still wins for matching patterns.
+
+- Auto-detects text + normalizes line endings; forces LF on common languages, configs, docs, shell, build files
+- Marks images, audio/video, fonts, archives, executables, packages, and databases as binary
+- SVG kept as text with markup-aware diff (`diff=html`)
+- Suppresses diffs for noisy files (`*.log`, `*.lock`, `package-lock.json`)
+- Linguist hints: lockfiles + `dist/build/coverage/` marked generated; `vendor/` marked vendored
 - Excludes temp files, editor dirs, and `node_modules/` from `git archive`
-- Excludes minified/map files from GitHub language statistics
 
 ## .gitconfig
 
@@ -125,6 +127,7 @@ See [CHEATSHEET.md][CHEATSHEET.md] for the full alias reference.
 
 - User: Evgenii Shiliaev; GPG-signed commits; `~/.gitmessage` template
 - Core: `code --wait` editor, histogram diff, `less -RFX` pager, fsmonitor, untracked cache
+- Globals: sources `~/.gitignore_global` (excludesfile) and `~/.gitattributes_global` (attributesfile)
 - Workflow: rebase on pull, `autoSetupRemote`, safe force-push via `pushf`, `rerere`, `autoStash`
 - Log: abbreviated hashes, short decorations, custom pretty format
 - Branches sorted by most recent commit; tags sorted by version
@@ -156,8 +159,8 @@ it, or the trailing content becomes part of the changelog note.
 Symlinks all dotfiles into `$HOME`. Detects OS to link `.zshrc` (macOS) or `.bashrc` (Linux/Codespaces).
 
 - Self-locating: works wherever the repo is cloned
-- Always symlinks: `.shell_common`, `.curlrc`, `.editorconfig`, `.gitattributes`, `.gitconfig`, `.gitignore_global`,
-  `.gitmessage`, `.wgetrc`
+- Always symlinks: `.shell_common`, `.curlrc`, `.editorconfig`, `.gitattributes_global`, `.gitconfig`,
+  `.gitignore_global`, `.gitmessage`, `.wgetrc`
 - OS-aware: `.zshrc` on macOS, `.bashrc` on Linux/Codespaces
 - Creates `~/bin/` and symlinks `scripts/prune-cspell-words` into it
 
