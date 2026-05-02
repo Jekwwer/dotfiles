@@ -8,7 +8,7 @@ if [[ ! -d "$DOTFILES_DIR" ]]; then
     exit 1
 fi
 
-FILES_TO_SYMLINK=(".curlrc" ".editorconfig" ".gitattributes" ".gitconfig" ".gitignore_global" ".gitmessage" ".shell_common" ".wgetrc")
+FILES_TO_SYMLINK=(".curlrc" ".editorconfig" ".gitattributes_global" ".gitconfig" ".gitignore_global" ".gitmessage" ".shell_common" ".wgetrc")
 
 echo "Installation started at $(date)"
 echo "Linking dotfiles..."

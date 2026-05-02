@@ -32,6 +32,7 @@
   template = ~/.gitmessage
 
 [core]
+  attributesfile = ~/.gitattributes_global
   autocrlf = input
   editor = code --wait
   excludesfile = ~/.gitignore_global
