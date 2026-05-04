@@ -141,13 +141,14 @@ See [CHEATSHEET.md][CHEATSHEET.md] for the full alias reference.
 
 ## .gitignore_global
 
-Global gitignore applied to all repositories. Covers:
+Applied globally via `core.excludesfile`. Per-repo `.gitignore` adds repo-specific patterns on top.
 
-- OS files: `.DS_Store`, `Thumbs.db`
-- Editor/IDE: `.idea/`, `.vscode/`, `*.swp`
-- Build artifacts: `bin/`, `obj/`, `x64/`, `x86/`
-- Node.js: `node_modules/`, `*.log`, coverage, cache directories
-- Temp files: `*.tmp`, `*.bak`
+Aggregated from upstream Node, Python, and Visual Studio gitignore templates:
+
+- Node.js: package managers (npm, pnpm, yarn), modern frameworks (Next/Nuxt/Sveltekit/Vite/Vuepress/etc.), build/cache
+  dirs
+- Python: byte-compiled, virtualenvs, packaging, test caches, Jupyter, pyenv/poetry/pdm
+- Visual Studio / .NET: build dirs, IDE caches, NuGet, Azure, profilers
 
 ## .gitmessage
 
