@@ -1,5 +1,67 @@
 # Changelog
 
+## 2.3.0 - 2026-05-04
+### 🚀 New Features
+
+* **curlrc:** add proto-default, compressed, max-redirs ([7e52cec](https://github.com/Jekwwer/dotfiles/commit/7e52cec7db9299bc15a6ad65b36b0567ebb23311))
+* **editorconfig:** add py and lockfile rules, drop redundant json ([2c80082](https://github.com/Jekwwer/dotfiles/commit/2c80082549545fef4262cd8f1c8a4aa0c69abc26))
+* **editorconfig:** expand coverage as global fallback ([623685a](https://github.com/Jekwwer/dotfiles/commit/623685a5dab0eb277785abe873ce007df3d3c099))
+* **gitattributes:** activate globally and expand coverage ([7b288e2](https://github.com/Jekwwer/dotfiles/commit/7b288e2b84971fc8d919f5f6dadc05ea466b07c9))
+* **gitconfig:** expand workflow and diff defaults ([a66eca6](https://github.com/Jekwwer/dotfiles/commit/a66eca65b9acf3106247ebca0a8fb5e9a81ae030))
+* **gitignore_global:** add Python.gitignore template ([47556ed](https://github.com/Jekwwer/dotfiles/commit/47556ed1678befb68077660480f6554654330d97))
+* **gitignore_global:** sync upstream Node + VS templates ([e4b5f84](https://github.com/Jekwwer/dotfiles/commit/e4b5f846f97687900b63ceda6fdb1e78ca0f3f51))
+* **scripts:** auto-detect standard cspell config names ([6071457](https://github.com/Jekwwer/dotfiles/commit/6071457cbe07a7fedaf15dd3ae40a8f57e3a9b3e))
+* **shell:** add aliases (gd, gb, gds, gsw, grs) ([2c0ae67](https://github.com/Jekwwer/dotfiles/commit/2c0ae67ed8d5dd2714cf1c32803d49cfd6e75a00))
+* **shell:** add gignore for repo-local ignore ([e3f33bb](https://github.com/Jekwwer/dotfiles/commit/e3f33bb4653ce579049305c0fbe1219065d98ca4))
+* **shell:** align shell and git alias sets symmetrically ([76a1af6](https://github.com/Jekwwer/dotfiles/commit/76a1af60c355640f7e4ada25174f5dbc58caf5f5))
+* **shell:** tighten history/options, polish style ([590cdab](https://github.com/Jekwwer/dotfiles/commit/590cdab5a7d1ced9d71aa91d2c3ec1652f4e2fd5))
+
+### 🔒 Security Updates
+
+* **ci:** apply zero-trust posture to release workflow ([09de0a8](https://github.com/Jekwwer/dotfiles/commit/09de0a85f971e8601cb54449f9ab1c5acf0dfac7))
+* **curlrc:** swap @SECLEVEL for --tlsv1.2 floor ([223101a](https://github.com/Jekwwer/dotfiles/commit/223101a2515406eb840bf1d58e5ca195efa022a6))
+
+### 🐞 Bug Fixes
+
+* **curlrc:** drop --retry-all-errors ([cda4e4b](https://github.com/Jekwwer/dotfiles/commit/cda4e4bd6ad464af73c1f128fee3621f7eda97ee))
+* **curlrc:** move inline comments to own lines ([c0ea3c8](https://github.com/Jekwwer/dotfiles/commit/c0ea3c88f44b0349e6afeb4a5cb4675fbc41d98f))
+* **gitconfig:** rename del-branch to del-remote ([271c2b3](https://github.com/Jekwwer/dotfiles/commit/271c2b3a2a7a123864f77e3ea2fb658782d2db12))
+
+### 📦 Dependency Updates
+
+* bump @semantic-release/github and semantic-release majors ([71e6068](https://github.com/Jekwwer/dotfiles/commit/71e60688d76c85fe0b2b7b8bff85033de7919b08))
+
+### 📖 Documentation
+
+* **changelog:** align with current releaserc policy ([fb40e89](https://github.com/Jekwwer/dotfiles/commit/fb40e898a4ae9b0b7a87387a54c82e0130113de9))
+* **cheatsheet:** add Hidden Behaviors section ([f36e067](https://github.com/Jekwwer/dotfiles/commit/f36e067b16f721adb09c0f5635f19881bbb89b48))
+* **curlrc:** polish comments, drop stubs, sync README ([e257d4c](https://github.com/Jekwwer/dotfiles/commit/e257d4cf673c3a2c7e5b5fe0b506ca07a9a2d6aa))
+* **gitattributes:** sync README and CHEATSHEET ([9121f57](https://github.com/Jekwwer/dotfiles/commit/9121f5760639c25414821c8afb24f385eb676c17))
+* **gitconfig:** sync README and CHEATSHEET ([3b7fd28](https://github.com/Jekwwer/dotfiles/commit/3b7fd281504b8cbdc24b636279f1c0408cb3c4e4))
+* **gitignore_global:** sync README with current coverage ([791d638](https://github.com/Jekwwer/dotfiles/commit/791d6384d9b575815c1d41b0019c5331123f5f28))
+* sync README and CHEATSHEET with new aliases ([e9bf5a6](https://github.com/Jekwwer/dotfiles/commit/e9bf5a6fa8713aae3ee3d8bc6eb3e803477c9341))
+* sync README and CHEATSHEET with shell config ([2c06106](https://github.com/Jekwwer/dotfiles/commit/2c061066b316a745634277d3e04d350768e22ff8))
+
+### 🔧 Chores
+
+* **ci:** drop header comment, use setup-node native cache ([4017075](https://github.com/Jekwwer/dotfiles/commit/401707522a54aa4298a77824d68421fcfc6688db))
+* **gitattributes:** add self-contained per-repo file ([10ca1d7](https://github.com/Jekwwer/dotfiles/commit/10ca1d784292fb74ec4314d5791723f7496adc8f))
+* **gitattributes:** rename .gitattributes to .gitattributes_global ([4223bf4](https://github.com/Jekwwer/dotfiles/commit/4223bf46bc8e77da8ff44f6fc63278133df18679))
+* **gitconfig:** drop --decorate from lg and lga ([abbc171](https://github.com/Jekwwer/dotfiles/commit/abbc171225e5ab34762ddd4d3555f53c1aa2304b))
+* **gitignore:** add self-contained per-repo file ([3a77ec7](https://github.com/Jekwwer/dotfiles/commit/3a77ec7fa056ea8b89095348b15b5e1c9656cd35))
+* **prettierrc:** drop redundant defaults ([1813a8e](https://github.com/Jekwwer/dotfiles/commit/1813a8e9cf38e87dcb3e29d305e110924a5c1947))
+* **prettierrc:** rename .prettierrc to .prettierrc.json ([07cf844](https://github.com/Jekwwer/dotfiles/commit/07cf844f8ea9cf0f370d53c02c9e4cf524fe0e0a))
+* **release:** align package.json metadata with template ([13a1633](https://github.com/Jekwwer/dotfiles/commit/13a1633f5632b369476fa3053fcd0d11c81d69aa))
+* **release:** drop github plugin options to defaults ([b9cce36](https://github.com/Jekwwer/dotfiles/commit/b9cce36baca9ba68c2d75dd76345ae36aade5789))
+* **release:** rename .releaserc.js to .releaserc.cjs ([565c3ed](https://github.com/Jekwwer/dotfiles/commit/565c3ed77c17636bf3d79d88f610b8fe37de98c3))
+
+### 🔄 Continuous Integration
+
+* **release:** add concurrency, timeout, dispatch, bot identity ([c392d4e](https://github.com/Jekwwer/dotfiles/commit/c392d4eac271f38fc14f6cf812798d96404e1c23))
+* **release:** auto-update LICENSE year on release ([6b6eac2](https://github.com/Jekwwer/dotfiles/commit/6b6eac21955599def15bab7918e02568c9de58ef))
+* **release:** expand commit-type policy ([2ec1af2](https://github.com/Jekwwer/dotfiles/commit/2ec1af2d0cbabbef5925237a1d8dd6d74ce09b17))
+* **release:** refine changelog rendering ([b763939](https://github.com/Jekwwer/dotfiles/commit/b763939d2b017c81ba7fa128d385bd0f19c0f6c9))
+
 ## 2.2.0 - 2026-04-24
 ### 🚀 New Features
 
@@ -225,4 +287,3 @@ Version `v1.0.0` includes all commits from the repository start point.
 ### 🔧 Chores
 
 * **bashrc:** relax safety settings for usability ([8e5fb25](https://github.com/Jekwwer/dotfiles/commit/8e5fb25177b7a76da66f322691e7371ab87ea8ab))
-
