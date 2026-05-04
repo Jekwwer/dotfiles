@@ -105,8 +105,12 @@ Zsh shell config for macOS. Sources `.shell_common` for shared settings.
 Fallback coding-style rules when a project has no `.editorconfig` of its own.
 
 - Defaults: UTF-8, LF endings, 2-space indent, trim trailing whitespace, final newline, 88-char line limit
+- Lockfiles (`*.lock`, `package-lock.json`): preserve trailing whitespace
+- Makefile: tab indent (4-size)
+- CSS/HTML/SVG: 120-char line limit
 - Markdown: 120-char limit, preserve trailing whitespace (for line breaks)
-- JSON: 88-char limit
+- Python: 4-space indent
+- RST: 120-char line limit
 - Shell scripts: 4-space indent
 - Text/log files: preserve trailing whitespace
 

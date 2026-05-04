@@ -12,8 +12,15 @@ max_line_length = 88
 trim_trailing_whitespace = true
 
 # Auto-generated lockfiles — preserve as-is
-[{package-lock.json}]
+[{*.lock,package-lock.json}]
 trim_trailing_whitespace = false
+
+[Makefile]
+indent_style = tab
+indent_size = 4
+
+[*.{css,html,svg}]
+max_line_length = 120
 
 [*.md]
 max_line_length = 120
@@ -21,6 +28,9 @@ trim_trailing_whitespace = false
 
 [*.py]
 indent_size = 4
+
+[*.rst]
+max_line_length = 120
 
 [*.sh]
 indent_size = 4
