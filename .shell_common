@@ -71,6 +71,20 @@ reload() {
     echo 'Shell configuration reloaded!'
 }
 
+gignore() {
+    if [[ $# -eq 0 ]]; then
+        echo 'Usage: gignore <pattern>...' >&2
+        return 1
+    fi
+    local exclude
+    exclude=$(git rev-parse --git-path info/exclude 2>/dev/null) || {
+        echo 'gignore: not a git repo' >&2
+        return 1
+    }
+    printf '%s\n' "$@" >> "$exclude"
+    echo "Added to $exclude"
+}
+
 # === Git Prompt ===
 git_branch() {
     local ref

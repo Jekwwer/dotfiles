@@ -62,10 +62,11 @@ Quick reference for aliases, functions, and settings defined in this dotfiles re
 
 ## Shell Functions (`.shell_common`)
 
-| Function       | Description                                    |
-| -------------- | ---------------------------------------------- |
-| `hgrep <text>` | Search command history: `history \| grep "$1"` |
-| `reload`       | Re-source `.zshrc` or `.bashrc`                |
+| Function               | Description                                                          |
+| ---------------------- | -------------------------------------------------------------------- |
+| `gignore <pattern>...` | Append patterns to repo-local `.git/info/exclude` (untracked ignore) |
+| `hgrep <text>`         | Search command history: `history \| grep "$1"`                       |
+| `reload`               | Re-source `.zshrc` or `.bashrc`                                      |
 
 ## Git Aliases (`.gitconfig`)
 
