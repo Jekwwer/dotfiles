@@ -1,0 +1,22 @@
+# === File Classification ===
+
+* text=auto
+
+*.sh                        text eol=lf
+*.py                        text eol=lf
+.bashrc                     text eol=lf
+.zshrc                      text eol=lf
+.shell_common               text eol=lf
+scripts/prune-cspell-words  text eol=lf
+
+# === Metadata ===
+
+# --- GitHub linguist: generated outputs ---
+package-lock.json   linguist-generated
+CHANGELOG.md        linguist-generated
+
+# --- GitHub linguist: language hints for extensionless files ---
+.bashrc                     linguist-language=Shell
+.zshrc                      linguist-language=Shell
+.shell_common               linguist-language=Shell
+scripts/prune-cspell-words  linguist-language=Python
