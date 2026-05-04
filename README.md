@@ -125,12 +125,15 @@ Applied globally via `core.attributesfile`. Per-repo `.gitattributes` still wins
 
 See [CHEATSHEET.md][CHEATSHEET.md] for the full alias reference.
 
-- User: Evgenii Shiliaev; GPG-signed commits; `~/.gitmessage` template
+- User: Evgenii Shiliaev; GPG-signed commits; `~/.gitmessage` template; verbose commit editor
 - Core: `code --wait` editor, histogram diff, `less -RFX` pager, fsmonitor, untracked cache
 - Globals: sources `~/.gitignore_global` (excludesfile) and `~/.gitattributes_global` (attributesfile)
-- Workflow: rebase on pull, `autoSetupRemote`, safe force-push via `pushf`, `rerere`, `autoStash`
-- Log: abbreviated hashes, short decorations, custom pretty format
-- Branches sorted by most recent commit; tags sorted by version
+- Credentials: macOS Keychain with `cache` fallback (1-hour timeout)
+- Diff polish: moved-code with reindent, mnemonic prefixes, copy detection
+- Workflow: rebase on pull, `autoSetupRemote`, `pushf`, `rerere`, `autoStash`, `autoSquash` of fixup commits, tags
+  follow commits on push
+- Log: abbreviated hashes, ISO dates, short decorations, custom pretty format
+- Branches sorted by most recent commit; tags sorted by version, pruned with refs on fetch
 
 ## .gitignore_global
 

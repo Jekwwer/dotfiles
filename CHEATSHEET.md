@@ -124,24 +124,33 @@ Config-enabled features that aren't aliases but are worth knowing about.
 
 ### Git
 
-| Feature                                 | Enabled by                                      | What it does                                                  |
-| --------------------------------------- | ----------------------------------------------- | ------------------------------------------------------------- |
-| Auto-stash on rebase                    | `rebase.autoStash`                              | `git rebase` stashes dirty tree, pops after — no manual stash |
-| Conflict memory across rebases          | `rerere.enabled`                                | Resolve a conflict once; auto-applied on re-occurrence        |
-| First push without `-u`                 | `push.autoSetupRemote`                          | `git push` on a new branch just works                         |
-| Branches sorted by most recent activity | `branch.sort = -committerdate`                  | `git branch` shows recently active first                      |
-| Semver-correct tag order                | `tag.sort = version:refname`                    | `git tag` lists v2, v10 in numeric (not lexical) order        |
-| Auto-prune stale refs on fetch          | `fetch.prune = true`                            | `git fetch` drops refs to deleted remote branches             |
-| 3-way conflict markers                  | `merge.conflictstyle = diff3`                   | Conflict view includes common ancestor                        |
-| Auto-sign commits                       | `commit.gpgSign = true`                         | Every commit GPG-signed                                       |
-| Pull rebases instead of merging         | `pull.rebase = true`                            | Linear history, no merge bubbles                              |
-| `git init` defaults to `main` branch    | `init.defaultBranch = main`                     | No master                                                     |
-| Faster `git status`                     | `core.fsmonitor` + `core.untrackedCache`        | Skips re-scanning watched / known untracked dirs              |
-| Moved-code highlighting in diffs        | `diff.colorMoved = default`                     | Moved code distinct from deletion+addition                    |
-| Histogram diff algorithm                | `diff.algorithm = histogram`                    | Better alignment for moved code                               |
-| Global gitignore                        | `core.excludesfile = ~/.gitignore_global`       | Patterns apply across all repos                               |
-| Global gitattributes                    | `core.attributesfile = ~/.gitattributes_global` | Text/binary/diff/linguist rules apply across all repos        |
-| Command typo prompt                     | `help.autocorrect = prompt`                     | `git stauts` → "did you mean status? (y/N)"                   |
+| Feature                                 | Enabled by                                      | What it does                                                    |
+| --------------------------------------- | ----------------------------------------------- | --------------------------------------------------------------- |
+| Auto-stash on rebase                    | `rebase.autoStash`                              | `git rebase` stashes dirty tree, pops after — no manual stash   |
+| Auto-squash fixup commits               | `rebase.autoSquash = true`                      | `git fixup` commits auto-marked for squash in `rebase -i`       |
+| Conflict memory across rebases          | `rerere.enabled`                                | Resolve a conflict once; auto-applied on re-occurrence          |
+| First push without `-u`                 | `push.autoSetupRemote`                          | `git push` on a new branch just works                           |
+| Tags follow commits on push             | `push.followTags = true`                        | Annotated tags reachable from pushed commits push automatically |
+| Branches sorted by most recent activity | `branch.sort = -committerdate`                  | `git branch` shows recently active first                        |
+| Semver-correct tag order                | `tag.sort = version:refname`                    | `git tag` lists v2, v10 in numeric (not lexical) order          |
+| Auto-prune stale refs on fetch          | `fetch.prune = true`                            | `git fetch` drops refs to deleted remote branches               |
+| Auto-prune deleted remote tags          | `fetch.pruneTags = true`                        | `git fetch` drops local tags deleted on remote                  |
+| 3-way conflict markers                  | `merge.conflictstyle = zdiff3`                  | Conflict view includes common ancestor (cleaner than diff3)     |
+| Auto-sign commits                       | `commit.gpgSign = true`                         | Every commit GPG-signed                                         |
+| Diff in commit editor                   | `commit.verbose = true`                         | Staged diff shown below template when writing message           |
+| Pull rebases instead of merging         | `pull.rebase = true`                            | Linear history, no merge bubbles                                |
+| `git init` defaults to `main` branch    | `init.defaultBranch = main`                     | No master                                                       |
+| Faster `git status`                     | `core.fsmonitor` + `core.untrackedCache`        | Skips re-scanning watched / known untracked dirs                |
+| Moved-code highlighting in diffs        | `diff.colorMoved = default`                     | Moved code distinct from deletion+addition                      |
+| Move-with-reindent detection            | `diff.colorMovedWS = allow-indentation-change`  | Reindented moved code still highlighted                         |
+| Mnemonic diff prefixes                  | `diff.mnemonicPrefix = true`                    | `i/file` (index), `w/file` (work), `c/file` (commit)            |
+| Copy detection in diffs                 | `diff.renames = copies`                         | Copies show alongside renames in `log --follow`                 |
+| Histogram diff algorithm                | `diff.algorithm = histogram`                    | Better alignment for moved code                                 |
+| ISO log dates                           | `log.date = iso`                                | All `git log` dates as ISO-8601                                 |
+| Global gitignore                        | `core.excludesfile = ~/.gitignore_global`       | Patterns apply across all repos                                 |
+| Global gitattributes                    | `core.attributesfile = ~/.gitattributes_global` | Text/binary/diff/linguist rules apply across all repos          |
+| Persistent passwords (macOS)            | `credential.helper = osxkeychain`               | Credentials stored in macOS Keychain, survive reboots           |
+| Command typo prompt                     | `help.autocorrect = prompt`                     | `git stauts` → "did you mean status? (y/N)"                     |
 
 ### Curl
 
