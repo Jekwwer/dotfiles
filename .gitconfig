@@ -66,6 +66,12 @@
 [github]
   user = jekwwer
 
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  allowedSignersFile = ~/.config/git/allowed_signers
+
 [help]
   autocorrect = prompt
 
@@ -105,3 +111,4 @@
 [user]
   email = evgenii.shiliaev@jekwwer.com
   name = Evgenii Shiliaev
+  signingkey = ~/.ssh/id_ed25519_signing.pub
