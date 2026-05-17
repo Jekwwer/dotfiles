@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.3.1 - 2026-05-17
+### 🔒 Security Updates
+
+* **signing:** switch from GPG to SSH ed25519 ([58c5d03](https://github.com/Jekwwer/dotfiles/commit/58c5d037e59f5316412ed5689ea0a0b284b0f55c))
+
+### 📖 Documentation
+
+* **signing:** sync README and CHEATSHEET ([3f80678](https://github.com/Jekwwer/dotfiles/commit/3f8067856bb854058607bcb76e4e92df730350b6))
+
 ## 2.3.0 - 2026-05-04
 ### 🚀 New Features
 
