@@ -9,8 +9,8 @@ Personal development environment configuration for Linux/Codespaces and macOS.
   - **`.bashrc`** (Linux/Codespaces): Bash-specific history, completions, and prompt.
   - **`.zshrc`** (macOS): Zsh-specific history, options, and prompt.
 - **Editor Configuration** (`.editorconfig`): Enforces consistent coding styles for various file types.
-- **Git Configuration** (`.gitattributes_global`, `.gitconfig`, `.gitignore_global`, `.gitmessage`): Standardized
-  settings, improved workflows, and commit message templates.
+- **Git Configuration** (`.gitattributes_global`, `.gitconfig`, `.gitignore_global`, `.gitmessage`, `keys/signing.pub`):
+  Standardized settings, improved workflows, commit message templates, and SSH commit signing.
 - **Curl Configuration** (`.curlrc`): Enhanced `curl` settings for security, performance, and usability.
 - **Wget Configuration** (`.wgetrc`): Enhanced `wget` settings for reliability, security, and convenience.
 - **Scripts**:
@@ -129,7 +129,9 @@ Applied globally via `core.attributesfile`. Per-repo `.gitattributes` still wins
 
 See [CHEATSHEET.md][CHEATSHEET.md] for the full alias reference.
 
-- User: Evgenii Shiliaev; GPG-signed commits; `~/.gitmessage` template; verbose commit editor
+- User: Evgenii Shiliaev; `~/.gitmessage` template; verbose commit editor
+- Signing: SSH-signed commits (`gpg.format = ssh`, `user.signingkey = ~/.ssh/id_ed25519_signing.pub`); local
+  verification via `~/.config/git/allowed_signers`
 - Core: `code --wait` editor, histogram diff, `less -RFX` pager, fsmonitor, untracked cache
 - Globals: sources `~/.gitignore_global` (excludesfile) and `~/.gitattributes_global` (attributesfile)
 - Credentials: macOS Keychain with `cache` fallback (1-hour timeout)
@@ -171,6 +173,19 @@ Symlinks all dotfiles into `$HOME`. Detects OS to link `.zshrc` (macOS) or `.bas
   `.gitignore_global`, `.gitmessage`, `.wgetrc`
 - OS-aware: `.zshrc` on macOS, `.bashrc` on Linux/Codespaces
 - Creates `~/bin/` and symlinks `scripts/prune-cspell-words` into it
+- SSH signing: symlinks `keys/signing.pub` → `~/.ssh/id_ed25519_signing.pub` and writes `~/.config/git/allowed_signers`
+  from `user.email` + pubkey; warns if `keys/signing.pub` is missing
+
+## keys/signing.pub
+
+SSH ed25519 public key used for commit signing. Private key lives on the host and is forwarded into devcontainers via
+ssh-agent.
+
+- Wired up by `install.sh`: symlinked to `~/.ssh/id_ed25519_signing.pub`; `~/.config/git/allowed_signers` written from
+  `user.email` + this pubkey
+- Generate a fresh key (host-side): `ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_signing -N ''`
+- Replace `keys/signing.pub` with the new pubkey contents and commit
+- Upload to GitHub for verified-badge: `gh ssh-key add ~/.ssh/id_ed25519_signing.pub --type signing`
 
 ## prune-cspell-words
 

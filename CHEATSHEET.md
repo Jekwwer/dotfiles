@@ -137,7 +137,8 @@ Config-enabled features that aren't aliases but are worth knowing about.
 | Auto-prune stale refs on fetch          | `fetch.prune = true`                            | `git fetch` drops refs to deleted remote branches               |
 | Auto-prune deleted remote tags          | `fetch.pruneTags = true`                        | `git fetch` drops local tags deleted on remote                  |
 | 3-way conflict markers                  | `merge.conflictstyle = zdiff3`                  | Conflict view includes common ancestor (cleaner than diff3)     |
-| Auto-sign commits                       | `commit.gpgSign = true`                         | Every commit GPG-signed                                         |
+| Auto-sign commits via SSH               | `commit.gpgSign = true` + `gpg.format = ssh`    | Every commit signed with `user.signingkey` (ed25519 pubkey)     |
+| Verify own SSH signatures locally       | `gpg.ssh.allowedSignersFile`                    | `git log --show-signature` resolves committer → signer email    |
 | Diff in commit editor                   | `commit.verbose = true`                         | Staged diff shown below template when writing message           |
 | Pull rebases instead of merging         | `pull.rebase = true`                            | Linear history, no merge bubbles                                |
 | `git init` defaults to `main` branch    | `init.defaultBranch = main`                     | No master                                                       |
