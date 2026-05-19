@@ -8,6 +8,9 @@ export PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 export LANG='en_US.UTF-8'
 export LC_ALL='en_US.UTF-8'
 
+# Docker: suppress CLI hints ("What's next" / Gordon prompts)
+export DOCKER_CLI_HINTS=false
+
 # === Aliases ===
 # --- ls ---
 alias ll='ls -la'
