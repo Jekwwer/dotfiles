@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.4.0 - 2026-05-20
+### 🚀 New Features
+
+* **shell:** suppress Docker CLI hints ([ca40c9e](https://github.com/Jekwwer/dotfiles/commit/ca40c9e95d3ec3e55a251c3a26d7f96af8aed6a1))
+
+### 📖 Documentation
+
+* **shell:** sync README and CHEATSHEET ([78f5cac](https://github.com/Jekwwer/dotfiles/commit/78f5cac3abd58a4b7847c67398214dd26337fc55))
+
 ## 2.3.1 - 2026-05-17
 ### 🔒 Security Updates
 
