@@ -67,7 +67,8 @@ Bash shell config for Linux/Codespaces. Sources `.shell_common` for shared setti
 Shared config sourced by both `.bashrc` and `.zshrc`. See [CHEATSHEET.md][CHEATSHEET.md] for the full alias and function
 reference.
 
-- Environment: `EDITOR`/`VISUAL=vim`, `PAGER=less`, `LESS=FRX`, UTF-8 locale, `~/bin` and `~/.local/bin` on `PATH`
+- Environment: `EDITOR`/`VISUAL=vim`, `PAGER=less`, `LESS=FRX`, UTF-8 locale, `~/bin` and `~/.local/bin` on `PATH`,
+  `DOCKER_CLI_HINTS=false` (no "What's next" prompts)
 - Navigation aliases: `..`, `...`, `....`
 - File aliases: `ll`, `la`, `l`; safe `rm`/`mv`/`cp` (with `-i`)
 - Git aliases: 21 `g*`-prefixed shortcuts covering status/commit/branch/diff/log/push/pull/rebase/stash etc. (see

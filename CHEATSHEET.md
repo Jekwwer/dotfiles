@@ -96,15 +96,16 @@ Quick reference for aliases, functions, and settings defined in this dotfiles re
 
 ## Environment Variables (`.shell_common`)
 
-| Variable | Value                              |
-| -------- | ---------------------------------- |
-| `EDITOR` | `vim`                              |
-| `VISUAL` | `vim`                              |
-| `PAGER`  | `less`                             |
-| `LESS`   | `FRX`                              |
-| `PATH`   | `$HOME/bin:$HOME/.local/bin:$PATH` |
-| `LANG`   | `en_US.UTF-8`                      |
-| `LC_ALL` | `en_US.UTF-8`                      |
+| Variable           | Value                              |
+| ------------------ | ---------------------------------- |
+| `DOCKER_CLI_HINTS` | `false`                            |
+| `EDITOR`           | `vim`                              |
+| `VISUAL`           | `vim`                              |
+| `PAGER`            | `less`                             |
+| `LESS`             | `FRX`                              |
+| `PATH`             | `$HOME/bin:$HOME/.local/bin:$PATH` |
+| `LANG`             | `en_US.UTF-8`                      |
+| `LC_ALL`           | `en_US.UTF-8`                      |
 
 ## Hidden Behaviors
 
@@ -160,3 +161,9 @@ Config-enabled features that aren't aliases but are worth knowing about.
 | ------------------------- | ----------------------- | ------------------------------------------ |
 | Bare URL → HTTPS          | `--proto-default https` | `curl example.com` goes to https, not http |
 | Auto-decompress responses | `--compressed`          | gzip/deflate transparent when piping       |
+
+### Docker
+
+| Feature            | Enabled by               | What it does                                                          |
+| ------------------ | ------------------------ | --------------------------------------------------------------------- |
+| Suppress CLI hints | `DOCKER_CLI_HINTS=false` | No "What's next"/Gordon suggestions after `docker run`/`pull`/`build` |
