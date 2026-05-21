@@ -13,6 +13,8 @@ Personal development environment configuration for Linux/Codespaces and macOS.
   Standardized settings, improved workflows, commit message templates, and SSH commit signing.
 - **Curl Configuration** (`.curlrc`): Enhanced `curl` settings for security, performance, and usability.
 - **Wget Configuration** (`.wgetrc`): Enhanced `wget` settings for reliability, security, and convenience.
+- **Login Banner Suppression** (`.hushlogin`): Hides the `Last login: ...` banner (and MOTD on PAM-configured
+  Linux/Codespaces) on login shells.
 - **Scripts**:
   - **`install.sh`**: A setup script for linking dotfiles and preparing the environment.
   - **`prune-cspell-words`**: Remove stale words from a `cspell.json` words list.
@@ -86,6 +88,15 @@ Zsh shell config for macOS. Sources `.shell_common` for shared settings.
   `!` expansion verified, blanks normalized
 - Shell options: `GLOB_STAR_SHORT`, `CORRECT`
 - Prompt: `user@host dir (branch)$` in color using `PROMPT_SUBST`
+
+## .hushlogin
+
+Empty marker file that suppresses the `Last login: ...` banner on login shells. Existence is the flag — contents are
+ignored.
+
+- macOS Terminal/iTerm: hides the last-login line shown when opening a new login shell
+- Linux/Codespaces SSH (PAM): hides last-login + MOTD via `pam_lastlog` / `pam_motd`
+- No effect on non-login interactive shells (most local terminal emulators)
 
 ## .curlrc
 
@@ -171,7 +182,7 @@ Symlinks all dotfiles into `$HOME`. Detects OS to link `.zshrc` (macOS) or `.bas
 
 - Self-locating: works wherever the repo is cloned
 - Always symlinks: `.shell_common`, `.curlrc`, `.editorconfig`, `.gitattributes_global`, `.gitconfig`,
-  `.gitignore_global`, `.gitmessage`, `.wgetrc`
+  `.gitignore_global`, `.gitmessage`, `.hushlogin`, `.wgetrc`
 - OS-aware: `.zshrc` on macOS, `.bashrc` on Linux/Codespaces
 - Creates `~/bin/` and symlinks `scripts/prune-cspell-words` into it
 - SSH signing: symlinks `keys/signing.pub` → `~/.ssh/id_ed25519_signing.pub` and writes `~/.config/git/allowed_signers`

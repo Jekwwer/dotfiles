@@ -123,6 +123,7 @@ Config-enabled features that aren't aliases but are worth knowing about.
 | Typo correction in `cd` and tab paths         | bash `cdspell` / `dirspell`                    | `cd /etc/initd` → `/etc/init.d`                                               |
 | Command typo suggestions                      | zsh `CORRECT`                                  | `gti status` → "did you mean git?"                                            |
 | less defaults                                 | `LESS=FRX`                                     | F=quit if fits one screen, R=keep colors, X=no clear on exit                  |
+| Suppress login banner / MOTD                  | `~/.hushlogin` exists                          | Hides `Last login: ...` on macOS; PAM also skips MOTD on Linux/Codespaces SSH |
 
 ### Git
 
