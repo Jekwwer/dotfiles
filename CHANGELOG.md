@@ -1,5 +1,14 @@
 # Changelog
 
+## 2.5.0 - 2026-05-22
+### 🚀 New Features
+
+* **shell:** add .hushlogin to suppress login banner ([a851567](https://github.com/Jekwwer/dotfiles/commit/a851567a952c793b20613b6becd164d4570c81cd))
+
+### 📖 Documentation
+
+* **shell:** sync README and CHEATSHEET ([5e7febb](https://github.com/Jekwwer/dotfiles/commit/5e7febb22af113eee179a18c1ef33952f7dfed17))
+
 ## 2.4.0 - 2026-05-20
 ### 🚀 New Features
 
